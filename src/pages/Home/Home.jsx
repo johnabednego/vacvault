@@ -3,6 +3,7 @@ import Hero from './Hero'
 import FeaturedIn from './FeaturedIn'
 import Services from './Services'
 import Team from './Team'
+import './Home.css'
 
 const Home = () => {
   return (
