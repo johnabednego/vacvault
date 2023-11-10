@@ -4,7 +4,7 @@ import {RxHamburgerMenu} from 'react-icons/rx'
 
 const Nav = () => {
     return (
-        <div className=' bg-[#51336A] fixed px-[6%] xl:px-[8%] w-full h-[80px] flex items-center justify-between'>
+        <div className=' bg-[#51336A] fixed px-[6%] xl:px-[8%] w-full h-[80px] flex items-center justify-between z-10'>
             <div className=' flex items-center gap-[22px] lg:gap-[42px] xl:gap-[82px]'> 
                 <img src={logo} alt="" className=' w-[98px] h-[56px]' />
                 <button className=' bg-[#6348A5] text-white rounded-[6px] flex w-[64px] lg:w-[81.83px] h-[35px] xm:h-[40px] text-center justify-center items-center'>Shop</button>
