@@ -1,7 +1,9 @@
 import React, { useEffect, useState } from 'react'
 import './CarouselElements.css'
-import arrow from './assets/arrow.svg'
-import gray_arrow from './assets/gray_arrow.svg'
+import right_arrow from './assets/right_arrow.svg'
+import left_arrow from './assets/left_arrow.svg'
+import right_gray_arrow from './assets/right_gray_arrow.svg'
+import left_gray_arrow from './assets/left_gray_arrow.svg'
 
 const Carousel = (props) => {
     const {children, show} = props
@@ -60,11 +62,11 @@ const Carousel = (props) => {
                 {
                     currentIndex > 0 ?
                     <button onClick={prev} className="left-arrow">
-                        <img src={arrow} alt="arrow-left" className='rotate-180' />
+                        <img src={left_arrow} alt="arrow-left" />
                     </button>
                     :
                     <button onClick={prev} className="left-arrow">
-                        <img src={gray_arrow} alt="arrow-left"  />
+                        <img src={left_gray_arrow} alt="arrow-left"  />
                     </button>
                 }
                 <div
@@ -82,10 +84,10 @@ const Carousel = (props) => {
                 {
                     currentIndex < (length - show) ?
                     <button onClick={next} className="right-arrow">
-                           <img src={arrow} alt="arrow-right" />
+                           <img src={right_arrow} alt="arrow-right" />
                     </button>:
                     <button onClick={next} className="right-arrow cursor-not-allowed">
-                    <img src={gray_arrow} alt="arrow-right" className=' rotate-180' />
+                    <img src={right_gray_arrow} alt="arrow-right" />
              </button>
                 }
             </div>

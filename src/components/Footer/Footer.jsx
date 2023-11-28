@@ -58,8 +58,8 @@ const Footer = () => {
                 </div>
 
                 <div className=' hidden md:flex items-center text-[14px] font-sans gap-[19px]'>
-                    <h1>Terms</h1>
-                    <h1>Privacy</h1>
+                    <h1 className=' cursor-pointer'>Terms</h1>
+                    <h1 className=' cursor-pointer'>Privacy</h1>
                 </div>
 
                 <h1 className=' hidden md:flex items-center text-[14px]'>© 2023 VacVault LTD | All Rights Reserved  </h1>
@@ -67,8 +67,8 @@ const Footer = () => {
 
                 <div className=' flex flex-col xm:flex-row md:hidden w-full items-center justify-between'>
                     <div className='flex items-center text-[14px] font-sans gap-[19px]'>
-                        <h1>Terms</h1>
-                        <h1>Privacy</h1>
+                        <h1 className=' cursor-pointer'>Terms</h1>
+                        <h1 className=' cursor-pointer'>Privacy</h1>
                     </div>
 
                     <h1 className=' flex items-center text-[14px]'>© 2023 VacVault LTD | All Rights Reserved  </h1>
