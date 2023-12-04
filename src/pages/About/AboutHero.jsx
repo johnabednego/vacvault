@@ -12,9 +12,9 @@ const AboutHero = () => {
     { circle: circle_3, title: "Why We Do It", message: "We exist to make travel worry-free. Vacvault's mission is to offer travelers a safe space for their possessions, removing the luggage burden. We strive to enhance journeys with convenience, security, and peace of mind." }
   ]
   return (
-    <div className=' pb-[60px]'>
+    <div>
       <NavWithTitle title="About Us" />
-      <div className='w-full  pt-[195px]'>
+      <div className='w-full  pt-[195px] bg-[#51336A]'>
         {/* <img src={woman} alt="" className='' /> */}
         <div className=' w-full h-[513px] flex items-center  bg-about_woman bg-center bg-cover'>
           <div className=' w-full text-center flex flex-col gap-[27px] px-3'>

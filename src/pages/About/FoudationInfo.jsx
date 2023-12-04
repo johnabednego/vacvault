@@ -3,7 +3,7 @@ import team from './assets/team.svg'
 
 const FoudationInfo = () => {
     return (
-        <div className=' px-[6%] xl:px-[8%] mt-[83.5px] flex flex-col md:flex-row items-center justify-center md:items-start md:justify-start  gap-[28px]'>
+        <div className=' px-[6%] xl:px-[8%] mt-[131px] flex flex-col md:flex-row items-center justify-center md:items-start md:justify-start  gap-[28px]'>
             <img src={team} alt=""  className=' md:w-[341px] md:h-[342px] lg:w-[441px] lg:h-[442px]'/>
             <div className='flex flex-col gap-[30px] font-light lg:text-[20px]'>
                 <div className=' flex flex-col'>
