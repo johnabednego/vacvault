@@ -2,6 +2,7 @@ import React, { useEffect } from 'react'
 import AboutHero from './AboutHero'
 import { useDispatch } from 'react-redux'
 import { SetNavSwitch } from '../../features/nav/navSwitchSlice'
+import FoudationInfo from './FoudationInfo'
 
 const About = () => {
 
@@ -25,6 +26,7 @@ const About = () => {
   return (
     <div>
       <AboutHero/>
+      <FoudationInfo/>
     </div>
   )
 }

@@ -1,9 +1,16 @@
 import React from 'react'
 import NavWithTitle from '../../components/Nav/NavWithTitle'
-import woman from './assets/woman.svg'
-import what from './assets/what.svg'
+import circle_1 from './assets/circle_1.svg'
+import circle_2 from './assets/circle_2.svg'
+import circle_3 from './assets/circle_3.svg'
+import WhQuestion from './WhQuestion'
 
 const AboutHero = () => {
+  const TheWhQuestions = [
+    { circle: circle_1, title: "Who We Are", message: "Vacvault, your trusted travel companion, offers secure and convenient luggage storage solutions. We prioritize safeguarding belongings, providing hassle-free experiences, and ensuring peace of mind for all travelers." },
+    { circle: circle_2, title: "What We Do", message: "At Vacvault, we specialize in secure storage for luggage during breaks, offering 24/7 monitoring and flexible durations. Our user-friendly services include easy drop-off, pick-up, and expert assistance with handling." },
+    { circle: circle_3, title: "Why We Do It", message: "We exist to make travel worry-free. Vacvault's mission is to offer travelers a safe space for their possessions, removing the luggage burden. We strive to enhance journeys with convenience, security, and peace of mind." }
+  ]
   return (
     <div className=' pb-[60px]'>
       <NavWithTitle title="About Us" />
@@ -16,9 +23,13 @@ const AboutHero = () => {
           </div>
         </div>
       </div>
-     <div className=' w-full flex items-center justify-center'>
-     <img src={what} alt="" className=' mt-[-8%]' />
-     </div>
+      <div className=' px-[6%] xl:px-[8%] w-full flex  flex-wrap gap-10 sm:gap-[30px] lg:gap-[60px] sm:flex-nowrap items-center justify-center text-center mt-[-90px] lg:mt-[-110px]'>
+        {TheWhQuestions.map(question => {
+          return (
+            <WhQuestion circle={question.circle} title={question.title} message={question.message} />
+          )
+        })}
+      </div>
     </div>
   )
 }
