@@ -13,7 +13,7 @@ const OurMission = () => {
                 items.map(item => {
                     return (
                         <div className=' flex flex-col items-center justify-center xm:w-[430px]'>
-                            <h1 className=' font-medium text-[30px]'>{item.title}</h1>
+                            <h1 className=' text-center font-medium text-[30px]'>{item.title}</h1>
                             <img src={item.image} alt="" />
                             <h1 className=' font-light text-[16px] text-center xm:text-justify'>{item.text}</h1>
                         </div>
