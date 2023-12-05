@@ -14,7 +14,7 @@ const AboutHero = () => {
   return (
     <div>
       <NavWithTitle title="About Us" />
-      <div className='w-full  pt-[195px] bg-[#51336A]'>
+      <div className='w-full  pt-[95px] xm:pt-[195px] bg-[#51336A]'>
         {/* <img src={woman} alt="" className='' /> */}
         <div className=' w-full h-[513px] flex items-center  bg-about_woman bg-center bg-cover'>
           <div className=' w-full text-center flex flex-col gap-[27px] px-3'>

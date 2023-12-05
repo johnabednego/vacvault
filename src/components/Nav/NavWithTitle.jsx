@@ -39,10 +39,10 @@ const NavWithTitle = ({ title }) => {
       </div> */}
       <div
         className={`transition-all duration-1000 ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 -translate-y-full'
-          } bg-nav_bg bg-cover bg-center w-full h-[223.42px] flex flex-col items-center justify-end text-center fixed`}
+          } bg-nav_bg bg-cover bg-center w-full h-[150px] xm:h-[223.42px] flex flex-col items-center justify-end text-center fixed px-[6%] xl:px-[8%]`}
         style={{ top: isVisible ? '0' : '-223.42px' }}
       >
-        <h1 className='text-[54px] text-white -mt-8 font-sans'>{title}</h1>
+        <h1 className=' text-[34px] xm:text-[54px] text-white -mt-8 font-sans'>{title}</h1>
       </div>
     </div>
   )

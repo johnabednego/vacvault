@@ -7,7 +7,8 @@ module.exports = {
     extend: {
         backgroundImage: {
           nav_bg:"url('/src/components/Nav/assets/nav_bg.svg')",
-          about_woman:"url('/src/pages/About/assets/woman_1.png')",
+          about_woman:"url('/src/pages/About/assets/woman.png')",
+          holding_bag:"url('/src/pages/Services/assets/holding_bag.png')",
         },
       screens: {
         'xm': '500px',

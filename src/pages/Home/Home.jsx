@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react'
 import Hero from './Hero'
 import FeaturedIn from './FeaturedIn'
-import Services from './Services'
+import HomeServices from './HomeServices'
 import Team from './Team'
 import './Home.css'
 import Footer from '../../components/Footer/Footer'
@@ -30,7 +30,7 @@ else{
     <div>
       <Hero/>
       <FeaturedIn/>
-      <Services/>
+      <HomeServices/>
       <Team/>
       <Footer/>
     </div>
