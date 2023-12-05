@@ -12,6 +12,16 @@ const Home = () => {
   const dispatch = useDispatch()
 
   useEffect(()=>{
+
+    const scrollToTop = () => {
+      window.scrollTo({
+        top: 0,
+        behavior: 'smooth', // Smooth scrolling behavior
+      });
+    };
+
+    scrollToTop()
+    
    if(window.location.pathname==="/about"){
       dispatch(SetNavSwitch(1))
   }

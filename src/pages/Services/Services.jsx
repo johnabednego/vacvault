@@ -3,6 +3,8 @@ import { useDispatch } from 'react-redux'
 import { SetNavSwitch } from '../../features/nav/navSwitchSlice'
 import ServiceHero from './ServiceHero'
 import ServicesInfo from './ServicesInfo'
+import StorageExplained from './StorageExplained'
+import Footer from '../../components/Footer/Footer'
 
 const Services = () => {
     const dispatch = useDispatch()
@@ -26,6 +28,8 @@ const Services = () => {
     <div>
       <ServiceHero/>
       <ServicesInfo/>
+      <StorageExplained/>
+      <Footer/>
     </div>
   )
 }
