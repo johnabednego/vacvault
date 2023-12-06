@@ -5,6 +5,7 @@ import {useDispatch } from 'react-redux'
 import { useEffect } from "react";
 import {SetNavSwitch} from '../src/features/nav/navSwitchSlice'
 import Services from "./pages/Services/Services";
+import Contact from "./pages/Contact/Contact";
 
 function App() {
   const dispatch = useDispatch()
@@ -30,6 +31,7 @@ else{
           <Route index element={<Home/>} />
          <Route path="/about" element={<About/>}/>
          <Route path="/services" element={<Services/>}/>
+         <Route path="/contact" element={<Contact/>}/>
           {/*  <Route path="/dashboard/carrier" element={<CarrierDashboard/>}/> */}
           {/* <Route path="/contact" element={<Contact/>} />
           <Route path="/list" element={<ListProperty/>}/>

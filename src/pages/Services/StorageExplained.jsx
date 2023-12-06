@@ -9,8 +9,8 @@ const StorageExplained = () => {
     const items = [
         { id:"1", image: step1, title: "Book", text: "Click on Book Now to  fill up a form  and make payment online or in person" },
         {id:"2", image:step2, title:"Get Items Ready", text:"Prepare and get your items ready for us to pick them up"},
-        {id:"3", image:step3, title:"Pick Up", text:"We will come to the location of your item to pick them up for storage"},
-        {id:"4", image:step4, title:"Request Item", text:"Request for your item to be brought to you as picked"}
+        {id:"3", image:step3, title:"Pick Up", text:"We will come to the location of your items to pick them up for storage"},
+        {id:"4", image:step4, title:"Request Item", text:"Request for your items to be brought to you as picked"}
     ]
     
     return (

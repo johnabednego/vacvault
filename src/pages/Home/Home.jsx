@@ -29,7 +29,7 @@ const Home = () => {
     dispatch(SetNavSwitch(2))
 }
 else if(window.location.pathname==="/contact"){
-  dispatch(SetNavSwitch(1))
+  dispatch(SetNavSwitch(3))
 }
 else{
   dispatch(SetNavSwitch(0))
