@@ -1,0 +1,12 @@
+@media screen and (max-width: 400px) {
+    .smallDevice{
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+}
+@media screen and (max-width: 480px){
+    .smallName{
+        flex-direction: column;
+        gap: 15px;
+    }
+}

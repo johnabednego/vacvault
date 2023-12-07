@@ -4,13 +4,19 @@ import { RxHamburgerMenu } from 'react-icons/rx'
 import { IoMdClose } from "react-icons/io";
 import { useNavigate } from 'react-router-dom'
 import { SetNavSwitch } from '../../features/nav/navSwitchSlice'
+import {SignInTrue} from '../../features/nav/signInSlice'
+import {SignUpTrue} from '../../features/nav/signUpSlice'
 import { useSelector, useDispatch } from 'react-redux'
+import SignInModal from '../SignIn/SignInModal'
+import SignUpModal from '../SignUp/SignUpModal'
 
 const Nav = () => {
     const dispatch = useDispatch()
     const navSwitch = useSelector((state) => state.navSwitch.value)
     const navigate = useNavigate()
     const [isOpen, setIsOpen] = useState(false);
+    const signInModal = useSelector((state)=>state.signInModal.value)
+    const signUpModal = useSelector((state)=>state.signUpModal.value)
 
     const toHome = () => {
         dispatch(SetNavSwitch(0))
@@ -38,6 +44,9 @@ const Nav = () => {
     };
 
     return (
+        <>
+        {signInModal?<SignInModal/>:null}
+        {signUpModal?<SignUpModal/>:null}
         <div className=' bg-[#51336A] fixed px-[6%] xl:px-[8%] w-full h-[80px] flex items-center justify-between z-10'>
             <div className=' flex items-center gap-[22px] lg:gap-[42px] xl:gap-[82px]'>
                 <img src={logo} alt="" className=' w-[98px] h-[56px]' />
@@ -52,8 +61,8 @@ const Nav = () => {
             </div>
 
             <div className=' hidden xm:flex text-[14px] gap-[18px] xl:gap-[24.17px]'>
-                <button className='flex bg-[#6348A5] text-white text-center items-center justify-center rounded-[6px] w-[64px] lg:w-[92.83px] h-[40px]'>Sign In</button>
-                <button className='flex bg-[#100C14] text-white text-center items-center justify-center rounded-[6px] w-[64px] lg:w-[92.83px] h-[40px]'>Sign Up</button>
+                <button onClick={()=>dispatch(SignInTrue())} className='flex bg-[#6348A5] text-white text-center items-center justify-center rounded-[6px] w-[64px] lg:w-[92.83px] h-[40px]'>Sign In</button>
+                <button onClick={()=>dispatch(SignUpTrue())} className='flex bg-[#100C14] text-white text-center items-center justify-center rounded-[6px] w-[64px] lg:w-[92.83px] h-[40px]'>Sign Up</button>
             </div>
 
             <div className=' text-white md:hidden'>
@@ -73,8 +82,8 @@ const Nav = () => {
                         {/* Your navigation links here */}
                         <div className=' pl-4 items-start justify-start mt-20 text-[16px] flex flex-col gap-[15px] '>
                             <div className=' xm:hidden flex text-[14px] gap-[18px]'>
-                                <button className='flex bg-[#6348A5] text-white text-center items-center justify-center rounded-[6px] w-[64px] lg:w-[92.83px] h-[40px]'>Sign In</button>
-                                <button className='flex bg-[#100C14] text-white text-center items-center justify-center rounded-[6px] w-[64px] lg:w-[92.83px] h-[40px]'>Sign Up</button>
+                                <button onClick={()=>{dispatch(SignInTrue()); closeMenu()}} className='flex bg-[#6348A5] text-white text-center items-center justify-center rounded-[6px] w-[64px] lg:w-[92.83px] h-[40px]'>Sign In</button>
+                                <button onClick={()=>{dispatch(SignUpTrue()); closeMenu()}} className='flex bg-[#100C14] text-white text-center items-center justify-center rounded-[6px] w-[64px] lg:w-[92.83px] h-[40px]'>Sign Up</button>
                             </div>
                             <button onClick={() => toHome()} className={` ${navSwitch === 0 ? "text-[#989898] cursor-not-allowed" : "text-white cursor-pointer"}`}>HOME</button>
                             <button onClick={() => toAbout()} className={` ${navSwitch === 1 ? "text-[#989898] cursor-not-allowed" : "text-white cursor-pointer"}`}>ABOUT</button>
@@ -85,6 +94,7 @@ const Nav = () => {
                 </div>
             )}
         </div>
+        </>
     )
 }
 
