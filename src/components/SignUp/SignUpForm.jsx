@@ -6,10 +6,12 @@ import axios from 'axios';
 import visibility_on from './assets/visibility_on.svg'
 import visibility_off from './assets/visibility_off.svg'
 import CountrySelector from './CountrySelector.jsx'
+import { useDispatch } from 'react-redux';
+import { SignUpFalse } from '../../features/nav/signUpSlice'
+import {SignInTrue} from '../../features/nav/signInSlice.js'
 
-const SignUpForm = ({
-    email, setEmail, setToVerify
-}) => {
+const SignUpForm = ({email, setEmail, setToVerify}) => {
+    const dispatch = useDispatch()
     const [errorMessage, setErrorMessage] = useState("")
     const [firstName, setFirstName] = useState("")
     const [lastName, setLastName] = useState("")
@@ -302,10 +304,11 @@ const SignUpForm = ({
                                                         {errorMessage === "Country is requied" ? <h1 className=' pl-5 w-full mt-[5px] text-red-600 text-[12px] text-left'>{errorMessage}</h1> : null}
                                                     </div>
                                                     <div className=' w-full'>
-                                                        <input value={city} onChange={(e) => {setCity(e.target.value);
-                                                        if (e.target.value.length < 0) { setErrorMessage("City is requied") }
-                                                        else if (e.target.value.length < 2) { setErrorMessage("City name is too short") }
-                                                        else { setErrorMessage("")}
+                                                        <input value={city} onChange={(e) => {
+                                                            setCity(e.target.value);
+                                                            if (e.target.value.length < 0) { setErrorMessage("City is requied") }
+                                                            else if (e.target.value.length < 2) { setErrorMessage("City name is too short") }
+                                                            else { setErrorMessage("") }
                                                         }} required type="text" name="city" id="city" data-cy="city" placeholder="City" className={`${errorMessage === "City is requied" || errorMessage === "City name is too short" ? " border-[1px] border-[#EB0728]" : ""} focus:outline-[#51336A] m-0 placeholder-[#707070] text-[15px] text-[#707070] w-full font-normal bg-[#E5E5E5] h-[40px] rounded-[30px] pl-5 `} />
                                                         {errorMessage === "City is requied" || errorMessage === "City name is too short" ? <h1 className=' pl-5 w-full mt-[5px] text-red-600 text-[12px] text-left'>{errorMessage}</h1> : null}
                                                         {errorMessage === "City is requied" ?
@@ -333,6 +336,11 @@ const SignUpForm = ({
 
                                         {/** Submit button */}
                                         <button onClick={handleSubmit} type="submit" className=' mt-[13px] bg-[#51336A] h-[40px] relative border-none rounded-[30px] select-none text-white text-[1rem] w-full '>Submit</button>
+                                        {/**Sign Up */}
+                                        <h1 className=' w-full text-center text-[#707070] text-[12px] mt-[10px]'>Already have a  VacVault account? <span onClick={() => {
+                                            dispatch(SignUpFalse())
+                                            dispatch(SignInTrue())
+                                        }} className=' text-[#51336A] font-bold cursor-pointer'>Sign In</span></h1>
                                     </div>
                                 </div>
                             </form>
