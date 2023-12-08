@@ -4,11 +4,18 @@ import 'react-phone-input-2/lib/style.css';
 import './PhoneNumberValidation.css'
 import ghana from './assets/ghana.svg'
 
-const PhoneNumberValidation = ({ setMobileNumber }) => {
+const PhoneNumberValidation = ({ setMobileNumber, setErrorMessage }) => {
   const [phoneNumber, setPhoneNumber] = useState('');
   //   const [valid, setValid] = useState(true);
 
   const handleChange = (value) => {
+    const pattern = /^\+?[1-9]\d{1,14}$/;
+    if (value.length < 10 || !pattern.test(value)){
+      setErrorMessage("Invalid Phone Number")
+    }
+    else{
+      setErrorMessage("")
+    }
     setPhoneNumber(value);
     setMobileNumber(value)
     // setValid(validatePhoneNumber(value));

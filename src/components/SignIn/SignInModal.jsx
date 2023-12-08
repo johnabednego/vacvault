@@ -17,7 +17,7 @@ const SignInModal = () => {
         <div>
             <div
                 onClick={hideModal}
-                className=" cursor-pointer pt-[200px] h-full justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0  z-[70] outline-none focus:outline-none scrollbar-hide"
+                className=" cursor-pointer pt-0 h-full justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0  z-[70] outline-none focus:outline-none scrollbar-hide"
             >
                 <div id='modal' className="relative my-6 mx-2 xm:mx-0 ">
                     {/*content*/}

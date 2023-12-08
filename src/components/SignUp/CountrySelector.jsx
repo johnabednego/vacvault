@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from "react";
 import { BiChevronDown } from "react-icons/bi";
-import { AiOutlineSearch } from "react-icons/ai";
 
 const CountrySelector = ({setUserCountry}) => {
   const [fixedCountries, setFixedCountries] = useState(null)
