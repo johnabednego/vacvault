@@ -491,7 +491,7 @@ const SignIn = () => {
             {forgotPassword === 0 ?
 
                 !toVerify ?
-                    <div className=' smallDevice w-full xm:w-[480px] sm:w-[528px] rounded-[30px] shadow-input bg-white pt-8 pb-[36px] px-[2.875rem] relative'>
+                    <div className=' smallDevice w-full xm:w-[480px] sm:w-[528px]  rounded-br-[30px] rounded-tl-[30px] shadow-input bg-white pt-8 pb-[36px] px-[2.875rem] relative'>
 
                         <div className=' mb-[29px]'>
                             <h1 className='text-[18px] font-bold '>Welcome to  VacVault</h1>

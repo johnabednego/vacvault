@@ -167,7 +167,7 @@ const SignUpForm = ({email, setEmail, setToVerify}) => {
     }
 
     return (
-        <div className=' smallDevice w-full sm:w-[528px] rounded-[30px] shadow-input bg-white pt-8 pb-[70px] px-[2.875rem] relative'>
+        <div className=' smallDevice w-full sm:w-[528px]  rounded-bl-[30px] rounded-tr-[30px] shadow-input bg-white pt-8 pb-[70px] px-[2.875rem] relative'>
 
             <div className=' mb-[29px]'>
                 <h1 className='text-[18px] font-bold '>Welcome to Vacvault</h1>
@@ -299,9 +299,9 @@ const SignUpForm = ({email, setEmail, setToVerify}) => {
                                                 <div className=' smallName w-full flex items-start gap-3'>
                                                     <div className=' w-full'>
                                                         <div className={` ${errorMessage === "Country is requied" ? "border-[1px] border-[#51336A] w-full rounded-[30px]" : " w-full"}`}>
-                                                            <CountrySelector setUserCountry={setCountry} />
+                                                            <CountrySelector setUserCountry={setCountry} setErrorMessage={setErrorMessage} />
                                                         </div>
-                                                        {errorMessage === "Country is requied" ? <h1 className=' pl-5 w-full mt-[5px] text-red-600 text-[12px] text-left'>{errorMessage}</h1> : null}
+                                                        {errorMessage === "Country is requied" || errorMessage === "Check your internet connection and reload!" ? <h1 className=' pl-5 w-full mt-[5px] text-red-600 text-[12px] text-left'>{errorMessage}</h1> : null}
                                                     </div>
                                                     <div className=' w-full'>
                                                         <input value={city} onChange={(e) => {

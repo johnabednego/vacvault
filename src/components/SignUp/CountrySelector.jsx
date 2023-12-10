@@ -1,21 +1,24 @@
 import React, { useEffect, useState } from "react";
 import { BiChevronDown } from "react-icons/bi";
+import PopupMessage from "./PopupMessage";
 
-const CountrySelector = ({setUserCountry}) => {
+const CountrySelector = ({setUserCountry, setErrorMessage}) => {
   const [fixedCountries, setFixedCountries] = useState(null)
   const [countries, setCountries] = useState(null);
   const [inputValue, setInputValue] = useState("");
   const [selected, setSelected] = useState("");
   const [open, setOpen] = useState(false);
-
+  const [fetchingError, setFetchingError] = useState(false)
 
   const handleInputChange = (e) => {
+    if (countries==null){
+      setErrorMessage("Check your internet connection and reload!")
+    }
     const value = e.target.value;
     setInputValue(value);
-    const filteredCountry = countries.filter(
-      (country) => country?.name.toLowerCase().includes(value.toLowerCase())
-    );
-    setCountries(filteredCountry);   
+    if(value){
+      setOpen(true)
+    }  
   };
 
   const handleOpen = () =>{
@@ -29,10 +32,29 @@ const CountrySelector = ({setUserCountry}) => {
       .then((data) => {
         setCountries(data);
         setFixedCountries(data)
-      });
+        setFetchingError(false)
+      }).catch(error=>{
+       setFetchingError(true)
+       console.log(fetchingError)
+      })
   }, []);
+
+  useEffect(() => {
+    if (!inputValue) {
+      // If input value is empty, reset to the original list of countries
+      setCountries(fixedCountries);
+      return;
+    }
+  
+    const filteredCountry = fixedCountries?.filter(
+      (country) => country?.name.toLowerCase().includes(inputValue.toLowerCase())
+    );
+    setCountries(filteredCountry);
+  }, [inputValue, fixedCountries]);
+  
   return (
     <div className=" w-full cursor-pointer">
+       <PopupMessage showMessage={fetchingError} setShowMessage={setFetchingError} />
       <div
         onClick={() => handleOpen()}
         className={` pl-[21px] text-[15px] rounded-[2.5rem] h-[40px] bg-[#E5E5E5] p-2 flex items-center justify-between ${
