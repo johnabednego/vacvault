@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import logo from './assets/vaccault.svg'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { IoMdClose } from "react-icons/io";
@@ -42,6 +42,24 @@ const Nav = () => {
     const closeMenu = () => {
         setIsOpen(false);
     };
+
+    useEffect(()=>{
+        if(window.location.pathname==="/"){
+          dispatch(SetNavSwitch(0))
+        }
+       else if(window.location.pathname==="/about"){
+          dispatch(SetNavSwitch(1))
+      }
+      else if(window.location.pathname==="/services"){
+        dispatch(SetNavSwitch(2))
+    }
+    else if(window.location.pathname==="/contact"){
+      dispatch(SetNavSwitch(3))
+    }
+    else{
+      dispatch(SetNavSwitch(-1))
+    }
+    }, [dispatch])
 
     return (
         <>

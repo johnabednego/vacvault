@@ -1,28 +1,10 @@
-import React, { useEffect } from 'react'
-import { useDispatch } from 'react-redux'
-import { SetNavSwitch } from '../../features/nav/navSwitchSlice'
+import React from 'react'
 import NavWithTitle from '../../components/Nav/NavWithTitle'
 import contactIcon from './assets/contact.svg'
 import ContactForm from './ContactForm'
 import Footer from '../../components/Footer/Footer'
 
 const Contact = () => {
-    const dispatch = useDispatch()
-
-    useEffect(() => {
-        if (window.location.pathname === "/about") {
-            dispatch(SetNavSwitch(1))
-        }
-        else if (window.location.pathname === "/services") {
-            dispatch(SetNavSwitch(2))
-        }
-        else if (window.location.pathname === "/contact") {
-            dispatch(SetNavSwitch(3))
-        }
-        else {
-            dispatch(SetNavSwitch(0))
-        }
-    }, [dispatch])
     return (
         <div>
             <NavWithTitle title="Contact Us" />
