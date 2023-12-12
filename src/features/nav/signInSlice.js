@@ -15,6 +15,12 @@ export const signInSlice = createSlice({
       SignInFalse:(state)=>{
         state.value=false
       },
+      // UserSignInTrue:(state)=>{
+      //   state.value=true
+      // },
+      // UserSignInFalse:(state)=>{
+      //   state.value=false
+      // },
     },
   })
   

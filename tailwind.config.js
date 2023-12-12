@@ -17,6 +17,7 @@ module.exports = {
         'input': '10px 10px 40px 4px rgba(0, 0, 0, 0.15)',
         'hero': '10px 10px 40px 4px rgba(0, 0, 0, 0.25)',
         'customer': '0px 1px 15px 0px rgba(0, 0, 0, 0.25)',
+        'dashboard': '0px 4px 16px 0px rgba(0, 0, 0, 0.25)',
 
       },
     },
