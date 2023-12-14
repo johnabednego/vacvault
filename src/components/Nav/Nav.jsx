@@ -44,6 +44,19 @@ const Nav = () => {
     };
 
     useEffect(()=>{
+
+        const scrollToTop = () => {
+          window.scrollTo({
+            top: 0,
+            behavior: 'smooth', // Smooth scrolling behavior
+          });
+        };
+    
+        scrollToTop()
+        
+    }, [])
+    
+    useEffect(()=>{
         if(window.location.pathname==="/"){
           dispatch(SetNavSwitch(0))
         }
@@ -65,7 +78,7 @@ const Nav = () => {
         <>
         {signInModal?<SignInModal/>:null}
         {signUpModal?<SignUpModal/>:null}
-        <div className=' bg-[#51336A] fixed px-[6%] xl:px-[8%] w-full h-[80px] flex items-center justify-between z-10'>
+        <div className=' bg-[#51336A] fixed px-[6%] xl:px-[8%] w-full h-[80px] flex items-center justify-between z-20'>
             <div className=' flex items-center gap-[22px] lg:gap-[42px] xl:gap-[82px]'>
                 <img src={logo} alt="" className=' w-[98px] h-[56px]' />
                 <button className=' bg-[#6348A5] text-white rounded-[6px] flex w-[64px] lg:w-[81.83px] h-[35px] xm:h-[40px] text-center justify-center items-center'>Shop</button>

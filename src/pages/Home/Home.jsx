@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import Hero from './Hero'
 import FeaturedIn from './FeaturedIn'
 import HomeServices from './HomeServices'
@@ -7,19 +7,6 @@ import './Home.css'
 import Footer from '../../components/Footer/Footer'
 
 const Home = () => {
-  useEffect(()=>{
-
-    const scrollToTop = () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth', // Smooth scrolling behavior
-      });
-    };
-
-    scrollToTop()
-    
-}, [])
-
   return (
     <div>
       <Hero/>

@@ -19,17 +19,8 @@ const NavWithTitle = ({ title }) => {
       // prevScrollPos = currentScrollPos;
     };
 
-    const scrollToTop = () => {
-      window.scrollTo({
-        top: 0,
-        behavior: 'smooth', // Smooth scrolling behavior
-      });
-    };
-
     window.addEventListener('scroll', handleScroll);
 
-      // Scroll to top when the component is mounted
-      scrollToTop();
 
     return () => window.removeEventListener('scroll', handleScroll);
   }, []);
