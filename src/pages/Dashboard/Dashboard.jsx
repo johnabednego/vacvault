@@ -32,7 +32,7 @@ const Dashboard = () => {
     return (
         <div>
             <Nav />
-            <div className="flex pt-[80px] h-full">
+            <div className="flex gap-[8%] pt-[80px] h-full">
                 <div
                     className={` ${open ? "w-[422px]" : "w-[165px] "} shadow-dashboard rounded-tr-[30px] rounded-br-[30px] h-full pl-[15px] pt-[36px] relative duration-1000`}>
                     <IoIosArrowForward onClick={() => setOpen(!open)} className={` text-white absolute cursor-pointer -right-3 top-9 w-7 h-7 bg-[#51336A] border-[#51336A] border-2 rounded-full  ${!open && " duration-1000 rotate-180"}`} />
