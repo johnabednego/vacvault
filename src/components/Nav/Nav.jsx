@@ -43,6 +43,14 @@ const Nav = () => {
         setIsOpen(false);
     };
 
+    const hideModal = (event) =>{
+        const modal = document.getElementById('modal');
+        // Check if the clicked element is outside of the modal
+        if (event.target !== modal && !modal.contains(event.target)) {
+            closeMenu(); // Call the function to close the modal
+        }
+    }
+
     useEffect(()=>{
 
         const scrollToTop = () => {
@@ -101,8 +109,8 @@ const Nav = () => {
             </div>
             {/* Mobile Menu */}
             {isOpen && (
-                <div className=" md:hidden fixed inset-0 bg-black bg-opacity-50 z-40 flex items-center justify-center">
-                    <div className="bg-[#51336A] w-4/5 h-full max-w-[12rem] absolute left-0 transform z-50">
+                <div onClick={hideModal} className=" md:hidden fixed inset-0 bg-black bg-opacity-50 z-40 flex items-center justify-center">
+                    <div id='modal' className="bg-[#51336A] w-4/5 h-full max-w-[50%] xm:max-w-[14rem] absolute left-0 transform z-50">
                         {/* Close Button */}
                         <button
                             className="absolute text-white top-5 right-5"
@@ -111,8 +119,8 @@ const Nav = () => {
                             <IoMdClose className=' w-8 h-8' />
                         </button>
                         {/* Your navigation links here */}
-                        <div className=' pl-4 items-start justify-start mt-20 text-[16px] flex flex-col gap-[15px] '>
-                            <div className=' xm:hidden flex text-[14px] gap-[18px]'>
+                        <div className=' pl-4 items-start justify-start mt-20 text-[16px] flex flex-col gap-[20px] '>
+                            <div className=' w-full justify-between pr-[50px] xm:hidden flex text-[14px] gap-[18px]'>
                                 <button onClick={()=>{dispatch(SignInTrue()); closeMenu()}} className='flex bg-[#6348A5] text-white text-center items-center justify-center rounded-[6px] w-[64px] lg:w-[92.83px] h-[40px]'>Sign In</button>
                                 <button onClick={()=>{dispatch(SignUpTrue()); closeMenu()}} className='flex bg-[#100C14] text-white text-center items-center justify-center rounded-[6px] w-[64px] lg:w-[92.83px] h-[40px]'>Sign Up</button>
                             </div>
