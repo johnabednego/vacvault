@@ -110,7 +110,7 @@ const Nav = () => {
             {/* Mobile Menu */}
             {isOpen && (
                 <div onClick={hideModal} className=" md:hidden fixed inset-0 bg-black bg-opacity-50 z-40 flex items-center justify-center">
-                    <div id='modal' className="bg-[#51336A] w-4/5 h-full max-w-[50%] xm:max-w-[14rem] absolute left-0 transform z-50">
+                    <div id='modal' className="bg-[#51336A] w-4/5 h-full max-w-[13rem] xm:max-w-[14rem] absolute left-0 transform z-50">
                         {/* Close Button */}
                         <button
                             className="absolute text-white top-5 right-5"
