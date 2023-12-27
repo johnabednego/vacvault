@@ -47,9 +47,9 @@ const Bookings = () => {
             </div>
           </div>
           {/**View and Payment */}
-          <div className=' flex flex-col gap-6'>
+          <div className=' flex flex-col gap-6 items-end'>
             <div className=' rounded-[50px] border-[1px] border-[#4FBF26] px-2 py-[5px] bg-[#D6FBC9] flex items-center justify-center text-center font-bold text-[#4FBF26] text-[12px]'>Online Payment</div>
-            <button type='button' className=' rounded-tr-[16px] rounded-bl-[16px] shadow-dashboard px-5 font-semibold text-[16px] sm:text-[25px] xl:text-[32px] text-[#6348A5]'>View</button>
+            <button type='button' className=' rounded-tr-[16px] rounded-bl-[16px] shadow-dashboard w-[70px] sm:w-[90px] xl:w-[109px] h-[30px] sm:h-[46px] font-semibold text-[16px] sm:text-[25px] xl:text-[32px] text-[#6348A5]'>View</button>
           </div>
         </div>
 
@@ -68,194 +68,10 @@ const Bookings = () => {
           {/**View and Payment */}
           <div className=' flex flex-col gap-6 justify-center'>
             {/* <div className=' rounded-[50px] border-[1px] border-[#4FBF26] px-2 py-[5px] bg-[#D6FBC9] flex items-center justify-center text-center font-bold text-[#4FBF26] text-[12px]'>Online Payment</div> */}
-            <button type='button' className=' rounded-tr-[16px] rounded-bl-[16px] shadow-dashboard px-5 font-semibold text-[16px] sm:text-[25px] xl:text-[32px] text-[#6348A5]'>View</button>
-          </div>
-        </div>
-        <div className=' flex justify-between border-l-[11px] py-6 pl-[12px] lg:pl-[30px] pr-[11px] border-l-[#51336A] rounded-[10px] shadow-dashboard'>
-          {/**Code and Date */}
-          <div className=' flex flex-col gap-[18px] lg:gap-[28px]'>
-            <div className='flex gap-2 lg:gap-5 font-medium text-[16px] sm:text-[25px] xl:text-[32px]'>
-              <h1 className=' text-[#51336A]'>Code:</h1>
-              <h1>3Vacvault08</h1>
-            </div>
-            <div className='flex gap-2 lg:gap-5 font-medium text-[16px] sm:text-[25px] xl:text-[32px]'>
-              <h1 className=' text-[#51336A]'>Date:</h1>
-              <h1>Tue 18 Nov</h1>
-            </div>
-          </div>
-          {/**View and Payment */}
-          <div className=' flex flex-col gap-6'>
-            <div className=' rounded-[50px] border-[1px] border-[#4FBF26] px-2 py-[5px] bg-[#D6FBC9] flex items-center justify-center text-center font-bold text-[#4FBF26] text-[12px]'>Online Payment</div>
-            <button type='button' className=' rounded-tr-[16px] rounded-bl-[16px] shadow-dashboard px-5 font-semibold text-[16px] sm:text-[25px] xl:text-[32px] text-[#6348A5]'>View</button>
+            <button type='button' className=' w-[70px] sm:w-[90px] xl:w-[109px] h-[30px] sm:h-[46px] rounded-tr-[16px] rounded-bl-[16px] shadow-dashboard font-semibold text-[16px] sm:text-[25px] xl:text-[32px] text-[#6348A5]'>View</button>
           </div>
         </div>
 
-        <div className=' flex justify-between border-l-[11px] py-6 pl-[12px] lg:pl-[30px] pr-[11px] border-l-[#51336A] rounded-[10px] shadow-dashboard'>
-          {/**Code and Date */}
-          <div className=' flex flex-col gap-[18px] lg:gap-[28px]'>
-            <div className='flex gap-2 lg:gap-5 font-medium text-[16px] sm:text-[25px] xl:text-[32px]'>
-              <h1 className=' text-[#51336A]'>Code:</h1>
-              <h1>3Vacvault08</h1>
-            </div>
-            <div className='flex gap-2 lg:gap-5 font-medium text-[16px] sm:text-[25px] xl:text-[32px]'>
-              <h1 className=' text-[#51336A]'>Date:</h1>
-              <h1>Tue 18 Nov</h1>
-            </div>
-          </div>
-          {/**View and Payment */}
-          <div className=' flex flex-col gap-6 justify-center'>
-            {/* <div className=' rounded-[50px] border-[1px] border-[#4FBF26] px-2 py-[5px] bg-[#D6FBC9] flex items-center justify-center text-center font-bold text-[#4FBF26] text-[12px]'>Online Payment</div> */}
-            <button type='button' className=' rounded-tr-[16px] rounded-bl-[16px] shadow-dashboard px-5 font-semibold text-[16px] sm:text-[25px] xl:text-[32px] text-[#6348A5]'>View</button>
-          </div>
-        </div>
-        <div className=' flex justify-between border-l-[11px] py-6 pl-[12px] lg:pl-[30px] pr-[11px] border-l-[#51336A] rounded-[10px] shadow-dashboard'>
-          {/**Code and Date */}
-          <div className=' flex flex-col gap-[18px] lg:gap-[28px]'>
-            <div className='flex gap-2 lg:gap-5 font-medium text-[16px] sm:text-[25px] xl:text-[32px]'>
-              <h1 className=' text-[#51336A]'>Code:</h1>
-              <h1>3Vacvault08</h1>
-            </div>
-            <div className='flex gap-2 lg:gap-5 font-medium text-[16px] sm:text-[25px] xl:text-[32px]'>
-              <h1 className=' text-[#51336A]'>Date:</h1>
-              <h1>Tue 18 Nov</h1>
-            </div>
-          </div>
-          {/**View and Payment */}
-          <div className=' flex flex-col gap-6'>
-            <div className=' rounded-[50px] border-[1px] border-[#4FBF26] px-2 py-[5px] bg-[#D6FBC9] flex items-center justify-center text-center font-bold text-[#4FBF26] text-[12px]'>Online Payment</div>
-            <button type='button' className=' rounded-tr-[16px] rounded-bl-[16px] shadow-dashboard px-5 font-semibold text-[16px] sm:text-[25px] xl:text-[32px] text-[#6348A5]'>View</button>
-          </div>
-        </div>
-
-        <div className=' flex justify-between border-l-[11px] py-6 pl-[12px] lg:pl-[30px] pr-[11px] border-l-[#51336A] rounded-[10px] shadow-dashboard'>
-          {/**Code and Date */}
-          <div className=' flex flex-col gap-[18px] lg:gap-[28px]'>
-            <div className='flex gap-2 lg:gap-5 font-medium text-[16px] sm:text-[25px] xl:text-[32px]'>
-              <h1 className=' text-[#51336A]'>Code:</h1>
-              <h1>3Vacvault08</h1>
-            </div>
-            <div className='flex gap-2 lg:gap-5 font-medium text-[16px] sm:text-[25px] xl:text-[32px]'>
-              <h1 className=' text-[#51336A]'>Date:</h1>
-              <h1>Tue 18 Nov</h1>
-            </div>
-          </div>
-          {/**View and Payment */}
-          <div className=' flex flex-col gap-6 justify-center'>
-            {/* <div className=' rounded-[50px] border-[1px] border-[#4FBF26] px-2 py-[5px] bg-[#D6FBC9] flex items-center justify-center text-center font-bold text-[#4FBF26] text-[12px]'>Online Payment</div> */}
-            <button type='button' className=' rounded-tr-[16px] rounded-bl-[16px] shadow-dashboard px-5 font-semibold text-[16px] sm:text-[25px] xl:text-[32px] text-[#6348A5]'>View</button>
-          </div>
-        </div>
-        <div className=' flex justify-between border-l-[11px] py-6 pl-[12px] lg:pl-[30px] pr-[11px] border-l-[#51336A] rounded-[10px] shadow-dashboard'>
-          {/**Code and Date */}
-          <div className=' flex flex-col gap-[18px] lg:gap-[28px]'>
-            <div className='flex gap-2 lg:gap-5 font-medium text-[16px] sm:text-[25px] xl:text-[32px]'>
-              <h1 className=' text-[#51336A]'>Code:</h1>
-              <h1>3Vacvault08</h1>
-            </div>
-            <div className='flex gap-2 lg:gap-5 font-medium text-[16px] sm:text-[25px] xl:text-[32px]'>
-              <h1 className=' text-[#51336A]'>Date:</h1>
-              <h1>Tue 18 Nov</h1>
-            </div>
-          </div>
-          {/**View and Payment */}
-          <div className=' flex flex-col gap-6'>
-            <div className=' rounded-[50px] border-[1px] border-[#4FBF26] px-2 py-[5px] bg-[#D6FBC9] flex items-center justify-center text-center font-bold text-[#4FBF26] text-[12px]'>Online Payment</div>
-            <button type='button' className=' rounded-tr-[16px] rounded-bl-[16px] shadow-dashboard px-5 font-semibold text-[16px] sm:text-[25px] xl:text-[32px] text-[#6348A5]'>View</button>
-          </div>
-        </div>
-
-        <div className=' flex justify-between border-l-[11px] py-6 pl-[12px] lg:pl-[30px] pr-[11px] border-l-[#51336A] rounded-[10px] shadow-dashboard'>
-          {/**Code and Date */}
-          <div className=' flex flex-col gap-[18px] lg:gap-[28px]'>
-            <div className='flex gap-2 lg:gap-5 font-medium text-[16px] sm:text-[25px] xl:text-[32px]'>
-              <h1 className=' text-[#51336A]'>Code:</h1>
-              <h1>3Vacvault08</h1>
-            </div>
-            <div className='flex gap-2 lg:gap-5 font-medium text-[16px] sm:text-[25px] xl:text-[32px]'>
-              <h1 className=' text-[#51336A]'>Date:</h1>
-              <h1>Tue 18 Nov</h1>
-            </div>
-          </div>
-          {/**View and Payment */}
-          <div className=' flex flex-col gap-6 justify-center'>
-            {/* <div className=' rounded-[50px] border-[1px] border-[#4FBF26] px-2 py-[5px] bg-[#D6FBC9] flex items-center justify-center text-center font-bold text-[#4FBF26] text-[12px]'>Online Payment</div> */}
-            <button type='button' className=' rounded-tr-[16px] rounded-bl-[16px] shadow-dashboard px-5 font-semibold text-[16px] sm:text-[25px] xl:text-[32px] text-[#6348A5]'>View</button>
-          </div>
-        </div>
-        <div className=' flex justify-between border-l-[11px] py-6 pl-[12px] lg:pl-[30px] pr-[11px] border-l-[#51336A] rounded-[10px] shadow-dashboard'>
-          {/**Code and Date */}
-          <div className=' flex flex-col gap-[18px] lg:gap-[28px]'>
-            <div className='flex gap-2 lg:gap-5 font-medium text-[16px] sm:text-[25px] xl:text-[32px]'>
-              <h1 className=' text-[#51336A]'>Code:</h1>
-              <h1>3Vacvault08</h1>
-            </div>
-            <div className='flex gap-2 lg:gap-5 font-medium text-[16px] sm:text-[25px] xl:text-[32px]'>
-              <h1 className=' text-[#51336A]'>Date:</h1>
-              <h1>Tue 18 Nov</h1>
-            </div>
-          </div>
-          {/**View and Payment */}
-          <div className=' flex flex-col gap-6'>
-            <div className=' rounded-[50px] border-[1px] border-[#4FBF26] px-2 py-[5px] bg-[#D6FBC9] flex items-center justify-center text-center font-bold text-[#4FBF26] text-[12px]'>Online Payment</div>
-            <button type='button' className=' rounded-tr-[16px] rounded-bl-[16px] shadow-dashboard px-5 font-semibold text-[16px] sm:text-[25px] xl:text-[32px] text-[#6348A5]'>View</button>
-          </div>
-        </div>
-
-        <div className=' flex justify-between border-l-[11px] py-6 pl-[12px] lg:pl-[30px] pr-[11px] border-l-[#51336A] rounded-[10px] shadow-dashboard'>
-          {/**Code and Date */}
-          <div className=' flex flex-col gap-[18px] lg:gap-[28px]'>
-            <div className='flex gap-2 lg:gap-5 font-medium text-[16px] sm:text-[25px] xl:text-[32px]'>
-              <h1 className=' text-[#51336A]'>Code:</h1>
-              <h1>3Vacvault08</h1>
-            </div>
-            <div className='flex gap-2 lg:gap-5 font-medium text-[16px] sm:text-[25px] xl:text-[32px]'>
-              <h1 className=' text-[#51336A]'>Date:</h1>
-              <h1>Tue 18 Nov</h1>
-            </div>
-          </div>
-          {/**View and Payment */}
-          <div className=' flex flex-col gap-6 justify-center'>
-            {/* <div className=' rounded-[50px] border-[1px] border-[#4FBF26] px-2 py-[5px] bg-[#D6FBC9] flex items-center justify-center text-center font-bold text-[#4FBF26] text-[12px]'>Online Payment</div> */}
-            <button type='button' className=' rounded-tr-[16px] rounded-bl-[16px] shadow-dashboard px-5 font-semibold text-[16px] sm:text-[25px] xl:text-[32px] text-[#6348A5]'>View</button>
-          </div>
-        </div>
-        <div className=' flex justify-between border-l-[11px] py-6 pl-[12px] lg:pl-[30px] pr-[11px] border-l-[#51336A] rounded-[10px] shadow-dashboard'>
-          {/**Code and Date */}
-          <div className=' flex flex-col gap-[18px] lg:gap-[28px]'>
-            <div className='flex gap-2 lg:gap-5 font-medium text-[16px] sm:text-[25px] xl:text-[32px]'>
-              <h1 className=' text-[#51336A]'>Code:</h1>
-              <h1>3Vacvault08</h1>
-            </div>
-            <div className='flex gap-2 lg:gap-5 font-medium text-[16px] sm:text-[25px] xl:text-[32px]'>
-              <h1 className=' text-[#51336A]'>Date:</h1>
-              <h1>Tue 18 Nov</h1>
-            </div>
-          </div>
-          {/**View and Payment */}
-          <div className=' flex flex-col gap-6'>
-            <div className=' rounded-[50px] border-[1px] border-[#4FBF26] px-2 py-[5px] bg-[#D6FBC9] flex items-center justify-center text-center font-bold text-[#4FBF26] text-[12px]'>Online Payment</div>
-            <button type='button' className=' rounded-tr-[16px] rounded-bl-[16px] shadow-dashboard px-5 font-semibold text-[16px] sm:text-[25px] xl:text-[32px] text-[#6348A5]'>View</button>
-          </div>
-        </div>
-
-        <div className=' flex justify-between border-l-[11px] py-6 pl-[12px] lg:pl-[30px] pr-[11px] border-l-[#51336A] rounded-[10px] shadow-dashboard'>
-          {/**Code and Date */}
-          <div className=' flex flex-col gap-[18px] lg:gap-[28px]'>
-            <div className='flex gap-2 lg:gap-5 font-medium text-[16px] sm:text-[25px] xl:text-[32px]'>
-              <h1 className=' text-[#51336A]'>Code:</h1>
-              <h1>3Vacvault08</h1>
-            </div>
-            <div className='flex gap-2 lg:gap-5 font-medium text-[16px] sm:text-[25px] xl:text-[32px]'>
-              <h1 className=' text-[#51336A]'>Date:</h1>
-              <h1>Tue 18 Nov</h1>
-            </div>
-          </div>
-          {/**View and Payment */}
-          <div className=' flex flex-col gap-6 justify-center'>
-            {/* <div className=' rounded-[50px] border-[1px] border-[#4FBF26] px-2 py-[5px] bg-[#D6FBC9] flex items-center justify-center text-center font-bold text-[#4FBF26] text-[12px]'>Online Payment</div> */}
-            <button type='button' className=' rounded-tr-[16px] rounded-bl-[16px] shadow-dashboard px-5 font-semibold text-[16px] sm:text-[25px] xl:text-[32px] text-[#6348A5]'>View</button>
-          </div>
-        </div>
       </div>
     </div>
   )

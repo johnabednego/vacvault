@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="svg5" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 283.46457 283.4646">
+  <defs>
+    <clipPath id="clippath">
+      <circle id="path239-2" data-name="path239" cx="141.73229" cy="141.73229" r="141.73229" fill="none"/>
+    </clipPath>
+  </defs>
+  <circle id="path239" cx="141.73229" cy="141.73229" r="141.73229" fill="#dfe2e3"/>
+  <g clip-path="url(#clippath)">
+    <ellipse id="path1522-5" cx="141.73228" cy="252.83371" rx="108.72774" ry="71.77757" fill="#a3abae"/>
+  </g>
+  <ellipse id="path1522" cx="141.73229" cy="117.25756" rx="54.36386" ry="59.42211" fill="#a3abae"/>
+</svg>

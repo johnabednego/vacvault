@@ -11,6 +11,7 @@ module.exports = {
           holding_bag:"url('/src/pages/Services/assets/holding_bag.png')",
         },
       screens: {
+        'xs':"350px",
         'xm': '500px',
       },
       boxShadow: {
