@@ -1,6 +1,6 @@
 import React, { useEffect } from 'react'
 
-const Bookings = () => {
+const Bookings = ({setBook}) => {
   useEffect(() => {
 
     const scrollToTop = () => {
@@ -17,7 +17,7 @@ const Bookings = () => {
     <div className=' pr-4 xl:pr-[77px] pt-[69px] h-[1255px] lg:h-[1210px] pb-3 overflow-hidden overflow-y-scroll'>
       <div className=' flex justify-between'>
         <h1 className=' font-bold text-[32px] sm:text-[40px] text-[#51336A]'>Bookings</h1>
-        <button type='button' className=' rounded-[10px] flex items-center justify-center text-center shadow-dashboard w-[120px] h-[58px] sm:w-[190px] sm:h-[68px] font-semibold text-[18px] sm text-[16px]:sm:text-[25px] xl:text-[32px] text-[#6348A5]'>Book Now</button>
+        <button onClick={()=>setBook(true)} type='button' className=' rounded-[10px] flex items-center justify-center text-center shadow-dashboard w-[120px] h-[58px] sm:w-[190px] sm:h-[68px] font-semibold text-[18px] sm text-[16px]:sm:text-[25px] xl:text-[32px] text-[#6348A5]'>Book Now</button>
       </div>
 
       {/**Types of bookings */}

@@ -5,19 +5,21 @@ import Services from "./pages/Services/Services";
 import Contact from "./pages/Contact/Contact";
 import CustomerExperience from "./pages/CustomerExperience/CustomerExperience";
 import Dashboard from "./pages/Dashboard/Dashboard";
+import { useState } from "react";
 
 function App() {
+  const [book, setBook] = useState(false)
 
   return (
     <div >
        <BrowserRouter>
         <Routes>
-          <Route index element={<Home/>} />
+          <Route index element={<Home book={book} setBook={setBook}/>} />
          <Route path="/about" element={<About/>}/>
-         <Route path="/services" element={<Services/>}/>
+         <Route path="/services" element={<Services book={book} setBook={setBook}/>}/>
          <Route path="/contact" element={<Contact/>}/>
          <Route path="/customer_experience" element={<CustomerExperience/>}/>
-         <Route path="/dashboard" element={<Dashboard/>}/>
+         <Route path="/dashboard" element={<Dashboard book={book} setBook={setBook}/>}/>
           {/*  <Route path="/dashboard/carrier" element={<CarrierDashboard/>}/> */}
           {/* <Route path="/contact" element={<Contact/>} />
           <Route path="/list" element={<ListProperty/>}/>
