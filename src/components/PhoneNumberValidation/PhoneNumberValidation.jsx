@@ -28,8 +28,8 @@ const PhoneNumberValidation = ({ setMobileNumber, setErrorMessage, phoneNumberSt
   //   };
 
   return (
-    <div className={ `w-full ${phoneNumber.length < 2 ?" -mt-1":""}`}>
-      <div className={` ${phoneNumber.length > 0 ? "hidden" : " mt-[15px] flex w-fit relative z-[10] -mb-[29px] ml-[23px]"}`}>
+    <div className={ `w-full`}>
+      <div className={` ${phoneNumber.length > 0 ? "hidden" : " flex w-fit absolute z-[10] pt-[10px] ml-[23px]"}`}>
           <img src={ghana} alt="" />
         </div>
       <label>
