@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 
 const BookingForm = () => {
     /**
@@ -9,6 +9,7 @@ Mob
 Long broom
      */
     //Items
+    const [errorMessage, setErrorMessage] = useState('')
     const [luggageQuantity, setLuggageQuantity] = useState()
     const [luggageDesc, setLuggageDesc] = useState()
     const [fridgeQuantity, setFridgeQuantity] = useState()
@@ -21,18 +22,16 @@ Long broom
     const [ironDesc, setIronDesc] = useState()
     const [laundryBasketSmallQuantity, setLaundryBasketSmallQuantity] = useState()
     const [laundryBasketSmallDesc, setLaundryBasketSmallDesc] = useState()
-  
+    const [totalAmount, setTotalAmount] = useState(0)
 
     const data = {
-        'Luggage': { price: '100', quantity: luggageQuantity, setQuantity: setLuggageQuantity, desc: luggageDesc, setDesc: setLuggageDesc },
-        'Fridge': { price: '80', quantity: fridgeQuantity, setQuantity: setFridgeQuantity, desc: fridgeDesc, setDesc: setFridgeDesc },
-        'Other(s)': { price: '', quantity: otherQuantity, setQuantity: setOtherQuantity, desc: otherDesc, setDesc: setOtherDesc },
-        'Bucket': {price: '10', quantity: bucketQuantity, setQuantity: setBucketQuantity, desc: bucketDesc, setDesc: setBucketDesc},
-        'Iron': {price: '10', quantity: ironQuantity, setQuantity: setIronQuantity, desc: ironDesc, setDesc: setIronDesc},
-        'Laundry basket (small)': {price: '10', quantity: laundryBasketSmallQuantity, setQuantity: setLaundryBasketSmallQuantity, desc:laundryBasketSmallDesc, setDesc:setLaundryBasketSmallDesc},
+        'Luggage': { price: 100, quantity: luggageQuantity, setQuantity: setLuggageQuantity, desc: luggageDesc, setDesc: setLuggageDesc },
+        'Fridge': { price: 80, quantity: fridgeQuantity, setQuantity: setFridgeQuantity, desc: fridgeDesc, setDesc: setFridgeDesc },
+        'Other(s)': { price: 0, quantity: otherQuantity, setQuantity: setOtherQuantity, desc: otherDesc, setDesc: setOtherDesc },
+        'Bucket': { price: 10, quantity: bucketQuantity, setQuantity: setBucketQuantity, desc: bucketDesc, setDesc: setBucketDesc },
+        'Iron': { price: 10, quantity: ironQuantity, setQuantity: setIronQuantity, desc: ironDesc, setDesc: setIronDesc },
+        'Laundry basket (small)': { price: 10, quantity: laundryBasketSmallQuantity, setQuantity: setLaundryBasketSmallQuantity, desc: laundryBasketSmallDesc, setDesc: setLaundryBasketSmallDesc },
     }
-    const [errorMessage, setErrorMessage] = useState("")
-    const [item, setItem] = useState("")
 
     const [selectedItems, setSelectedItems] = useState([]);
     const [remainingItems, setRemainingItems] = useState([
@@ -41,18 +40,26 @@ Long broom
     const [selectedItem, setSelectedItem] = useState('');
     const [selectedQuantity, setSelectedQuantity] = useState()
     const [selectedDesc, setSelectedDesc] = useState()
+
+    const [itemsInSchool, setItemsInSchool] = useState('')
+    const [school, setSchool] = useState('')
+    const [capitalCity, setCapitalCity] = useState('')
+    const [town, setTown] = useState('')
+    const [area, setArea] = useState('')
+    
+
     // Function to handle item selection
-    const handleItemSelect = (e) => {
+    const handleItemSelect = async (e) => {
         e.preventDefault()
         if (selectedItem && selectedQuantity) {
             if (selectedItem !== 'Other(s)') {
-                data[selectedItem]?.setQuantity(selectedQuantity)
+                data[`${selectedItem}`].setQuantity(selectedQuantity)
                 setSelectedQuantity('')
                 setSelectedItems([...selectedItems, selectedItem]);
                 setRemainingItems(remainingItems.filter((item) => item !== selectedItem));
-                setSelectedItem('');
                 setSelectedDesc('')
                 setErrorMessage('')
+                setSelectedItem('');
             }
             else {
                 if (selectedDesc) {
@@ -60,20 +67,21 @@ Long broom
                     setSelectedQuantity('')
                     setSelectedItems([...selectedItems, selectedItem]);
                     setRemainingItems(remainingItems.filter((item) => item !== selectedItem));
-                    setSelectedItem('');
                     setSelectedDesc('')
                     setErrorMessage('')
+                    setSelectedItem('');
                 }
                 else {
                     setErrorMessage('Description is Required.')
                 }
             }
-
         }
         else if (selectedItem && !selectedQuantity) {
             setErrorMessage('Quantity Required.')
         }
     };
+
+
 
     // Function to handle item removal
     const handleItemRemove = (item) => {
@@ -86,6 +94,13 @@ Long broom
         event.preventDefault();
     }
 
+    useEffect(()=>{
+        let amount = 0
+        selectedItems.map((item)=>{
+            amount = amount + (data[item]?.price*data[item]?.quantity)
+        })
+        setTotalAmount(amount)
+    }, [selectedItems])
     return (
         <div className=' smallDevice w-full sm:w-[528px]  rounded-bl-[30px] rounded-tr-[30px] shadow-input bg-white pt-8 pb-[70px] px-[2.875rem] relative'>
 
@@ -101,10 +116,8 @@ Long broom
                         <div className='box-border  max-w-full'>
                             <form method='post' onSubmit={handleSubmit}>
                                 <div className=' box-border flex flex-wrap items-center'>
-                                    <div className=' box-border flex flex-wrap items-center'>
-
-
-                                        <div >
+                                    <div className=' box-border flex flex-col gap-3'>
+                                        <div className='w-full'>
                                             <div className=" w-[250px] xs:w-auto mb-4">
                                                 <label className="block text-gray-700 text-sm font-bold mb-2">Select Items</label>
                                                 <div className="flex flex-wrap gap-3 xs:gap-1 justify-center xs:justify-start xs:flex-nowrap space-x-2">
@@ -117,10 +130,10 @@ Long broom
                                                         ))}
                                                     </select>
                                                     <div className='flex flex-col gap-1'>
-                                                        {selectedItem === '' ? null : <input required value={selectedQuantity} onChange={(e) => { setSelectedQuantity(e.target.value >= 1 || e.target.value === '' ? e.target.value : 1); setErrorMessage('') }} type="number" name="" id="" placeholder='Quantity' className={` ${errorMessage === 'Quantity Required.' ? 'border-[#EB0728]' : 'border-gray-400'}  pl-3 w-[100px] bg-white border  rounded px-2 py-1 `} />}
+                                                        {selectedItem === '' ? null : <input required value={selectedQuantity} onChange={(e) => { setSelectedQuantity(e.target.value >= 1 || e.target.value === '' ? e.target.value : 1); setErrorMessage('') }} type="number" name="" id="" placeholder='Quantity' className={` ${errorMessage === 'Quantity Required.' ? 'border-[#EB0728]' : 'border-gray-400'} focus:outline-[#51336A]  pl-3 w-[100px] bg-white border  rounded px-2 py-1 `} />}
                                                         {errorMessage === 'Quantity Required.' ? <h1 className=' text-[10px] text-[#EB0728]'>{errorMessage}</h1> : null}
                                                     </div>
-                                                    <button onClick={handleItemSelect} className=" mt-2 xs:m-0 bg-[#51336A] opacity-90 hover:opacity-100 hover:bg-[#51336A] text-white font-bold py-2 px-4 rounded"> Add </button>
+                                                    <button onClick={handleItemSelect} className=" xs:m-0 bg-[#51336A] opacity-90 hover:opacity-100 hover:bg-[#51336A] text-white font-bold py-1 px-4 rounded"> Add </button>
                                                 </div>
                                                 <div className='flex flex-col gap-1'>
                                                     {selectedItem === '' ? null : <textarea value={selectedDesc} onChange={(e) => setSelectedDesc(e.target.value)} required placeholder={`${selectedItem === 'Other(s)' ? 'List and describe Other(s)' : 'Tell us what we need to know about your ' + selectedItem}`} name="other(s)" id="other(s)" cols="30" rows="5" className={` ${selectedItem === 'Other(s)' && errorMessage === 'Description is Required.' ? 'border-[#EB0728]' : 'border-gray-400'} mt-1 resize-none bg-white border  rounded px-2 py-1 focus:outline-[#51336A]`}></textarea>}
@@ -129,34 +142,54 @@ Long broom
                                             </div>
 
                                             <div className="mb-4">
-                                                <label className="block text-gray-700 text-sm font-bold mb-2">Selected Items</label>
+                                                <div className=' w-full flex gap-3 items-center justify-between'>
+                                                    <label className="block text-gray-700 text-sm font-bold">Selected Items</label>
+                                                    <h1 className=' font-bold text-[30px] text-[#51336A]'>₵{totalAmount}</h1>
+                                                </div>
                                                 <div className=" w-full flex flex-wrap gap-3   ">
                                                     {selectedItems.map((item) => (
                                                         <div key={item} className=" items-center w-[50] mt-4 bg-gray-200 flex relative  rounded-full pl-3 py-1">
                                                             {item}
-                                                            <h1   name="" id=""  className={` ml-2 flex items-center justify-center text-center  px-2  focus:outline-[#51336A] m-0 placeholder-[#707070] text-[15px] text-[#707070] font-normal bg-white  rounded-full `}>{data[item]?.quantity}</h1>
+                                                            <h1 name="" id="" className={` ml-2 flex items-center justify-center text-center  px-2  focus:outline-[#51336A] m-0 placeholder-[#707070] text-[15px] text-[#707070] font-normal bg-white  rounded-full `}>{data[item]?.quantity}</h1>
                                                             <button onClick={() => handleItemRemove(item)} className=" ml-1 -mt-[20px] relative flex items-center justify-center text-center  rounded-full w-[20px] h-[20px] p-1 bg-[#EB0728] text-white text-[15px] cursor-pointer"><h1 className=' -mt-1'>x</h1></button>
                                                         </div>
                                                     ))}
                                                 </div>
                                             </div>
                                         </div>
-
-                                        {/** First and Last names */}
-                                        <div className=' box-border m-0 basis-full flex-grow-0 max-w-full'>
-                                            <div className=' box-border flex flex-wrap w-full'>
-                                                <div className=' smallName w-full flex items-start gap-3'>
-                                                    <div className=' w-full'>
-                                                        <select value={item} onChange={(e) => { setItem(e.target.value); }} required type="text" name="first name" id="first_name" data-cy="first name" placeholder="First Name"
-                                                            className={` ${errorMessage === "First name is Required" || errorMessage === "First name is too short" ? " border-[1px] border-[#EB0728]" : ""} focus:outline-[#51336A] m-0 placeholder-[#707070] text-[15px] text-[#707070] w-full font-normal bg-[#E5E5E5] h-[40px] rounded-[30px] pl-5 `}>
-                                                            <option value="">Select</option>
-                                                            <option value="luggage">Luggage</option>
-                                                            <option value="luggage">Luggage</option>
-                                                        </select>
-                                                    </div>
-                                                </div>
-                                            </div>
+                                        {/**A University Student */}
+                                        <div className='flex flex-col'>
+                                            <label className="block text-gray-700 text-sm font-bold mb-2">Are the items in School (eg. University)?</label>
+                                            <select name="itemsInSchool" id="itemsInSchool" value={itemsInSchool} onChange={(e) => setItemsInSchool(e.target.value)} className=" w-[200px] bg-white border border-gray-400 rounded px-2 py-1 focus:outline-[#51336A]">
+                                                <option value='' disabled> Choose an item</option>
+                                                <option value="Yes">Yes</option>
+                                                <option value="No">No</option>
+                                            </select>
                                         </div>
+                                        <div className=' w-full flex flex-wrap gap-3'>
+                                            {itemsInSchool === 'Yes' ?
+                                                <select value={school} onChange={(e) => { setSchool(e.target.value); }} required type="text" name="University name" id="University name" data-cy="University name" placeholder="University name" className={` w-[200px]  focus:outline-[#51336A]  pl-3  bg-white border  rounded px-2 py-1`}>
+                                                    <option value='' disabled> Choose the school</option>
+                                                    <option value="UG">UG</option>
+                                                    <option value="KNUST">KNUST</option>
+                                                    <option value="UCC">UCC</option>
+                                                    <option value="UPSA">UPSA</option>
+                                                </select>
+                                                : null
+                                            }
+                                            {/** Location */}
+                                            <select value={capitalCity} onChange={(e) => { setCapitalCity(e.target.value); }} required type="text" name="University name" id="University name" data-cy="University name" placeholder="University name" className={` w-[200px]  focus:outline-[#51336A]  pl-3  bg-white border  rounded px-2 py-1`}>
+                                                <option value='' disabled>Select Capital Town</option>
+                                                <option value="Accra">Accra</option>
+                                                <option value="Kumasi">Kumasi</option>
+                                                <option value="Cape Coast">Cape Coast</option>
+                                            </select>
+                                        </div>
+                                        <div className=' w-full flex gap-3 flex-wrap'>
+                                            <input value={town} onChange={(e) => { setTown(e.target.value); }} required type="text" name="Town" id="Town" data-cy="Town" placeholder="Town, eg. Legon" className={` w-[200px]  focus:outline-[#51336A]  pl-3  bg-white border  rounded px-2 py-1`} />
+                                            <input value={area} onChange={(e) => { setArea(e.target.value); }} required type="text" name="Area" id="Area" data-cy="Area" placeholder="Area, eg. Legon Police Station" className={` w-[200px]  focus:outline-[#51336A]  pl-3  bg-white border  rounded px-2 py-1`} />
+                                        </div>
+
                                     </div>
                                 </div>
                             </form>
