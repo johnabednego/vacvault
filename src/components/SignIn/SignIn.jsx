@@ -58,9 +58,9 @@ const SignIn = () => {
     }
 
     // Decode the data after retrieving it
-    function decodeData(encodedData) {
-        return atob(encodedData); // Base64 decoding
-    }
+    // function decodeData(encodedData) {
+    //     return atob(encodedData); // Base64 decoding
+    // }
 
     const handleSubmit = async (event) => {
         event.preventDefault();

@@ -4,7 +4,7 @@ import 'react-phone-input-2/lib/style.css';
 import './PhoneNumberValidation.css'
 import ghana from './assets/ghana.svg'
 
-const PhoneNumberValidation = ({ setMobileNumber, setErrorMessage }) => {
+const PhoneNumberValidation = ({ setMobileNumber, setErrorMessage, phoneNumberStyle }) => {
   const [phoneNumber, setPhoneNumber] = useState('');
   //   const [valid, setValid] = useState(true);
 
@@ -34,9 +34,9 @@ const PhoneNumberValidation = ({ setMobileNumber, setErrorMessage }) => {
         </div>
       <label>
         <PhoneInput
-          buttonStyle={{ "borderTopLeftRadius": "30px", "borderBottomLeftRadius": "30px", "backgroundColor": "#D9D9D9", "width": "70px", "display": "flex", "alignItems": "center", "justifyContent": "center" }}
-          inputStyle={{ "backgroundColor": "#E5E5E5", "width": "100%", "display": "flex", "borderRadius": "30px", "height": "40px", "paddingLeft": "75px" }}
-          dropdownStyle={{ "marginTop": "260px", "marginLeft": "240px" }}
+          buttonStyle={phoneNumberStyle?.buttonStyle}
+          inputStyle={phoneNumberStyle?.inputStyle}
+          dropdownStyle={phoneNumberStyle?.dropdownStyle}
           value={phoneNumber}
           onChange={handleChange}
           inputProps={{

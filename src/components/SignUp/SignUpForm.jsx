@@ -166,6 +166,7 @@ const SignUpForm = ({email, setEmail, setToVerify}) => {
 
     }
 
+    const phoneNumberStyle = {buttonStyle:{ "borderTopLeftRadius": "30px", "borderBottomLeftRadius": "30px", "backgroundColor": "#D9D9D9", "width": "70px", "display": "flex", "alignItems": "center", "justifyContent": "center" }, inputStyle:{ "backgroundColor": "#E5E5E5", "width": "100%", "display": "flex", "borderRadius": "30px", "height": "40px", "paddingLeft": "75px" }, dropdownStyle:{ "marginTop": "260px", "marginLeft": "240px" }}
     return (
         <div className=' smallDevice w-full sm:w-[528px]  rounded-bl-[30px] rounded-tr-[30px] shadow-input bg-white pt-8 pb-[70px] px-[2.875rem] relative'>
 
@@ -240,7 +241,7 @@ const SignUpForm = ({email, setEmail, setToVerify}) => {
                                                 <div className=' w-full'>
                                                     <div className={`${errorMessage === "Phone Number is Required" || errorMessage === "Invalid Phone Number" ? "border-[1px] border-[#EB0728] rounded-[30px]" : ""} w-full flex items-start`}>
                                                         {/* <input value={phoneNumber} onChange={(e) => setPhoneNumber(e.target.value)} required type="tel" name="phone number" id="phone_number" data-cy="phone number" placeholder="50 567 990" className=' m-0 placeholder-[#707070] text-[15px] text-[#707070] w-full font-normal bg-[#E5E5E5] h-[40px] rounded-[30px] pl-5 ' /> */}
-                                                        <PhoneNumberValidation setMobileNumber={setPhoneNumber} setErrorMessage={setErrorMessage} />
+                                                        <PhoneNumberValidation setMobileNumber={setPhoneNumber} setErrorMessage={setErrorMessage} phoneNumberStyle={phoneNumberStyle} />
                                                     </div>
                                                     {errorMessage === "Phone Number is Required" || errorMessage === "Invalid Phone Number" ? <h1 className=' pl-5 w-full mt-[5px] text-red-600 text-[12px] text-left'>{errorMessage}</h1> : null}
                                                     {errorMessage === "Phone Number is Required" || errorMessage === "Invalid Phone Number" ?

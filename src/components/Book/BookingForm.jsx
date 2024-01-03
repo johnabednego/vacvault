@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react'
+import PhoneNumberValidation from '../PhoneNumberValidation/PhoneNumberValidation'
 
 const BookingForm = () => {
     /**
@@ -46,7 +47,8 @@ Long broom
     const [capitalCity, setCapitalCity] = useState('')
     const [town, setTown] = useState('')
     const [area, setArea] = useState('')
-    
+    const [canCall, setCanCall] = useState('')
+    const [callingNumber, setCallingNumber] = useState('')
 
     // Function to handle item selection
     const handleItemSelect = async (e) => {
@@ -94,13 +96,14 @@ Long broom
         event.preventDefault();
     }
 
-    useEffect(()=>{
+    useEffect(() => {
         let amount = 0
-        selectedItems.map((item)=>{
-            amount = amount + (data[item]?.price*data[item]?.quantity)
+        selectedItems.map((item) => {
+            amount = amount + (data[item]?.price * data[item]?.quantity)
         })
         setTotalAmount(amount)
     }, [selectedItems])
+    const phoneNumberStyle = { buttonStyle: { "backgroundColor": "#D9D9D9", "width": "70px", "display": "flex", "alignItems": "center", "justifyContent": "center" }, inputStyle: { "backgroundColor": "#ffffff", "display": "flex", "height": "40px", "paddingLeft": "75px" }, dropdownStyle: { "marginTop": "260px", "marginLeft": "240px" } }
     return (
         <div className=' smallDevice w-full sm:w-[528px]  rounded-bl-[30px] rounded-tr-[30px] shadow-input bg-white pt-8 pb-[70px] px-[2.875rem] relative'>
 
@@ -109,19 +112,19 @@ Long broom
                 <h1 className=' mt-1 text-[14px] text-[#707070] font-normal'>Booking Information</h1>
             </div>
             <div className=''>
-                {/**Sign uP */}
                 <div className=' box-border flex flex-wrap '>
                     <div className=' box-border  max-w-full '>
-                        {/** Email Form */}
+                        {/** Booking Form */}
                         <div className='box-border  max-w-full'>
                             <form method='post' onSubmit={handleSubmit}>
                                 <div className=' box-border flex flex-wrap items-center'>
                                     <div className=' box-border flex flex-col gap-3'>
+                                        {/**Selecting Items */}
                                         <div className='w-full'>
                                             <div className=" w-[250px] xs:w-auto mb-4">
                                                 <label className="block text-gray-700 text-sm font-bold mb-2">Select Items</label>
                                                 <div className="flex flex-wrap gap-3 xs:gap-1 justify-center xs:justify-start xs:flex-nowrap space-x-2">
-                                                    <select value={selectedItem} onChange={(e) => { setSelectedItem(e.target.value); setErrorMessage('') }} className=" max-w-[150px] bg-white border border-gray-400 rounded px-2 py-1 focus:outline-[#51336A]">
+                                                    <select required={selectedItems.length<1?true:false} value={selectedItem} onChange={(e) => { setSelectedItem(e.target.value); setErrorMessage('') }} className=" max-w-[150px] bg-white border border-gray-400 rounded px-2 py-1 focus:outline-[#51336A]">
                                                         <option value='' disabled> Choose an item</option>
                                                         {remainingItems.sort().map((item) => (
                                                             <option key={item} value={item} className=' appearance-none hover:bg-[#51336A]'>
@@ -160,12 +163,13 @@ Long broom
                                         {/**A University Student */}
                                         <div className='flex flex-col'>
                                             <label className="block text-gray-700 text-sm font-bold mb-2">Are the items in School (eg. University)?</label>
-                                            <select name="itemsInSchool" id="itemsInSchool" value={itemsInSchool} onChange={(e) => setItemsInSchool(e.target.value)} className=" w-[200px] bg-white border border-gray-400 rounded px-2 py-1 focus:outline-[#51336A]">
+                                            <select required name="itemsInSchool" id="itemsInSchool" value={itemsInSchool} onChange={(e) => setItemsInSchool(e.target.value)} className=" w-[200px] bg-white border border-gray-400 rounded px-2 py-1 focus:outline-[#51336A]">
                                                 <option value='' disabled> Choose an item</option>
                                                 <option value="Yes">Yes</option>
                                                 <option value="No">No</option>
                                             </select>
                                         </div>
+                                        {/**Select a University */}
                                         <div className=' w-full flex flex-wrap gap-3'>
                                             {itemsInSchool === 'Yes' ?
                                                 <select value={school} onChange={(e) => { setSchool(e.target.value); }} required type="text" name="University name" id="University name" data-cy="University name" placeholder="University name" className={` w-[200px]  focus:outline-[#51336A]  pl-3  bg-white border  rounded px-2 py-1`}>
@@ -185,11 +189,31 @@ Long broom
                                                 <option value="Cape Coast">Cape Coast</option>
                                             </select>
                                         </div>
+                                        {/**Town and Area */}
                                         <div className=' w-full flex gap-3 flex-wrap'>
                                             <input value={town} onChange={(e) => { setTown(e.target.value); }} required type="text" name="Town" id="Town" data-cy="Town" placeholder="Town, eg. Legon" className={` w-[200px]  focus:outline-[#51336A]  pl-3  bg-white border  rounded px-2 py-1`} />
                                             <input value={area} onChange={(e) => { setArea(e.target.value); }} required type="text" name="Area" id="Area" data-cy="Area" placeholder="Area, eg. Legon Police Station" className={` w-[200px]  focus:outline-[#51336A]  pl-3  bg-white border  rounded px-2 py-1`} />
                                         </div>
-
+                                        {/**Can we call you on this */}
+                                        <div className='flex flex-col'>
+                                            <label className="block text-gray-700 text-sm font-medium mb-2">Can we call you on this <span className=' font-bold text-[16px] text-[#51336A]'>0247157301</span>?</label>
+                                            <div className=' w-full flex gap-3 flex-wrap'>
+                                                <select required name="canCall" id="canCall" value={canCall} onChange={(e) => setCanCall(e.target.value)} className=" w-[200px] bg-white border border-gray-400 rounded px-2 py-1 focus:outline-[#51336A]">
+                                                    <option value='' disabled> Choose an item</option>
+                                                    <option value="Yes">Yes</option>
+                                                    <option value="No">No</option>
+                                                </select>
+                                                {canCall === "No" ?
+                                                    <div className='flex flex-col '>
+                                                        <label className="block text-gray-700 text-sm font-medium mb-2">Enter your calling number</label>
+                                                        <PhoneNumberValidation setMobileNumber={setCallingNumber} setErrorMessage={setErrorMessage} phoneNumberStyle={phoneNumberStyle} />
+                                                    </div> : null}
+                                            </div>
+                                        </div>
+                                        {/**Submit */}
+                                        <div className=' w-full flex items-center justify-center'>
+                                        <button type="submit" className=" mt-3  rounded-sm shadow-inner bg-[#51336A] opacity-90 hover:opacity-100 hover:bg-[#51336A] text-white font-bold py-1 px-4">Submit</button>
+                                        </div>
                                     </div>
                                 </div>
                             </form>
