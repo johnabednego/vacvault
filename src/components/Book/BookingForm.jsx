@@ -49,7 +49,8 @@ Long broom
     const [area, setArea] = useState('')
     const [canCall, setCanCall] = useState('')
     const [callingNumber, setCallingNumber] = useState('')
-
+    const [phonumberErrorMesage, setPhonumberErrorMesage] = useState('')
+    const [isSelectedItemsEmpty, setIsSelectedItemsEmpty] = useState(true)
     // Function to handle item selection
     const handleItemSelect = async (e) => {
         e.preventDefault()
@@ -94,6 +95,27 @@ Long broom
 
     const handleSubmit = async (event) => {
         event.preventDefault();
+        if(errorMessage !== ''){
+            setErrorMessage('selectedItems')
+        }
+        else if( phonumberErrorMesage ==='' && selectedItems.length>0){
+            const items = []
+            selectedItems.map((item) => {
+                 items.push({name:item, price:data[item]?.price, quantity:data[item]?.quantity, desc:data[item]?.desc})
+            })
+        const final_data = {
+            items:items,
+            itemsInSchool:itemsInSchool,
+            school:school,
+            capitalCity:capitalCity,
+            town:town,
+            area:area,
+            canCall:canCall,
+            callingNumber:callingNumber,
+        }
+        console.log(final_data)
+        setErrorMessage('')
+    }
     }
 
     useEffect(() => {
@@ -119,6 +141,7 @@ Long broom
                             <form method='post' onSubmit={handleSubmit}>
                                 <div className=' box-border flex flex-wrap items-center'>
                                     <div className=' box-border flex flex-col gap-3'>
+                                        {errorMessage==="selectedItems"?<h1 className=' text-[#EB0728] text-[14px] font-normal'>Click on "<span className=' text-[16px] font-bold'>Add</span>" to add at least one item.</h1>:null}
                                         {/**Selecting Items */}
                                         <div className='w-full'>
                                             <div className=" w-[250px] xs:w-auto mb-4">
@@ -206,7 +229,8 @@ Long broom
                                                 {canCall === "No" ?
                                                     <div className='flex flex-col '>
                                                         <label className="block text-gray-700 text-sm font-medium mb-2">Enter your calling number</label>
-                                                        <PhoneNumberValidation setMobileNumber={setCallingNumber} setErrorMessage={setErrorMessage} phoneNumberStyle={phoneNumberStyle} />
+                                                        <PhoneNumberValidation setMobileNumber={setCallingNumber} setErrorMessage={setPhonumberErrorMesage} phoneNumberStyle={phoneNumberStyle} />
+                                                        {phonumberErrorMesage==="Invalid Phone Number"?<h1 className=' text-[#EB0728] text-[14px] font-normal'>{phonumberErrorMesage}</h1>:null}
                                                     </div> : null}
                                             </div>
                                         </div>
