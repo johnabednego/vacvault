@@ -42,7 +42,7 @@ const PhoneNumberValidation = ({ setMobileNumber, setErrorMessage, phoneNumberSt
           inputProps={{
             required: true,
           }}
-          placeholder='+233 50 567 990'
+          placeholder='233 50 567 990'
         />
       </label>
       {/* {!valid && alert("Please enter a valid phone number.")} */}

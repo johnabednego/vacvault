@@ -86,7 +86,7 @@ const Dashboard = ({book, setBook}) => {
                   {!openMenu? <RxHamburgerMenu className=' w-full h-full'   />: <IoMdClose className=' w-full h-full'   />}
                    </div>
                 </div>
-                <div id='modal'  className={` ${openMenu ? "flex z-[8] mt-8 " : "hidden z-0"} sm:flex ${open ? " w-[96%] xs:w-[90%] sm:w-[200px] md:w-[300px] lg:w-[422px]" : "w-[165px] "} shadow-dashboard rounded-tr-[30px] rounded-br-[30px] sm:h-full pl-[15px] pt-[36px] absolute bg-white sm:relative `}>
+                <div id='modal'  className={` ${openMenu ? "flex z-[8] mt-8 " : "hidden z-0"} sm:flex ${open ? " w-[96%] xs:w-[90%] sm:w-[200px] md:w-[300px] lg:w-[422px]" : "w-[165px] "} shadow-dashboard rounded-tr-[30px] rounded-br-[30px] sm:h-full pl-[15px] pt-[36px] absolute bg-white sm:relative transform duration-1000 `}>
                     <IoIosArrowForward onClick={() => setOpen(!open)} className={` text-white absolute cursor-pointer -right-3 top-9 w-7 h-7 bg-[#51336A] border-[#51336A] border-2 rounded-full  ${!open && " duration-1000 rotate-180"}`} />
                     <div className=' pt-6 pb-[17px]'>
                         <div className=' flex flex-col'>
