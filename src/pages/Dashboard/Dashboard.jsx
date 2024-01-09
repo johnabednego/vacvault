@@ -28,6 +28,7 @@ import HelpAndSupport from '../../components/Dashboard/HelpAndSupport/HelpAndSup
 import Feedback from '../../components/Dashboard/Feedback/Feedback'
 import { RxHamburgerMenu } from 'react-icons/rx';
 import BookModal from '../../components/Book/BookModal';
+import ViewBookingModal from '../../components/Dashboard/Bookings/ViewBookingModal';
 
 const Dashboard = ({book, setBook}) => {
     const scrollToTop = () => {
@@ -41,6 +42,9 @@ const Dashboard = ({book, setBook}) => {
     const [profileHover, setProfileHover] = useState(false)
     const [uploadedImage, setUploadedImage] = useState(null);
     const [navigationChange, setNavigationChange] = useState(0)
+    const [bookedView, setBookedView] = useState(null)
+
+
     const handleHover = () => {
         setProfileHover(true);
     };
@@ -80,6 +84,7 @@ const Dashboard = ({book, setBook}) => {
         <div>
             <Nav />
             {book?<BookModal setBook={setBook}/>:null}
+            {bookedView?<ViewBookingModal bookedView={bookedView} setBookedView={setBookedView}/>:null}
             <div onClick={hideModal} className="flex gap-[4%] xl:gap-[8%] pt-[80px] h-full">
                 <div className=' z-10 w-full bg-white fixed p-2 h-fit text-[#51336A] sm:hidden'>
                    <div onClick={toggleMenu}  id='menu' className=' w-8 h-8' >
@@ -162,7 +167,7 @@ const Dashboard = ({book, setBook}) => {
                     </div>
                 </div>
                 <div className=" z-0 pl-4 sm:pl-0 flex-1 pt-7 lg:p-7 lg:pb-0">
-                    {navigationChange === 0 ? <Bookings setBook={setBook} /> : null}
+                    {navigationChange === 0 ? <Bookings setBook={setBook} setBookedView={setBookedView} /> : null}
                     {navigationChange === 1 ? <Shopping /> : null}
                     {navigationChange === 2 ? <Payment /> : null}
                     {navigationChange === 3 ? <Notifications /> : null}

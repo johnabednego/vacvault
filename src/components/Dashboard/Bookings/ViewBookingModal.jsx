@@ -1,13 +1,13 @@
 import React from 'react'
-import BookingForm from './BookingForm'
+import ViewBooking from './ViewBooking'
 
-const BookModal = ({ setBook }) => {
+const ViewBookingModal = ({ bookedView, setBookedView }) => {
 
     const hideModal = (event) => {
         const modal = document.getElementById('modal');
         // Check if the clicked element is outside of the modal
         if (event.target !== modal && !modal.contains(event.target)) {
-            setBook(false); // Call the function to close the modal
+            setBookedView(null); // Call the function to close the modal
         }
     }
     return (
@@ -18,8 +18,8 @@ const BookModal = ({ setBook }) => {
             >
                 <div id='modal' className="relative mt-[500px] xm:mt-[400px] sm:mt-[300px] xl:mt-[200px] mb-3  mx-2 sm:mx-0 ">
                     {/*content*/}
-                    <div className=" cursor-default border-0  relative  rounded-bl-[30px] rounded-tr-[30px] shadow-lg flex flex-col w-full bg-white outline-none focus:outline-none">
-                        <BookingForm />
+                    <div className=" w-full cursor-default border-0  relative  rounded-br-[30px] rounded-tl-[30px] shadow-lg flex flex-col  bg-white outline-none focus:outline-none">
+                        <ViewBooking />
                     </div>
                 </div>
             </div>
@@ -28,4 +28,4 @@ const BookModal = ({ setBook }) => {
     )
 }
 
-export default BookModal
+export default ViewBookingModal
