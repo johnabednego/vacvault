@@ -1,15 +1,20 @@
+import { useEffect, useState } from "react";
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import Aos from "aos";
+import "aos/dist/aos.css";
 import Home from "./pages/Home/Home";
 import About from "./pages/About/About";
 import Services from "./pages/Services/Services";
 import Contact from "./pages/Contact/Contact";
 import CustomerExperience from "./pages/CustomerExperience/CustomerExperience";
 import Dashboard from "./pages/Dashboard/Dashboard";
-import { useState } from "react";
 
 function App() {
   const [book, setBook] = useState(false)
 
+  useEffect(() => {
+    Aos.init();
+  });
   return (
     <div >
        <BrowserRouter>

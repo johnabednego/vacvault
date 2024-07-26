@@ -1,9 +1,9 @@
 import React from 'react'
 
-const CurrentBookings = ({ setBookedView, setBookingsType }) => {
+const PastBookings = ({ setBookedView, setBookingsType }) => {
     const data = [0]
     const handleViewBooking = () =>{
-        setBookingsType(0)
+        setBookingsType(1)
         setBookedView(1)
     }
     return (
@@ -62,4 +62,4 @@ const CurrentBookings = ({ setBookedView, setBookingsType }) => {
     )
 }
 
-export default CurrentBookings
+export default PastBookings

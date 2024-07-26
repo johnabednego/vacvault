@@ -1,12 +1,18 @@
 import React from 'react'
 
-const ViewBooking = () => {
+const ViewBooking = ({ bookingsType }) => {
   return (
     <div className=' w-full flex flex-col gap-[20px] xm:w-[480px]  sm:w-[528px] md:w-[628px]  lg:w-[600px] py-[20px] px-[30px] shadow-input bg-white rounded-br-[30px] rounded-tl-[30px]'>
-      
-      <div className=' w-full flex  items-center justify-end  gap-4'>
-        <div className=' whitespace-nowrap h-[30px] rounded-[50px] border-[1px] border-[#4FBF26] px-2 py-[5px] bg-[#D6FBC9] flex items-center justify-center text-center font-bold text-[#4FBF26] text-[12px]'>Online Payment</div>
-        <h1 className='font-bold text-[32px]'>₵50</h1>
+
+      <div className=' w-full flex flex-wrap justify-between items-center'>
+        {bookingsType === 1 ?
+          <h1 className=' h-[25px] animate-bounce whitespace-nowrap text-[#EB0728] text-[16px] border-dashed border-b-[#EB0728] border-b-[1px]'>Past</h1> :
+          null
+        }
+        <div className='w-full flex  items-center justify-end  gap-4'>
+          <div className=' whitespace-nowrap h-[30px] rounded-[50px] border-[1px] border-[#4FBF26] px-2 py-[5px] bg-[#D6FBC9] flex items-center justify-center text-center font-bold text-[#4FBF26] text-[12px]'>Online Payment</div>
+          <h1 className='font-bold text-[32px]'>₵50</h1>
+        </div>
       </div>
 
       <div className=' w-full flex flex-col gap-[30px]'>
@@ -64,7 +70,8 @@ const ViewBooking = () => {
           {/**Delivery Date*/}
           <div className=' flex flex-col gap-1'>
             <h1 className='font-bold text-[18px] md:text-[20px]  text-[#51336A]'>Delivery Date</h1>
-            <h1 className={` text-[18px] border-dashed border-b-[2px] border-[#51336A] h-[15px]`}></h1>
+            {/* <h1 className={` text-[18px] border-dashed border-b-[2px] border-[#51336A] h-[15px]`}></h1> */}
+            <h1 className=' text-[14px] sm:text-[16px]'>11th Jan. 2024</h1>
           </div>
         </div>
 
@@ -90,10 +97,12 @@ const ViewBooking = () => {
         </div>
       </div>
 
-       {/**Request */}
-       <div className=' w-full mt-4 flex items-center justify-center'>
+      {/**Request */}
+      {bookingsType === 0 ?
+        <div className=' w-full mt-4 flex items-center justify-center'>
           <button type="button" className=" transform duration-300 ease-in-out rounded-[30px] bg-black  hover:opacity-100 hover:bg-[#1f1e1f] text-white font-bold py-2 px-4">Request Delivery</button>
-        </div>
+        </div> :
+        null}
 
     </div>
   )
