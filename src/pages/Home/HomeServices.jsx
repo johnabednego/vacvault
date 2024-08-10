@@ -11,7 +11,7 @@ const HomeServices = () => {
         <div className=' bg-[#51336A] pt-[90px] pb-[155px]'>
             <div className=' px-[6%] xl:px-[8%] w-full flex flex-col justify-center md:flex-row  md:justify-between items-center md:items-start'>
                 <h1 className=' text-[24px] sm:text-[30px] xm:text-[45px] text-white'>Our services</h1>
-                <button onClick={()=>navigate('/services')} className=' mt-3 md:mt-0 bg-black w-[155.83px] h-[56px] rounded-[6px] text-white text-[14px]'>View All Services</button>
+                <button onClick={()=>navigate('/services')} className='hover:opacity-70 mt-3 md:mt-0 bg-black w-[155.83px] h-[56px] rounded-[6px] text-white text-[14px] transition-all duration-300'>View All Services</button>
             </div>
             <div className=' hidden sm:flex w-full pt-11'>
                 <img className='w-[25%]' src={tsikata} alt="" />

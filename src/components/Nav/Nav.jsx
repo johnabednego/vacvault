@@ -89,7 +89,7 @@ const Nav = () => {
         <div className=' bg-[#51336A] fixed px-[6%] xl:px-[8%] w-full h-[80px] flex items-center justify-between z-20'>
             <div className=' flex items-center gap-[22px] lg:gap-[42px] xl:gap-[82px]'>
                 <img src={logo} alt="" className=' w-[98px] h-[56px]' />
-                <button className=' bg-[#6348A5] text-white rounded-[6px] flex w-[64px] lg:w-[81.83px] h-[35px] xm:h-[40px] text-center justify-center items-center'>Shop</button>
+                <button className='hover:opacity-70 bg-[#6348A5] text-white rounded-[6px] flex w-[64px] lg:w-[81.83px] h-[35px] xm:h-[40px] text-center justify-center items-center transition-all duration-300'>Shop</button>
             </div>
 
             <div className=' text-[16px] lg:text-[18px] hidden md:flex gap-[15px] lg:gap-[35px]'>
@@ -100,8 +100,8 @@ const Nav = () => {
             </div>
 
             <div className=' hidden xm:flex text-[14px] gap-[18px] xl:gap-[24.17px]'>
-                <button onClick={()=>dispatch(SignInTrue())} className='flex bg-[#6348A5] text-white text-center items-center justify-center rounded-[6px] w-[64px] lg:w-[92.83px] h-[40px]'>Sign In</button>
-                <button onClick={()=>dispatch(SignUpTrue())} className='flex bg-[#100C14] text-white text-center items-center justify-center rounded-[6px] w-[64px] lg:w-[92.83px] h-[40px]'>Sign Up</button>
+                <button onClick={()=>dispatch(SignInTrue())} className='hover:opacity-70 flex bg-[#6348A5] text-white text-center items-center justify-center rounded-[6px] w-[64px] lg:w-[92.83px] h-[40px] transition-all duration-300'>Sign In</button>
+                <button onClick={()=>dispatch(SignUpTrue())} className='hover:opacity-70 flex bg-[#100C14] text-white text-center items-center justify-center rounded-[6px] w-[64px] lg:w-[92.83px] h-[40px] transition-all duration-300'>Sign Up</button>
             </div>
 
             <div className=' text-white md:hidden'>
@@ -121,8 +121,8 @@ const Nav = () => {
                         {/* Your navigation links here */}
                         <div className=' pl-4 items-start justify-start mt-20 text-[16px] flex flex-col gap-[20px] '>
                             <div className=' w-full justify-between pr-[50px] xm:hidden flex text-[14px] gap-[18px]'>
-                                <button onClick={()=>{dispatch(SignInTrue()); closeMenu()}} className='flex bg-[#6348A5] text-white text-center items-center justify-center rounded-[6px] w-[64px] lg:w-[92.83px] h-[40px]'>Sign In</button>
-                                <button onClick={()=>{dispatch(SignUpTrue()); closeMenu()}} className='flex bg-[#100C14] text-white text-center items-center justify-center rounded-[6px] w-[64px] lg:w-[92.83px] h-[40px]'>Sign Up</button>
+                                <button onClick={()=>{dispatch(SignInTrue()); closeMenu()}} className='hover:opacity-70 flex bg-[#6348A5] text-white text-center items-center justify-center rounded-[6px] w-[64px] lg:w-[92.83px] h-[40px] transition-all duration-300'>Sign In</button>
+                                <button onClick={()=>{dispatch(SignUpTrue()); closeMenu()}} className='hover:opacity-70 flex bg-[#100C14] text-white text-center items-center justify-center rounded-[6px] w-[64px] lg:w-[92.83px] h-[40px] transition-all duration-300'>Sign Up</button>
                             </div>
                             <button onClick={() => toHome()} className={` ${navSwitch === 0 ? "text-[#989898] cursor-not-allowed" : "text-white cursor-pointer"}`}>HOME</button>
                             <button onClick={() => toAbout()} className={` ${navSwitch === 1 ? "text-[#989898] cursor-not-allowed" : "text-white cursor-pointer"}`}>ABOUT</button>

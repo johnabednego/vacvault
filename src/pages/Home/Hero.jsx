@@ -15,7 +15,7 @@ const Hero = () => {
           </div>
 
           <h1 className=' font-light text-[15px] text-[#FFFDFD] mt-[31px]'>Store your luggage securely with VacVault, the trusted solution for all your storage needs.</h1>
-          <button className=' bg-[#212121] w-[113.83px] h-[56px] rounded-[6px] mt-[30px] flex text-center items-center justify-center'>Book Now</button>
+          <button className='hover:opacity-70 bg-[#212121] w-[113.83px] h-[56px] rounded-[6px] mt-[30px] flex text-center items-center justify-center transition-all duration-300'>Book Now</button>
         </div>
         <img src={bags} alt="" className=' w-[250px] md:w-[321.5px] md:h-[321.5px]' />
       </div>
