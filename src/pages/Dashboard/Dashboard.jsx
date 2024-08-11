@@ -9,8 +9,6 @@ import booking_black from './assets/booking_black.svg'
 import booking_white from './assets/booking_white.svg'
 import shop_black from './assets/shop_black.svg'
 import shop_white from './assets/shop_white.svg'
-import payment_black from './assets/payment_black.svg'
-import payment_white from './assets/payment_white.svg'
 import notification_black from './assets/notification_black.svg'
 import notification_white from './assets/notification_white.svg'
 import settings_black from './assets/settings_black.svg'
@@ -21,14 +19,12 @@ import feedback_black from './assets/feedback_black.svg'
 import feedback_white from './assets/feedback_white.svg'
 import Bookings from '../../components/Dashboard/Bookings/Bookings'
 import Shopping from '../../components/Dashboard/Shopping/Shopping'
-import Payment from '../../components/Dashboard/Payment/Payment'
 import Notifications from '../../components/Dashboard/Notifications/Notifications'
 import Settings from '../../components/Dashboard/Settings/Settings'
 import HelpAndSupport from '../../components/Dashboard/HelpAndSupport/HelpAndSupport'
 import Feedback from '../../components/Dashboard/Feedback/Feedback'
 import { RxHamburgerMenu } from 'react-icons/rx';
 import BookModal from '../../components/Book/BookModal';
-import ViewBookingModal from '../../components/Dashboard/Bookings/ViewBookingModal';
 
 const Dashboard = ({ book, setBook }) => {
     const scrollToTop = () => {
@@ -42,10 +38,6 @@ const Dashboard = ({ book, setBook }) => {
     const [profileHover, setProfileHover] = useState(false)
     const [uploadedImage, setUploadedImage] = useState(null);
     const [navigationChange, setNavigationChange] = useState(0)
-    const [bookedView, setBookedView] = useState(null)
-
-    // Bookings type
-    const [bookingsType, setBookingsType] = useState(0)
 
 
     const handleHover = () => {
@@ -87,8 +79,6 @@ const Dashboard = ({ book, setBook }) => {
         <div>
             <Nav />
             {book ? <BookModal setBook={setBook} /> : null}
-            {/* {bookedView ? <ViewBookingModal bookedView={bookedView} setBookedView={setBookedView} bookingsType={bookingsType} /> : null} */}
-
 
             <div onClick={hideModal} className="flex gap-[4%] xl:gap-[8%] pt-[80px] h-screen overflow-hidden">
                 <div className=' z-10 w-full bg-white fixed p-2 h-fit text-[#51336A] sm:hidden'>
@@ -140,10 +130,6 @@ const Dashboard = ({ book, setBook }) => {
                                     <img src={navigationChange === 1 ? shop_white : shop_black} alt="" className=' w-[36px] h-[36px]' />
                                     <h1 className={`${!open ? "hidden" : " "}`}>Shopping</h1>
                                 </div>
-                                {/* <div onClick={() => setNavigationChange(2)} className={` ${!open ? " pl-1 ml-0 px-1" : ""} ${navigationChange === 2 ? " pr-3 md:pr-0 sm:w-max  md:w-full bg-gradient-to-r from-[#51336A] to-[#51336A9C] text-white pl-5 -ml-5 cursor-not-allowed" : " cursor-pointer"} items-center  flex gap-2 md:gap-4 lg:gap-8 h-[60px] w-full rounded-[10px]`}>
-                                    <img src={navigationChange === 2 ? payment_white : payment_black} alt="" className=' w-[36px] h-[36px]' />
-                                    <h1 className={`${!open ? "hidden" : " "}`}>Payment</h1>
-                                </div> */}
                                 <div onClick={() => setNavigationChange(2)} className={` ${!open ? " pl-1 ml-0 px-1" : ""} ${navigationChange === 2 ? " pr-3 md:pr-0 sm:w-max  md:w-full bg-gradient-to-r from-[#51336A] to-[#51336A9C] text-white pl-5 -ml-5 cursor-not-allowed" : " cursor-pointer"}  flex flex-col items-center justify-center h-[60px] w-full rounded-[10px]`}>
                                     <div className=' w-full'>
                                         <div className=' mt-[-10px] relative z-0 flex items-center gap-2 md:gap-4 lg:gap-8 w-full'>
@@ -175,9 +161,8 @@ const Dashboard = ({ book, setBook }) => {
                     </div>
                 </div>
                 <div className="overflow-y-auto  z-0 pl-4 sm:pl-0 flex-1 pt-7 lg:p-7 lg:pb-0">
-                    {navigationChange === 0 ? <Bookings setBook={setBook} setBookedView={setBookedView} setBookingsType={setBookingsType} bookingsType={bookingsType} /> : null}
+                    {navigationChange === 0 ? <Bookings setBook={setBook}/> : null}
                     {navigationChange === 1 ? <Shopping /> : null}
-                    {/* {navigationChange === 2 ? <Payment /> : null} */}
                     {navigationChange === 2 ? <Notifications /> : null}
                     {navigationChange === 3 ? <Settings /> : null}
                     {navigationChange === 4 ? <HelpAndSupport /> : null}

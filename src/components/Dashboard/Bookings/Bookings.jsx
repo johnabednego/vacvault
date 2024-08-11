@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react'
 import CurrentBookings from './CurrentBookings';
 import PastBookings from './PastBookings';
 
-const Bookings = ({ setBook, setBookedView, setBookingsType, bookingsType }) => {
+const Bookings = ({ setBook, setBookingsType }) => {
   const [switchBookings, setSwitchBookings] = useState(0)
   useEffect(() => {
 
@@ -53,8 +53,8 @@ const Bookings = ({ setBook, setBookedView, setBookingsType, bookingsType }) => 
       {/**Bookings */}
       <div className=' w-full mt-[30px] flex flex-col gap-[30px]'>
         {switchBookings === 0 ?
-          <CurrentBookings setBookedView={setBookedView} /> :
-          <PastBookings setBookedView={setBookedView} setBookingsType={setBookingsType} />
+          <CurrentBookings /> :
+          <PastBookings setBookingsType={setBookingsType} />
         }
       </div>
     </div>
