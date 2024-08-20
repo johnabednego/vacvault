@@ -89,7 +89,7 @@ const ViewBooking = ({ setViewBooking }) => {
 
       {/**Request */}
       <div className=' w-full mt-4 flex items-center justify-center'>
-        <button type="button" className=" transform duration-300 ease-in-out rounded-[30px] bg-black  hover:opacity-100 hover:bg-[#1f1e1f] text-white font-bold py-2 px-4">Request Delivery</button>
+        <button type='button' className=' rounded-[6px] flex items-center justify-center text-center  py-2 px-4 font-semibold text-[18px] sm:text-[20px] bg-black text-white hover:opacity-70 shadow-dashboard transition-all duration-300'>Request Delivery</button>
       </div>
     </div>
   )
