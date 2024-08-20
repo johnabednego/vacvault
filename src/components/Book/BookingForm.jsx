@@ -182,7 +182,7 @@ Long broom
 
 
     return (
-        <div className={` w-full  sm:w-[528px] rounded-bl-[30px] rounded-tr-[30px] shadow-input bg-white pt-8 pb-[70px] px-[2.875rem] relative`}>
+        <div className={` rounded-bl-[30px] rounded-tr-[30px] shadow-input bg-white pt-8 pb-[70px] px-[20px] xf:px-[30px] sm:px-[2.875rem] relative`}>
 
             <div className=' mb-[29px]'>
                 <h1 className='text-[18px] font-bold '>Your Luggage, Our Care</h1>

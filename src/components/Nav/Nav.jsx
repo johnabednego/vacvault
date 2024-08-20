@@ -34,6 +34,10 @@ const Nav = () => {
         dispatch(SetNavSwitch(3))
         navigate("/contact")
     }
+    const toShop = () => {
+        dispatch(SetNavSwitch(4))
+        navigate("/shop")
+    }
 
     const toggleMenu = () => {
         setIsOpen(!isOpen);
@@ -77,6 +81,9 @@ const Nav = () => {
     else if(window.location.pathname==="/contact"){
       dispatch(SetNavSwitch(3))
     }
+    else if(window.location.pathname==="/shop"){
+      dispatch(SetNavSwitch(4))
+    }
     else{
       dispatch(SetNavSwitch(-1))
     }
@@ -89,7 +96,7 @@ const Nav = () => {
         <div className=' bg-[#51336A] fixed px-[6%] xl:px-[8%] w-full h-[80px] flex items-center justify-between z-20'>
             <div className=' flex items-center gap-[22px] lg:gap-[42px] xl:gap-[82px]'>
                 <img src={logo} alt="" className=' w-[98px] h-[56px]' />
-                <button className='hover:opacity-70 bg-[#6348A5] text-white rounded-[6px] flex w-[64px] lg:w-[81.83px] h-[35px] xm:h-[40px] text-center justify-center items-center transition-all duration-300'>Shop</button>
+                <button onClick={()=> toShop()} className={` ${navSwitch === 4 ? " cursor-not-allowed bg-white bg-opacity-50 text-[#6348A5] text-opacity-50 " :"hover:opacity-70 bg-[#6348A5] text-white"} rounded-[6px] flex w-[64px] lg:w-[81.83px] h-[35px] xm:h-[40px] text-center justify-center items-center transition-all duration-300`}>Shop</button>
             </div>
 
             <div className=' text-[16px] lg:text-[18px] hidden md:flex gap-[15px] lg:gap-[35px]'>

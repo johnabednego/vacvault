@@ -10,10 +10,11 @@ module.exports = {
           about_woman:"url('/src/pages/About/assets/woman.png')",
           holding_bag:"url('/src/pages/Services/assets/holding_bag.png')",
         },
-      screens: {
-        'xs':"350px",
-        'xm': '500px',
-      },
+        screens: {
+          xs: "350px",
+          xf: "450px",
+          xm: "500px",
+        },
       boxShadow: {
         'input': '10px 10px 40px 4px rgba(0, 0, 0, 0.15)',
         'hero': '10px 10px 40px 4px rgba(0, 0, 0, 0.25)',

@@ -6,10 +6,10 @@ import Team from './Team'
 import './Home.css'
 import Footer from '../../components/Footer/Footer'
 
-const Home = () => {
+const Home = ({book, setBook}) => {
   return (
     <div>
-      <Hero/>
+      <Hero book={book} setBook={setBook}/>
       <FeaturedIn/>
       <HomeServices/>
       <Team/>
