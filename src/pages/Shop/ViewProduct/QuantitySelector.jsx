@@ -13,7 +13,7 @@ const QuantitySelector = ({setOpenQuantitySelector, openQuantitySelector, setQua
     }
 
     return (
-        <div onClick={hideQuantitySelector} className={` mt-[-18px] w-full flex items-start cursor-pointer`}>
+        <div onClick={hideQuantitySelector} className={` ml-16 mt-[-18px] w-full flex items-start cursor-pointer`}>
             <div
                 className=" cursor-pointer w-[60px] h-full flex overflow-x-hidden overflow-y-auto outline-none focus:outline-none scrollbar-hide z-10"
             >
