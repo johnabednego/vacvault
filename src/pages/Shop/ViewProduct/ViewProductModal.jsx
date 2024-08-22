@@ -23,7 +23,7 @@ const ViewProductModal = ({ viewProductState, setViewProductState }) => {
       >
         <div data-aos="zoom-in" data-aos-duration="3000" id='modal' className={`w-[80%] sm:w-auto relative my-6 mx-2 xm:mx-0 ${isClosing ? 'zoom-out' : ''}`}>
           {/*content*/}
-          <div className="  cursor-default border-0 rounded-br-[30px] rounded-tl-[30px] shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
+          <div className="  cursor-default border-0 shadow-lg relative flex flex-col w-full outline-none focus:outline-none">
             <ViewProduct viewProductState={viewProductState} />
           </div>
         </div>

@@ -1,12 +1,25 @@
 import React, { useState } from 'react'
 import bag from '../assets/bag.png'
 import arrowIcon from '../assets/arrow.svg'
+import ColorSelector from './ColorSelector'
+import QuantitySelector from './QuantitySelector'
 
 const ViewProduct = ({ viewProductState }) => {
+
+    //Color Selection
+    const [color, setColor] = useState("Any")
+    const [openColorSelector, setOpenColorSelector] = useState(false)
+    const [colorSelected, setColorSelected] = useState("");
+
+    //Quantity Selection
     const [quantity, setQuantity] = useState(1)
+    const [openQuantitySelector, setOpenQuantitySelector] = useState(false)
+    const [quantitySelected, setQuantitySelected] = useState("");
+
+
 
     return (
-        <div className=' w-full sm:w-[581px] flex flex-col sm:flex-row gap-[20px] rounded-[30px] shadow-input bg-white pt-[20px] pb-[20px] px-[20px] sm:px-[2.875rem] relative'>
+        <div className=' w-full sm:w-[581px] flex flex-col sm:flex-row gap-[20px] rounded-[10px]  shadow-input bg-white pt-[20px] pb-[20px] px-[20px] sm:px-[2.875rem] relative'>
             <img src={bag} alt="bag" className=' w-full object-cover object-center sm:w-[232px] sm:h-[235px] rounded-[10px] shadow-lg' />
             <div className='flex flex-col gap-[42px]'>
                 <div className='flex flex-col gap-5'>
@@ -16,14 +29,37 @@ const ViewProduct = ({ viewProductState }) => {
                         all usage and boundaries for all kind of travels
                         and all occasions in good quality.
                     </p>
-                    <div className='flex flex-col gap-[3px]'>
-                        <h1 className='text-[12px]'><span className=' font-bold'>Color:</span> Black</h1>
-                        <div className=' w-fit px-[10px] h-[29px] flex gap-[10px] items-center rounded-[7px] bg-[#F0F2F2] border-solid border-[1px] border-[#D5D9D9]'>
-                            <span className=' text-[13px]'>Qty: 1</span>
-                            <img src={arrowIcon} alt="arrowIcon" className=' w-[15px]' />
+
+                    {/**Color Selector */}
+                    <div className=' flex gap-[10px] items-center text-[12px]'><span className=' font-bold'>Color:</span>
+                        <div onClick={() => setOpenColorSelector(true)} className=' cursor-pointer w-fit px-[10px] h-[29px] flex gap-[10px] items-center rounded-[7px] bg-[#F0F2F2] border-solid border-[1px] border-[#D5D9D9]'>
+                            <span className=' text-[13px]'>{color}</span>
+                            <img src={arrowIcon} alt="arrowIcon" className={` w-[15px] ${openColorSelector ? "rotate-180" : ""}`} />
                         </div>
                     </div>
-                    <h1 className=' font-bold text-[18px]'>₵500.00</h1>
+
+                    {/**Color Drop down */}
+                    {openColorSelector ?
+                        <ColorSelector setOpenColorSelector={setOpenColorSelector} openColorSelector={openColorSelector}
+                            setColorSelected={setColorSelected} colorSelected={colorSelected} setColor={setColor} color={color}
+                        /> :
+                        null
+                    }
+
+
+                    {/**Quantity Selector */}
+                    <div onClick={() => setOpenQuantitySelector(true)} className=' cursor-pointer w-fit px-[10px] h-[29px] flex gap-[10px] items-center rounded-[7px] bg-[#F0F2F2] border-solid border-[1px] border-[#D5D9D9]'>
+                        <span className=' text-[13px]'>Qty: {quantity}</span>
+                        <img src={arrowIcon} alt="arrowIcon" className={` w-[15px] ${openQuantitySelector ? "rotate-180" : ""}`} />
+                    </div>
+
+                    {/**Quantity Drop down */}
+                    {openQuantitySelector ?
+                        <QuantitySelector setOpenQuantitySelector={setOpenQuantitySelector} openQuantitySelector={openQuantitySelector} 
+                        setQuantitySelected={setQuantitySelected} quantitySelected={quantitySelected} setQuantity={setQuantity} quantity={quantity}
+                        /> :
+                        null
+                    }
                 </div>
                 <button className=' hover:opacity-80 px-[10px] w-fit h-[44px] rounded-[6px] bg-gradient-to-r from-[#51336A] to-[#9F64D0] font-bold text-[14px] text-white border-solid border-[1px] border-[#51336A] transition-all transform ease-in-out duration-300'>Add to Cart</button>
             </div>
