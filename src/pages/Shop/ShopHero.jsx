@@ -1,11 +1,11 @@
 import React from 'react'
 import cartIcon from './assets/cart.svg'
 
-const ShopHero = () => {
+const ShopHero = ({setOpenCart}) => {
     return (
         <div className=' mt-[15px]'>
             {/**Cart */}
-            <div className=' w-full flex items-center justify-end'>
+            <div onClick={()=>setOpenCart(1)} className=' w-full flex items-center justify-end'>
                 <button className='flex flex-col'>
                     <div className=' min-w-[41px] flex items-center justify-center mb-[-7px]'>
                         <h1 className=' font-bold text-[#6348A5] text-[16px]'>10</h1>

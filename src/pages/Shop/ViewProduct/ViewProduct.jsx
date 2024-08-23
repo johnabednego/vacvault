@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import bag from '../assets/bag.png'
-import arrowIcon from '../assets/arrow.svg'
+import dropDownArrow from '../assets/dropdown-arrow.svg'
 import ColorSelector from './ColorSelector'
 import QuantitySelector from './QuantitySelector'
 
@@ -34,7 +34,7 @@ const ViewProduct = ({ viewProductState }) => {
                     <div className=' flex gap-[10px] items-center text-[12px]'><span className=' font-bold'>Color:</span>
                         <div onClick={() => setOpenColorSelector(true)} className=' cursor-pointer w-fit px-[10px] h-[29px] flex gap-[10px] items-center rounded-[7px] bg-[#F0F2F2] border-solid border-[1px] border-[#D5D9D9]'>
                             <span className=' text-[13px]'>{color}</span>
-                            <img src={arrowIcon} alt="arrowIcon" className={` w-[15px] ${openColorSelector ? "rotate-180" : ""}`} />
+                            <img src={dropDownArrow} alt="dropDownArrow" className={` w-[15px] ${openColorSelector ? "rotate-180" : ""}`} />
                         </div>
                     </div>
 
@@ -51,7 +51,7 @@ const ViewProduct = ({ viewProductState }) => {
                     <div className=' flex gap-[10px] items-center text-[12px]'><span className=' font-bold'>Quantity:</span>
                         <div onClick={() => setOpenQuantitySelector(true)} className=' cursor-pointer w-fit px-[10px] h-[29px] flex gap-[10px] items-center rounded-[7px] bg-[#F0F2F2] border-solid border-[1px] border-[#D5D9D9]'>
                             <span className=' text-[13px]'>{quantity}</span>
-                            <img src={arrowIcon} alt="arrowIcon" className={` w-[15px] ${openQuantitySelector ? "rotate-180" : ""}`} />
+                            <img src={dropDownArrow} alt="dropDownArrow" className={` w-[15px] ${openQuantitySelector ? "rotate-180" : ""}`} />
                         </div>
                     </div>
 

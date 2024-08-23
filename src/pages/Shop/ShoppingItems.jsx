@@ -36,7 +36,7 @@ const ShoppingItems = ({ setViewProductState }) => {
     }
 
     return (
-        <div className='pt-[50px] pb-[100px]'>
+        <div className='pt-[50px]'>
             {/**Search */}
             <div className='w-full flex items-center justify-center'>
                 <div className='flex w-[710.39px] h-[40px]'>
