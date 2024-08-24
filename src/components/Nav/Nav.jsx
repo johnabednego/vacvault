@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import logo from './assets/vaccault.svg'
+import logo from '../assets/vacvault.svg'
 import { RxHamburgerMenu } from 'react-icons/rx'
 import { IoMdClose } from "react-icons/io";
 import { useNavigate } from 'react-router-dom'
