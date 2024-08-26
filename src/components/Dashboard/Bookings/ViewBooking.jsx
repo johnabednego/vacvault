@@ -4,7 +4,7 @@ import backIcon from '../assets/backIcon.svg'
 const ViewBooking = ({ setViewBooking }) => {
   return (
     <div data-aos="fade-right" data-aos-duration="3000" className=' w-full flex flex-col gap-[20px]  py-[20px] px-[30px] bg-white rounded-br-[30px] rounded-tl-[30px]'>
-      <img onClick={() => setViewBooking(false)} src={backIcon} alt="backIcon" className='cursor-pointer w-[36.06px] h-[36.06px] transform transition-all ease-in-out duration-300 hover:opacity-70' />
+      <img onClick={() => setViewBooking(null)} src={backIcon} alt="backIcon" className='cursor-pointer w-[36.06px] h-[36.06px] transform transition-all ease-in-out duration-300 hover:opacity-70' />
       <div className=' w-full flex flex-col gap-[30px]'>
         {/** Items*/}
         <div className='w-full flex flex-col'>

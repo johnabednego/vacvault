@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Nav from '../../components/Nav/Nav'
 import Footer from '../../components/Footer/Footer'
 import { IoIosArrowForward } from "react-icons/io";
@@ -74,6 +74,26 @@ const Dashboard = ({ book, setBook }) => {
         }
     }
 
+    // Encode the data before storing it
+    function encodeData(data) {
+        return btoa(data); // Base64 encoding
+    }
+
+    // Decode the data after retrieving it
+    function decodeData(encodedData) {
+        return atob(encodedData); // Base64 decoding
+    }
+
+    const saveCurrentNavigation = (value) => {
+        window.localStorage.setItem("dshfauegkryav57236537dssgdgs33fagv", JSON.stringify(encodeData(value)))
+    }
+
+    useEffect(() => {
+        const storedNavigation = window.localStorage.getItem("dshfauegkryav57236537dssgdgs33fagv")
+        const parsedNavigation = JSON.parse(storedNavigation)
+        const currentNavigation = decodeData(parsedNavigation)
+        setNavigationChange(parseInt(currentNavigation))
+    }, [])
 
     return (
         <div>
@@ -117,38 +137,38 @@ const Dashboard = ({ book, setBook }) => {
                                 </div>
                             </div>
                             <div className=' w-full flex items-center justify-center mt-[17px]'>
-                                <img src={line} alt="" />
+                                <img src={line} alt="line" />
                             </div>
 
                             {/**Navigations */}
                             <div className=' text-[18px] lg:text-[25px] xl:text-[32px] font-medium leading-[24px] flex flex-col gap-[68px] mt-[72px] px-[14px] md:px-[20px] lg:px-[50px]'>
-                                <div onClick={() => setNavigationChange(0)} className={` ${!open ? " pl-1 ml-0 px-1" : ""} ${navigationChange === 0 ? " pr-3 md:pr-0 sm:w-max  md:w-full bg-gradient-to-r from-[#51336A] to-[#51336A9C] text-white pl-5 -ml-5 cursor-not-allowed" : " cursor-pointer"} items-center  flex gap-2 md:gap-4 lg:gap-8 h-[60px] w-full rounded-[10px]`}>
-                                    <img src={navigationChange === 0 ? booking_white : booking_black} alt="" className=' w-[36px] h-[36px]' />
+                                <div onClick={() => {setNavigationChange(0); saveCurrentNavigation(0)}} className={` ${!open ? " pl-1 ml-0 px-1" : ""} ${navigationChange === 0 ? " pr-3 sm:w-max  md:w-fit bg-gradient-to-r from-[#51336A] to-[#51336A9C] text-white pl-5 -ml-5 cursor-not-allowed" : " cursor-pointer"} items-center  flex gap-2 md:gap-4 lg:gap-8 h-[60px] w-full rounded-[10px]`}>
+                                    <img src={navigationChange === 0 ? booking_white : booking_black} alt="booking_black" className=' w-[36px] h-[36px] min-w-[36px] min-h-[36px]' />
                                     <h1 className={`${!open ? "hidden" : " "}`}>Bookings</h1>
                                 </div>
-                                <div onClick={() => setNavigationChange(1)} className={` ${!open ? " pl-1 ml-0 px-1" : ""} ${navigationChange === 1 ? " pr-3 md:pr-0 sm:w-max  md:w-full bg-gradient-to-r from-[#51336A] to-[#51336A9C] text-white pl-5 -ml-5 cursor-not-allowed" : " cursor-pointer"} items-center  flex gap-2 md:gap-4 lg:gap-8 h-[60px] w-full rounded-[10px]`}>
-                                    <img src={navigationChange === 1 ? shop_white : shop_black} alt="" className=' w-[36px] h-[36px]' />
+                                <div onClick={() => {setNavigationChange(1); saveCurrentNavigation(1)}} className={` ${!open ? " pl-1 ml-0 px-1" : ""} ${navigationChange === 1 ? " pr-3 sm:w-max md:w-fit bg-gradient-to-r from-[#51336A] to-[#51336A9C] text-white pl-5 -ml-5 cursor-not-allowed" : " cursor-pointer"} items-center  flex gap-2 md:gap-4 lg:gap-8 h-[60px] w-full rounded-[10px]`}>
+                                    <img src={navigationChange === 1 ? shop_white : shop_black} alt="" className=' w-[36px] h-[36px] min-w-[36px] min-h-[36px]' />
                                     <h1 className={`${!open ? "hidden" : " "}`}>Shopping</h1>
                                 </div>
-                                <div onClick={() => setNavigationChange(2)} className={` ${!open ? " pl-1 ml-0 px-1" : ""} ${navigationChange === 2 ? " pr-3 md:pr-0 sm:w-max  md:w-full bg-gradient-to-r from-[#51336A] to-[#51336A9C] text-white pl-5 -ml-5 cursor-not-allowed" : " cursor-pointer"}  flex flex-col items-center justify-center h-[60px] w-full rounded-[10px]`}>
+                                <div onClick={() => {setNavigationChange(2); saveCurrentNavigation(2)}} className={` ${!open ? " pl-1 ml-0 px-1" : ""} ${navigationChange === 2 ? " pr-3 sm:w-max md:w-fit bg-gradient-to-r from-[#51336A] to-[#51336A9C] text-white pl-5 -ml-5 cursor-not-allowed" : " cursor-pointer"}  flex flex-col items-center justify-center h-[60px] w-full rounded-[10px]`}>
                                     <div className=' w-full'>
                                         <div className=' mt-[-10px] relative z-0 flex items-center gap-2 md:gap-4 lg:gap-8 w-full'>
-                                            <img src={navigationChange === 2 ? notification_white : notification_black} alt="" className=' w-[36px] h-[36px]' />
+                                            <img src={navigationChange === 2 ? notification_white : notification_black} alt="" className=' w-[36px] h-[36px] min-w-[36px] min-h-[36px]' />
                                             <h1 className={`${!open ? "hidden" : " "}`}>Notifications</h1>
                                         </div>
                                         <div className=' relative z-10 mt-[-33px] ml-[14px] flex items-center justify-center text-center w-[15px] h-[15px] rounded-[15px] bg-[#FF0000] text-white text-[10px] p-[0.6rem]'>0</div>
                                     </div>
                                 </div>
-                                <div onClick={() => setNavigationChange(3)} className={` ${!open ? " pl-1 ml-0 px-1" : ""} ${navigationChange === 3 ? " pr-3 md:pr-0 sm:w-max md:w-full bg-gradient-to-r from-[#51336A] to-[#51336A9C] text-white pl-5 -ml-5 cursor-not-allowed" : " cursor-pointer"} items-center  flex gap-2 md:gap-4 lg:gap-8 h-[60px] w-full rounded-[10px]`}>
-                                    <img src={navigationChange === 3 ? settings_white : settings_black} alt="" className=' w-[36px] h-[36px]' />
+                                <div onClick={() => {setNavigationChange(3); saveCurrentNavigation(3)}} className={` ${!open ? " pl-1 ml-0 px-1" : ""} ${navigationChange === 3 ? " pr-3 sm:w-max md:w-fit bg-gradient-to-r from-[#51336A] to-[#51336A9C] text-white pl-5 -ml-5 cursor-not-allowed" : " cursor-pointer"} items-center  flex gap-2 md:gap-4 lg:gap-8 h-[60px] w-full rounded-[10px]`}>
+                                    <img src={navigationChange === 3 ? settings_white : settings_black} alt="" className=' w-[36px] h-[36px] min-w-[36px] min-h-[36px]' />
                                     <h1 className={`${!open ? "hidden" : " "}`}>Settings</h1>
                                 </div>
-                                <div onClick={() => setNavigationChange(4)} className={` ${!open ? " pl-1 ml-0 px-1" : ""} ${navigationChange === 4 ? " pr-3 md:pr-0  md:w-full bg-gradient-to-r from-[#51336A] to-[#51336A9C] text-white pl-5 -ml-5 cursor-not-allowed" : " cursor-pointer"} items-center  flex gap-2 md:gap-4 lg:gap-8 h-[60px] w-full rounded-[10px]`}>
-                                    <img src={navigationChange === 4 ? help_white : help_black} alt="" className=' w-[36px] h-[36px]' />
+                                <div onClick={() => {setNavigationChange(4); saveCurrentNavigation(4)}} className={` ${!open ? " pl-1 ml-0 px-1" : ""} ${navigationChange === 4 ? " pr-3 md:w-fit bg-gradient-to-r from-[#51336A] to-[#51336A9C] text-white pl-5 -ml-5 cursor-not-allowed" : " cursor-pointer"} items-center  flex gap-2 md:gap-4 lg:gap-8 h-[60px] w-full rounded-[10px]`}>
+                                    <img src={navigationChange === 4 ? help_white : help_black} alt="" className=' w-[36px] h-[36px] min-w-[36px] min-h-[36px]' />
                                     <h1 className={`${!open ? "hidden" : " "}`}>Help & Support</h1>
                                 </div>
-                                <div onClick={() => setNavigationChange(5)} className={` ${!open ? " pl-1 ml-0 px-1" : ""} ${navigationChange === 5 ? " pr-3 md:pr-0 sm:w-max  md:w-full bg-gradient-to-r from-[#51336A] to-[#51336A9C] text-white pl-5 -ml-5 cursor-not-allowed" : " cursor-pointer"} items-center  flex gap-2 md:gap-4 lg:gap-8 h-[60px] w-full rounded-[10px]`}>
-                                    <img src={navigationChange === 5 ? feedback_white : feedback_black} alt="" className=' w-[36px] h-[36px]' />
+                                <div onClick={() => {setNavigationChange(5); saveCurrentNavigation(5)}} className={` ${!open ? " pl-1 ml-0 px-1" : ""} ${navigationChange === 5 ? " pr-3 sm:w-max md:w-fit bg-gradient-to-r from-[#51336A] to-[#51336A9C] text-white pl-5 -ml-5 cursor-not-allowed" : " cursor-pointer"} items-center  flex gap-2 md:gap-4 lg:gap-8 h-[60px] w-full rounded-[10px]`}>
+                                    <img src={navigationChange === 5 ? feedback_white : feedback_black} alt="" className=' w-[36px] h-[36px] min-w-[36px] min-h-[36px]' />
                                     <h1 className={`${!open ? "hidden" : " "}`}>Feedback</h1>
                                 </div>
                             </div>
@@ -161,7 +181,7 @@ const Dashboard = ({ book, setBook }) => {
                     </div>
                 </div>
                 <div className="overflow-y-auto  z-0 pl-4 sm:pl-0 flex-1 pt-7 lg:p-7 lg:pb-0">
-                    {navigationChange === 0 ? <Bookings setBook={setBook}/> : null}
+                    {navigationChange === 0 ? <Bookings setBook={setBook} /> : null}
                     {navigationChange === 1 ? <Shopping /> : null}
                     {navigationChange === 2 ? <Notifications /> : null}
                     {navigationChange === 3 ? <Settings /> : null}

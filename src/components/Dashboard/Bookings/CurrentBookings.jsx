@@ -2,10 +2,9 @@ import React, { useState } from 'react'
 import ViewBooking from './ViewBooking';
 const CurrentBookings = () => {
     // data-aos="fade-left" data-aos-duration="3000"
-    const data = [0, 1, 2, 3, 4, 5]
-    const [viewBooking, setViewBooking] = useState(false)
+    const [viewBooking, setViewBooking] = useState(null)
     const handleViewBooking = () => {
-        setViewBooking(true)
+        setViewBooking(1)
         // Scroll to top when viewBooking is set to true
         window.scrollTo({
             top: 0,
