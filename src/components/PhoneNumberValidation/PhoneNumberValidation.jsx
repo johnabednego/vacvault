@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PhoneInput from 'react-phone-input-2';
 import 'react-phone-input-2/lib/style.css';
 import './PhoneNumberValidation.css'
 import ghana from './assets/ghana.svg'
 
-const PhoneNumberValidation = ({ setMobileNumber, setErrorMessage, phoneNumberStyle }) => {
-  const [phoneNumber, setPhoneNumber] = useState('');
+const PhoneNumberValidation = ({phoneNumber, setPhoneNumber, setErrorMessage, phoneNumberStyle }) => {
   //   const [valid, setValid] = useState(true);
 
   const handleChange = (value) => {
@@ -17,7 +16,6 @@ const PhoneNumberValidation = ({ setMobileNumber, setErrorMessage, phoneNumberSt
       setErrorMessage("")
     }
     setPhoneNumber(value);
-    setMobileNumber(value)
     // setValid(validatePhoneNumber(value));
   };
 
@@ -28,7 +26,7 @@ const PhoneNumberValidation = ({ setMobileNumber, setErrorMessage, phoneNumberSt
   //   };
 
   return (
-    <div className={ `w-full`}>
+    <div className={ `w-full relative`}>
       <div className={` ${phoneNumber.length > 0 ? "hidden" : " flex w-fit absolute z-[10] pt-[10px] ml-[23px]"}`}>
           <img src={ghana} alt="" />
         </div>

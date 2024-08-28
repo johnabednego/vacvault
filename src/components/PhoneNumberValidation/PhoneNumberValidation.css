@@ -1,3 +1,11 @@
 .selected-flag{
     background-color: #D9D9D9 !important;
 }
+
+.react-tel-input .form-control{
+    border: none !important;
+}
+
+.react-tel-input .form-control::placeholder{
+    color: #707070 !important;
+}
