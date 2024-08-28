@@ -115,7 +115,7 @@ const Dashboard = ({ book, setBook }) => {
                                 <a href="/admin" target="_blank" rel="noopener noreferrer" className=' w-auto min-w-fit h-fit text-[#6348A5] text-[16px] border-solid border-b-[1px] border-b-[#6348A5] hover:opacity-30 transform transition-all ease-in-out duration-300'>Admin Dashboard</a>
                                 <h1 className=' whitespace-normal break-all w-full flex items-end justify-end self-end  font-semibold text-[18px]'> <span className=' whitespace-nowrap break-normal text-[#51336A]'>ID: </span>VV0001</h1>
                             </div>
-                            <div className=' break-all flex sm:flex-col items-center lg:flex-row gap-[19px] lg:gap-[29px]'>
+                            <div className=' break-all flex sm:flex-col lg:flex-row gap-[19px] lg:gap-[29px]'>
                                 {/**Dynamic Profile Image  */}
                                 <div className={` relative   rounded-[95px] w-[95px] h-[95px] lg:rounded-[124px] lg:w-[124px] lg:h-[124px] border-[5px] border-[#51336A]`} onMouseEnter={handleHover} onMouseLeave={handleLeave}>
                                     <div className={`${profileHover || uploadedImage == null ? 'opacity-50' : 'opacity-0'} absolute inset-0 rounded-[95px] lg:rounded-[124px] w-full h-full bg-black transition-opacity duration-300`}>
@@ -163,9 +163,9 @@ const Dashboard = ({ book, setBook }) => {
                                     <img src={navigationChange === 3 ? settings_white : settings_black} alt="" className=' w-[36px] h-[36px] min-w-[36px] min-h-[36px]' />
                                     <h1 className={`${!open ? "hidden" : " "}`}>Settings</h1>
                                 </div>
-                                <div onClick={() => {setNavigationChange(4); saveCurrentNavigation(4)}} className={` ${!open ? " pl-1 ml-0 px-1" : ""} ${navigationChange === 4 ? " pr-3 md:w-fit bg-gradient-to-r from-[#51336A] to-[#51336A9C] text-white pl-5 -ml-5 cursor-not-allowed" : " cursor-pointer"} items-center  flex gap-2 md:gap-4 lg:gap-8 h-[60px] w-full rounded-[10px]`}>
+                                <div onClick={() => {setNavigationChange(4); saveCurrentNavigation(4)}} className={` ${!open ? " pl-1 ml-0 px-1" : ""} ${navigationChange === 4 ? `pr-3 ${!open?"w-fit":"w-full"} md:w-fit bg-gradient-to-r from-[#51336A] to-[#51336A9C] text-white pl-5 -ml-5 cursor-not-allowed` : " cursor-pointer"} items-center  flex gap-2 md:gap-4 lg:gap-8 h-[60px] rounded-[10px]`}>
                                     <img src={navigationChange === 4 ? help_white : help_black} alt="" className=' w-[36px] h-[36px] min-w-[36px] min-h-[36px]' />
-                                    <h1 className={`${!open ? "hidden" : " "}`}>Help & Support</h1>
+                                    <h1 className={`${!open ? "hidden" : " "} md:whitespace-nowrap`}>Help & Support</h1>
                                 </div>
                                 <div onClick={() => {setNavigationChange(5); saveCurrentNavigation(5)}} className={` ${!open ? " pl-1 ml-0 px-1" : ""} ${navigationChange === 5 ? " pr-3 sm:w-max md:w-fit bg-gradient-to-r from-[#51336A] to-[#51336A9C] text-white pl-5 -ml-5 cursor-not-allowed" : " cursor-pointer"} items-center  flex gap-2 md:gap-4 lg:gap-8 h-[60px] w-full rounded-[10px]`}>
                                     <img src={navigationChange === 5 ? feedback_white : feedback_black} alt="" className=' w-[36px] h-[36px] min-w-[36px] min-h-[36px]' />
