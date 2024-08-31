@@ -191,12 +191,7 @@ const Dashboard = ({ book, setBook }) => {
                                     <h1 className={`${!open ? "hidden" : " "}`}>Feedback</h1>
                                 </div>
                             </div>
-
-                            {/**Chat */}
-                            {/* <div className=' w-full flex items-end justify-end pr-[29px]'>
-                                <button type='button' className=' float-right font-bold  text-[18px] lg:text-[25px] xl:text-[32px] text-[#51336A] flex items-center justify-center text-center shadow-dashboard mt-16 w-[105px] h-[58px] bg-white rounded-tr-[30px] rounded-bl-[30px]'>Chat</button>
-                            </div> */}
-
+                        
                             {/* Chat Button */}
                             <div id='chatButton' ref={chatButtonRef} className={`w-full flex items-end justify-end pr-[29px] ${isChatOpen ? "fixed bottom-[10px] opacity-50 cursor-not-allowed" : ""}`}>
                                 <button
