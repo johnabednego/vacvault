@@ -43,10 +43,10 @@ const ChatbotPopup = ({ onClose }) => {
     };
 
     return (
-        <div className="bg-white border-solid border-[1px] border-[#C1C1C1] rounded-[30px] p-4 fixed bottom-20 right-4 w-[90%] max-w-[400px] md:w-[300px] z-50">
+        <div className="bg-white border-solid border-[1px] border-[#C1C1C1] rounded-bl-[30px] rounded-tr-[30px] p-4 fixed bottom-20 right-4 w-[90%] max-w-[400px] md:w-[300px] z-50 shadow-dashboard">
             <div className="chat-header flex justify-between items-center">
-                <h2 className="text-lg font-bold">Chatbot</h2>
-                <button onClick={onClose} className="text-red-500">X</button>
+                <h2 className="text-lg font-bold">Vacbot</h2>
+                <button onClick={onClose} className=" font-bold rounded-full w-[24px] h-[24px] flex items-center justify-center text-center border-solid border-[1px] border-[#C1C1C1] text-lg text-red-500 hover:opacity-70 shadow-customTooltip">X</button>
             </div>
             <div className="relative mt-4 mb-2 h-[150px] overflow-y-auto">
                 {chatHistory.map((chat, index) => (
@@ -65,7 +65,7 @@ const ChatbotPopup = ({ onClose }) => {
                     onKeyDown={handleKeyDown}
                     placeholder="Type your question..."
                 />
-                <button onClick={handleSend} className="bg-blue-500 text-white mt-2 p-2 rounded w-full">Send</button>
+                <button onClick={handleSend} className="bg-black text-white mt-2 p-2 rounded w-full">Send</button>
             </div>
         </div>
     );

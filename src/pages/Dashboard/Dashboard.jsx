@@ -43,7 +43,6 @@ const Dashboard = ({ book, setBook }) => {
 
     const chatButtonRef = useRef(null);
 
-
     const handleHover = () => {
         setProfileHover(true);
     };
@@ -64,11 +63,11 @@ const Dashboard = ({ book, setBook }) => {
         }
     };
 
-
     const toggleMenu = () => {
         setOpenMenu(!openMenu)
         scrollToTop()
     }
+
     const hideModal = (event) => {
         const modal = document.getElementById('modal');
         const menu = document.getElementById('menu')
@@ -88,17 +87,23 @@ const Dashboard = ({ book, setBook }) => {
         return atob(encodedData); // Base64 decoding
     }
 
+    // Save Navigations
     const saveCurrentNavigation = (value) => {
         window.localStorage.setItem("dshfauegkryav57236537dssgdgs33fagv", JSON.stringify(encodeData(value)))
     }
 
-    // Handle Chat Opening
+    // Handle IsChatOpen 
     const handleIsChatOpen = () => {
+        setOpen(true)
+        setIsChatOpen(true);
+    };
+
+    // Handle IsChatOpen Onclose 
+    const handleIsChatOpenOnclose = () => {
         setIsChatOpen(false);
         document.getElementById('chatButton').classList.toggle('relative')
         chatButtonRef.current?.scrollIntoView({ behavior: 'smooth' });
     };
-
 
     useEffect(() => {
         const storedNavigation = window.localStorage.getItem("dshfauegkryav57236537dssgdgs33fagv")
@@ -127,6 +132,7 @@ const Dashboard = ({ book, setBook }) => {
                                 <a href="/admin" target="_blank" rel="noopener noreferrer" className=' w-auto min-w-fit h-fit text-[#6348A5] text-[16px] border-solid border-b-[1px] border-b-[#6348A5] hover:opacity-30 transform transition-all ease-in-out duration-300'>Admin Dashboard</a>
                                 <h1 className=' whitespace-normal break-all w-full flex items-end justify-end self-end  font-semibold text-[18px]'> <span className=' whitespace-nowrap break-normal text-[#51336A]'>ID: </span>VV0001</h1>
                             </div>
+
                             <div className=' break-all flex sm:flex-col lg:flex-row gap-[19px] lg:gap-[29px]'>
                                 {/**Dynamic Profile Image  */}
                                 <div className={` relative   rounded-[95px] w-[95px] h-[95px] lg:rounded-[124px] lg:w-[124px] lg:h-[124px] border-[5px] border-[#51336A]`} onMouseEnter={handleHover} onMouseLeave={handleLeave}>
@@ -148,21 +154,22 @@ const Dashboard = ({ book, setBook }) => {
                                     </div>
                                 </div>
                             </div>
+
                             <div className=' w-full flex items-center justify-center mt-[17px]'>
                                 <img src={line} alt="line" />
                             </div>
 
                             {/**Navigations */}
                             <div className=' text-[18px] lg:text-[25px] xl:text-[32px] font-medium leading-[24px] flex flex-col gap-[68px] mt-[72px] px-[14px] md:px-[20px] lg:px-[50px]'>
-                                <div onClick={() => { setNavigationChange(0); saveCurrentNavigation(0) }} className={` ${!open ? " pl-1 ml-0 px-1" : ""} ${navigationChange === 0 ? " pr-3 sm:w-max  md:w-fit bg-gradient-to-r from-[#51336A] to-[#51336A9C] text-white pl-5 -ml-5 cursor-not-allowed" : " cursor-pointer"} items-center  flex gap-2 md:gap-4 lg:gap-8 h-[60px] w-full rounded-[10px]`}>
+                                <div onClick={() => { setNavigationChange(0); saveCurrentNavigation(0) }} className={` ${!open ? " pl-1 ml-0 px-1" : ""} ${navigationChange === 0 ? " pr-3 sm:w-max  md:w-fit bg-black text-white pl-5 -ml-5 cursor-not-allowed" : " cursor-pointer"} items-center  flex gap-2 md:gap-4 lg:gap-8 h-[60px] w-full rounded-[10px]`}>
                                     <img src={navigationChange === 0 ? booking_white : booking_black} alt="booking_black" className=' w-[36px] h-[36px] min-w-[36px] min-h-[36px]' />
                                     <h1 className={`${!open ? "hidden" : " "}`}>Bookings</h1>
                                 </div>
-                                <div onClick={() => { setNavigationChange(1); saveCurrentNavigation(1) }} className={` ${!open ? " pl-1 ml-0 px-1" : ""} ${navigationChange === 1 ? " pr-3 sm:w-max md:w-fit bg-gradient-to-r from-[#51336A] to-[#51336A9C] text-white pl-5 -ml-5 cursor-not-allowed" : " cursor-pointer"} items-center  flex gap-2 md:gap-4 lg:gap-8 h-[60px] w-full rounded-[10px]`}>
+                                <div onClick={() => { setNavigationChange(1); saveCurrentNavigation(1) }} className={` ${!open ? " pl-1 ml-0 px-1" : ""} ${navigationChange === 1 ? " pr-3 sm:w-max md:w-fit bg-black text-white pl-5 -ml-5 cursor-not-allowed" : " cursor-pointer"} items-center  flex gap-2 md:gap-4 lg:gap-8 h-[60px] w-full rounded-[10px]`}>
                                     <img src={navigationChange === 1 ? shop_white : shop_black} alt="" className=' w-[36px] h-[36px] min-w-[36px] min-h-[36px]' />
                                     <h1 className={`${!open ? "hidden" : " "}`}>Shopping</h1>
                                 </div>
-                                <div onClick={() => { setNavigationChange(2); saveCurrentNavigation(2) }} className={` ${!open ? " pl-1 ml-0 px-1" : ""} ${navigationChange === 2 ? " pr-3 sm:w-max md:w-fit bg-gradient-to-r from-[#51336A] to-[#51336A9C] text-white pl-5 -ml-5 cursor-not-allowed" : " cursor-pointer"}  flex flex-col items-center justify-center h-[60px] w-full rounded-[10px]`}>
+                                <div onClick={() => { setNavigationChange(2); saveCurrentNavigation(2) }} className={` ${!open ? " pl-1 ml-0 px-1" : ""} ${navigationChange === 2 ? " pr-3 sm:w-max md:w-fit bg-black text-white pl-5 -ml-5 cursor-not-allowed" : " cursor-pointer"}  flex flex-col items-center justify-center h-[60px] w-full rounded-[10px]`}>
                                     <div className=' w-full'>
                                         <div className=' mt-[-10px] relative z-0 flex items-center gap-2 md:gap-4 lg:gap-8 w-full'>
                                             <img src={navigationChange === 2 ? notification_white : notification_black} alt="" className=' w-[36px] h-[36px] min-w-[36px] min-h-[36px]' />
@@ -171,15 +178,15 @@ const Dashboard = ({ book, setBook }) => {
                                         <div className=' relative z-10 mt-[-33px] ml-[14px] flex items-center justify-center text-center w-[15px] h-[15px] rounded-[15px] bg-[#FF0000] text-white text-[10px] p-[0.6rem]'>0</div>
                                     </div>
                                 </div>
-                                <div onClick={() => { setNavigationChange(3); saveCurrentNavigation(3) }} className={` ${!open ? " pl-1 ml-0 px-1" : ""} ${navigationChange === 3 ? " pr-3 sm:w-max md:w-fit bg-gradient-to-r from-[#51336A] to-[#51336A9C] text-white pl-5 -ml-5 cursor-not-allowed" : " cursor-pointer"} items-center  flex gap-2 md:gap-4 lg:gap-8 h-[60px] w-full rounded-[10px]`}>
+                                <div onClick={() => { setNavigationChange(3); saveCurrentNavigation(3) }} className={` ${!open ? " pl-1 ml-0 px-1" : ""} ${navigationChange === 3 ? " pr-3 sm:w-max md:w-fit bg-black text-white pl-5 -ml-5 cursor-not-allowed" : " cursor-pointer"} items-center  flex gap-2 md:gap-4 lg:gap-8 h-[60px] w-full rounded-[10px]`}>
                                     <img src={navigationChange === 3 ? settings_white : settings_black} alt="" className=' w-[36px] h-[36px] min-w-[36px] min-h-[36px]' />
                                     <h1 className={`${!open ? "hidden" : " "}`}>Settings</h1>
                                 </div>
-                                <div onClick={() => { setNavigationChange(4); saveCurrentNavigation(4) }} className={` ${!open ? " pl-1 ml-0 px-1" : ""} ${navigationChange === 4 ? `pr-3 ${!open ? "w-fit" : "w-full"} md:w-fit bg-gradient-to-r from-[#51336A] to-[#51336A9C] text-white pl-5 -ml-5 cursor-not-allowed` : " cursor-pointer"} items-center  flex gap-2 md:gap-4 lg:gap-8 h-[60px] rounded-[10px]`}>
+                                <div onClick={() => { setNavigationChange(4); saveCurrentNavigation(4) }} className={` ${!open ? " pl-1 ml-0 px-1" : ""} ${navigationChange === 4 ? `pr-3 ${!open ? "w-fit" : "w-full"} md:w-fit bg-black text-white pl-5 -ml-5 cursor-not-allowed` : " cursor-pointer"} items-center  flex gap-2 md:gap-4 lg:gap-8 h-[60px] rounded-[10px]`}>
                                     <img src={navigationChange === 4 ? help_white : help_black} alt="" className=' w-[36px] h-[36px] min-w-[36px] min-h-[36px]' />
                                     <h1 className={`${!open ? "hidden" : " "} md:whitespace-nowrap`}>Help & Support</h1>
                                 </div>
-                                <div onClick={() => { setNavigationChange(5); saveCurrentNavigation(5) }} className={` ${!open ? " pl-1 ml-0 px-1" : ""} ${navigationChange === 5 ? " pr-3 sm:w-max md:w-fit bg-gradient-to-r from-[#51336A] to-[#51336A9C] text-white pl-5 -ml-5 cursor-not-allowed" : " cursor-pointer"} items-center  flex gap-2 md:gap-4 lg:gap-8 h-[60px] w-full rounded-[10px]`}>
+                                <div onClick={() => { setNavigationChange(5); saveCurrentNavigation(5) }} className={` ${!open ? " pl-1 ml-0 px-1" : ""} ${navigationChange === 5 ? " pr-3 sm:w-max md:w-fit bg-black text-white pl-5 -ml-5 cursor-not-allowed" : " cursor-pointer"} items-center  flex gap-2 md:gap-4 lg:gap-8 h-[60px] w-full rounded-[10px]`}>
                                     <img src={navigationChange === 5 ? feedback_white : feedback_black} alt="" className=' w-[36px] h-[36px] min-w-[36px] min-h-[36px]' />
                                     <h1 className={`${!open ? "hidden" : " "}`}>Feedback</h1>
                                 </div>
@@ -194,15 +201,15 @@ const Dashboard = ({ book, setBook }) => {
                             <div id='chatButton' ref={chatButtonRef} className={`w-full flex items-end justify-end pr-[29px] ${isChatOpen ? "fixed bottom-[10px] opacity-50 cursor-not-allowed" : ""}`}>
                                 <button
                                     type='button'
-                                    className='float-right font-bold text-[18px] lg:text-[25px] xl:text-[32px] text-[#51336A] flex items-center justify-center text-center shadow-dashboard mt-16 w-[105px] h-[58px] bg-white rounded-tr-[30px] rounded-bl-[30px]'
-                                    onClick={() => setIsChatOpen(true)} // Open chatbot popup
+                                    className={` ${isChatOpen ? ` ${!open ? "hidden":""} text-opacity-20 cursor-not-allowed` : ""} float-right font-bold text-[18px] lg:text-[25px] xl:text-[32px] text-black flex items-center justify-center text-center shadow-dashboard mt-16 w-[105px] h-[58px] bg-white rounded-tr-[30px] rounded-bl-[30px]`}
+                                    onClick={() => handleIsChatOpen()} // Open chatbot popup
                                 >
                                     Chat
                                 </button>
                             </div>
 
                             {/* Chatbot Popup */}
-                            {isChatOpen && <ChatbotPopup onClose={() => handleIsChatOpen()} />}
+                            {open ? isChatOpen && <ChatbotPopup onClose={() => handleIsChatOpenOnclose()} /> : null}
                         </div>
                     </div>
                 </div>
