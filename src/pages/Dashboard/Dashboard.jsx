@@ -109,7 +109,10 @@ const Dashboard = ({ book, setBook }) => {
         const storedNavigation = window.localStorage.getItem("dshfauegkryav57236537dssgdgs33fagv")
         const parsedNavigation = JSON.parse(storedNavigation)
         const currentNavigation = decodeData(parsedNavigation)
-        setNavigationChange(parseInt(currentNavigation))
+        const parsedValue = parseInt(currentNavigation)
+        if(parsedValue >= 0){
+            setNavigationChange(parsedValue)
+        }
     }, [])
 
     return (
