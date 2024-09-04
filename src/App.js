@@ -9,6 +9,7 @@ import Contact from "./pages/Contact/Contact";
 import CustomerExperience from "./pages/CustomerExperience/CustomerExperience";
 import Dashboard from "./pages/Dashboard/Dashboard";
 import Shop from "./pages/Shop/Shop";
+import Admin from "./pages/Admin/Admin";
 
 function App() {
   const [book, setBook] = useState(false)
@@ -27,6 +28,7 @@ function App() {
           <Route path="/customer_experience" element={<CustomerExperience />} />
           <Route path="/shop" element={<Shop/>}/>
           <Route path="/dashboard" element={<Dashboard book={book} setBook={setBook} />} />
+          <Route path="/admin" element={<Admin />} />
           {/*  <Route path="/dashboard/carrier" element={<CarrierDashboard/>}/> */}
           {/* <Route path="/contact" element={<Contact/>} />
           <Route path="/list" element={<ListProperty/>}/>
