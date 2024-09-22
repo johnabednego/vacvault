@@ -26,17 +26,17 @@ const Settings = () => {
       }
       {/**Switch */}
       <div className='w-full flex flex-col gap-6'>
-        <div className={` ${switchValue === "Profile" ? "justify-start" : "justify-end"} xf:ml-3 mt-[41px] w-full xf:w-[386px] h-[60px] rounded-[80px] flex gap-5 xf:gap-[45px] items-center bg-white border-solid border-[1px] border-[#C1C1C1] shadow-switch`}>
+        <div className={` ${switchValue === "Profile" ? " justify-between pr-5 sm:pr-0 sm:justify-start" : " pl-5 sm:pl-0 justify-between sm:justify-end"} xf:ml-3 mt-[41px] w-full xf:w-[386px] h-[60px] rounded-[80px] flex gap-5 xf:gap-[45px] sm:gap-[70px] items-center bg-white border-solid border-[1px] border-[#C1C1C1] shadow-switch`}>
           {switchValue === 'Profile' ?
-            <div data-aos="fade-left" data-aos-duration="2000" className=' cursor-not-allowed ml-2 w-[180px] h-[45px] rounded-[30px] flex items-center justify-center text-center bg-[#51336A] font-bold text-[18px] text-white'>PROFILE</div>
+            <div data-aos="fade-left" data-aos-duration="2000" className=' cursor-not-allowed ml-2 w-[130px] h-[40px] sm:w-[180px] sm:h-[45px] rounded-[30px] flex items-center justify-center text-center bg-[#51336A] font-bold text-[14px] xf:text-[16px] sm:text-[18px] text-white'>PROFILE</div>
             :
-            <button onClick={() => setSwitchValue("Profile")} className=' font-bold text-[18px]'>PROFILE</button>
+            <button onClick={() => setSwitchValue("Profile")} className=' font-bold text-[14px] xf:text-[16px] sm:text-[18px]'>PROFILE</button>
           }
 
           {switchValue === "Account" ?
-            <div data-aos="fade-right" data-aos-duration="2000" className=' cursor-not-allowed mr-2 w-[180px] h-[45px] rounded-[30px] flex items-center justify-center text-center bg-[#51336A] font-bold text-[18px] text-white transform transition-all ease-in-out duration-300'>ACCOUNT</div>
+            <div data-aos="fade-right" data-aos-duration="2000" className=' cursor-not-allowed mr-2 w-[130px] h-[40px] sm:w-[180px] sm:h-[45px] rounded-[30px] flex items-center justify-center text-center bg-[#51336A] font-bold text-[14px] xf:text-[16px] sm:text-[18px] text-white transform transition-all ease-in-out duration-300'>ACCOUNT</div>
             :
-            <button onClick={() => setSwitchValue("Account")} className=' font-bold text-[18px]'>ACCOUNT</button>
+            <button onClick={() => setSwitchValue("Account")} className=' font-bold text-[14px] xf:text-[16px] sm:text-[18px]'>ACCOUNT</button>
           }
         </div>
 

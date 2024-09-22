@@ -5,26 +5,36 @@ import { IoMdClose } from "react-icons/io";
 import { useNavigate } from 'react-router-dom'
 import { AiOutlineLogout } from "react-icons/ai";
 
-const AdminNav = () => {
+const AdminNav = ({ adminSwitch, setAdminSwitch }) => {
     const navigate = useNavigate()
-    const [adminSwitch, setAdminSwitch] = useState(0)
     const [isOpen, setIsOpen] = useState(false);
+
+    // Encode the data before storing it
+    function encodeData(data) {
+        return btoa(data); // Base64 encoding
+    }
+
+    // Decode the data after retrieving it
+    function decodeData(encodedData) {
+        return atob(encodedData); // Base64 decoding
+    }
+
 
     const toManagement = () => {
         setAdminSwitch(0)
-        navigate("/admin")
+        window.localStorage.setItem(encodeData('adminswitch'), encodeData(0))
     }
     const toNotificationCenter = () => {
         setAdminSwitch(1)
-        navigate("/admin/notificationcenter")
+        window.localStorage.setItem(encodeData('adminswitch'), encodeData(1))
     }
     const toHelpDesk = () => {
         setAdminSwitch(2)
-        navigate("/admin/help")
+        window.localStorage.setItem(encodeData('adminswitch'), encodeData(2))
     }
     const toUserFeedback = () => {
         setAdminSwitch(3)
-        navigate("/admin/feedback")
+        window.localStorage.setItem(encodeData('adminswitch'), encodeData(3))
     }
 
     const toggleMenu = () => {
@@ -54,31 +64,24 @@ const AdminNav = () => {
 
         scrollToTop()
 
-
-        if (window.location.pathname === "/admin") {
-            setAdminSwitch(0)
-        }
-        else if (window.location.pathname === "/admin/notificationcenter") {
-            setAdminSwitch(1)
-        }
-        else if (window.location.pathname === "/admin/help") {
-            setAdminSwitch(2)
-        }
-        else if (window.location.pathname === "/admin/feedback") {
-            setAdminSwitch(3)
+        const encodedStoredSwitch = window.localStorage.getItem(encodeData('adminswitch'))
+        const storedSwitch = decodeData(encodedStoredSwitch)
+        const parsedStoredSwitch = parseInt(storedSwitch)
+        if (parsedStoredSwitch >= 0 && parsedStoredSwitch <= 3) {
+            setAdminSwitch(parsedStoredSwitch)
         }
         else {
-            setAdminSwitch(-1)
+            setAdminSwitch(0)
         }
-    }, [])
+    }, [setAdminSwitch])
 
 
     return (
         <>
-            <div className=' bg-[#51336A] fixed px-[6%] xl:px-[8%] w-full h-[80px] flex items-center justify-between z-20'>
-                <img src={logo} alt="" className=' w-[98px] h-[56px]' />
+            <div className=' bg-[#51336A] fixed px-[6%] md:px-[2%] lg:px-[4%] xl:px-[8%] w-full h-[80px] flex items-center justify-between z-20'>
+                <img src={logo} alt="" className='w-[98px] h-[56px] md:w-[80px] md:h-[40px] lg:w-[98px] lg:h-[56px]' />
 
-                <div className=' text-[16px] lg:text-[18px] hidden md:flex gap-[15px] lg:gap-[35px]'>
+                <div className=' text-[16px] lg:text-[18px] hidden md:flex gap-[25px] lg:gap-[35px]'>
                     <button onClick={() => toManagement()} className={` ${adminSwitch === 0 ? "text-[#989898] cursor-not-allowed" : "text-white cursor-pointer"}`}>Management</button>
                     <button onClick={() => toNotificationCenter()} className={` ${adminSwitch === 1 ? "text-[#989898] cursor-not-allowed" : "text-white cursor-pointer"}`}>Notification Center</button>
                     <button onClick={() => toHelpDesk()} className={` ${adminSwitch === 2 ? "text-[#989898] cursor-not-allowed" : "text-white cursor-pointer"}`}>Help Desk</button>
@@ -86,7 +89,7 @@ const AdminNav = () => {
                 </div>
 
                 <div className=' hidden xm:flex items-center gap-[18px] xl:gap-[24.17px] text-[14px]'>
-                    <button onClick={() => navigate("/dashboard")} className={` ${window.location.pathname === "/dashboard" ? " opacity-20 cursor-not-allowed" : "hover:opacity-70"} w-[138px] h-[40px] rounded-[6px] border-solid border-[1px] border-white flex items-center justify-center text-center font-semibold text-[20px] text-white shadow-dashboard transform transition-all ease-in-out`}>
+                    <button onClick={() => navigate("/dashboard")} className={` ${window.location.pathname === "/dashboard" ? " opacity-20 cursor-not-allowed" : "hover:opacity-70"} w-[138px] md:w-[120px] lg:w-[138px] h-[40px] md:h-[30px] lg:h-[40px] rounded-[6px] border-solid border-[1px] border-white flex items-center justify-center text-center font-semibold text-[20px] md:text-[18px] lg:text-[20px] text-white shadow-dashboard transform transition-all ease-in-out`}>
                         Dashboard
                     </button>
                     <AiOutlineLogout title="LogOut" className='tooltip w-[24px] h-[24px] cursor-pointer rotate-[270deg] text-white hover:opacity-70 transition-all transform ease-in-out duration-300' />
