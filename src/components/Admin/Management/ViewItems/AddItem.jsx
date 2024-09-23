@@ -25,7 +25,7 @@ const AddItem = ({ setShowAddModal, setShowItemAddedSuccess }) => {
         <div>
             <div
                 onClick={hideModal}
-                className=" cursor-pointer pt-[200px] md:pt-0 h-full justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0  z-[70] outline-none focus:outline-none scrollbar-hide"
+                className=" cursor-pointer md:pt-0 h-full justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0  z-[70] outline-none focus:outline-none scrollbar-hide"
             >
                 <div data-aos="zoom-in" data-aos-duration="3000" id='modal' className={`relative my-6 mx-2 xm:mx-0 ${isClosing ? 'zoom-out' : ''}`}>
                     {/*content*/}

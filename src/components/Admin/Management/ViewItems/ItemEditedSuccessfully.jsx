@@ -2,7 +2,7 @@ import React, { useState } from 'react'
 import logo from '../../../assets/vacvault.svg'
 import successIcon from '../../../assets/success.svg'
 
-const ItemAddedSuccessfully = ({ setShowItemAddedSuccess }) => {
+const ItemEditedSuccessfully = ({ setShowItemEditedSuccess }) => {
     const [isClosing, setIsClosing] = useState(false);
     const hideModal = (event) => {
         const modal = document.getElementById('modal');
@@ -10,7 +10,7 @@ const ItemAddedSuccessfully = ({ setShowItemAddedSuccess }) => {
         if (event.target !== modal && !modal.contains(event.target)) {
             setIsClosing(true);
             setTimeout(() => {
-                setShowItemAddedSuccess(false); // Call the function to close the modal
+                setShowItemEditedSuccess(false); // Call the function to close the modal
             }, 300); // Duration of the zoom-out animation
         }
     }
@@ -18,7 +18,7 @@ const ItemAddedSuccessfully = ({ setShowItemAddedSuccess }) => {
         <div>
             <div
                 onClick={hideModal}
-                className=" cursor-pointer md:pt-0 h-full justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0  z-[70] outline-none focus:outline-none scrollbar-hide"
+                className=" cursor-pointer  md:pt-0 h-full justify-center items-center flex overflow-x-hidden overflow-y-auto fixed inset-0  z-[70] outline-none focus:outline-none scrollbar-hide"
             >
                 <div data-aos="zoom-in" data-aos-duration="3000" id='modal' className={`relative my-6 mx-2 xm:mx-0 ${isClosing ? 'zoom-out' : ''}`}>
                     <div className="  cursor-default border-0 rounded-[30px] shadow-lg relative flex flex-col w-full bg-white outline-none focus:outline-none">
@@ -29,14 +29,14 @@ const ItemAddedSuccessfully = ({ setShowItemAddedSuccess }) => {
                                     <img src={successIcon} alt="successIcon" className=' w-[35px] h-[35px]' />
                                 </div>
                                 <div className='w-full flex flex-col gap-[11px] items-center justify-center text-center'>
-                                    <h1 className=' font-bold text-[18px] text-black'>Item Added</h1>
+                                    <h1 className=' font-bold text-[18px] text-black'>Item Edited</h1>
                                     <div className='w-full flex flex-col gap-[10px] text-[14px] text-[#AAAAAA]'>
-                                        <p>The item has been added, you can edit or delete it.</p>
-                                        <p>People will begin to see it in the lists of items when they are booking.</p>
+                                        <p>The item has been Edited successfully.</p>
+                                        <p>People will begin to see the update in the lists of items when they are booking.</p>
                                     </div>
                                 </div>
                             </div>
-                            <button onClick={()=> setShowItemAddedSuccess(false)} className=' w-full h-[40px] rounded-[30px] bg-[#6348A5] flex flex-col items-center justify-center text-center text-white text-[16px] hover:opacity-70 transform transition-all ease-in-out duration-300'>Return</button>
+                            <button onClick={()=> setShowItemEditedSuccess(false)} className=' w-full h-[40px] rounded-[30px] bg-[#6348A5] flex flex-col items-center justify-center text-center text-white text-[16px] hover:opacity-70 transform transition-all ease-in-out duration-300'>Return</button>
                         </div>
                     </div>
                 </div>
@@ -46,4 +46,4 @@ const ItemAddedSuccessfully = ({ setShowItemAddedSuccess }) => {
     )
 }
 
-export default ItemAddedSuccessfully
+export default ItemEditedSuccessfully
