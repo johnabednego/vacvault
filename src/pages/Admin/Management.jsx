@@ -1,14 +1,16 @@
 import React, { useState } from 'react'
 import BookingsAdmin from '../../components/Admin/Management/BookingsAdmin'
+import ViewItems from '../../components/Admin/Management/ViewItems/ViewItems'
 
 const Management = () => {
     const [managementSwitch, setManagementSwitch] = useState(0)
     const [bookingAdmin, setBookingAdmin] = useState(0)
+    const [viewItemList, setViewItemList] = useState(null)
     return (
         <div className='w-full flex flex-col items-center'>
             {/**View All Users */}
             <div className='w-full flex items-start justify-start'>
-            <button className=' w-[174px] h-[48px] rounded-[10px] bg-[#6348A5] flex items-center justify-center text-center font-semibold text-[20px] text-white hover:opacity-70 transform transition-all ease-in-out duration-300 shadow-dashboard'>View All Users</button>
+                <button className=' w-[174px] h-[48px] rounded-[10px] bg-[#6348A5] flex items-center justify-center text-center font-semibold text-[20px] text-white hover:opacity-70 transform transition-all ease-in-out duration-300 shadow-dashboard'>View All Users</button>
             </div>
             {/**Switch */}
             <div className={` mt-5 ${managementSwitch === 0 ? " pl-[10px] pr-[40px]" : "pl-[40px] pr-[10px]"} w-[250px] xf:w-[280px] xm:w-[300px] sm:w-[353px] h-[59px] py-[7px] rounded-[80px] flex items-center justify-between border-solid border-[1px] border-[#C1C1C1] shadow-switch`}>
@@ -28,7 +30,9 @@ const Management = () => {
 
             {
                 managementSwitch === 0 ?
-                    <BookingsAdmin />
+                    viewItemList ?
+                        <ViewItems viewItemList={viewItemList} setViewItemList={setViewItemList} /> :
+                        <BookingsAdmin viewItemList={viewItemList} setViewItemList={setViewItemList} />
                     :
                     null
             }
