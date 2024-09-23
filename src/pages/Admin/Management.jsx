@@ -1,11 +1,14 @@
 import React, { useState } from 'react'
 import BookingsAdmin from '../../components/Admin/Management/BookingsAdmin'
 import ViewItems from '../../components/Admin/Management/ViewItems/ViewItems'
+import OrdersAdmin from '../../components/Admin/Management/OrdersAdmin'
+import ViewProducts from '../../components/Admin/Management/ViewProducts/ViewProducts'
 
 const Management = () => {
     const [managementSwitch, setManagementSwitch] = useState(0)
     const [bookingAdmin, setBookingAdmin] = useState(0)
     const [viewItemList, setViewItemList] = useState(null)
+    const [viewProductList, setViewProductList] = useState(null)
     return (
         <div className='w-full flex flex-col items-center'>
             {/**View All Users */}
@@ -34,7 +37,9 @@ const Management = () => {
                         <ViewItems viewItemList={viewItemList} setViewItemList={setViewItemList} /> :
                         <BookingsAdmin viewItemList={viewItemList} setViewItemList={setViewItemList} />
                     :
-                    null
+                    viewProductList ?
+                        <ViewProducts viewProductList={viewProductList} setViewProductList={setViewProductList} /> :
+                        <OrdersAdmin viewProductList={viewProductList} setViewProductList={setViewProductList} />
             }
 
 

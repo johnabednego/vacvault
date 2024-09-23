@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import logo from '../../../assets/vacvault.svg'
 
-const DeleteItem = ({ deleteItem, setDeleteItem }) => {
+const DeleteItem = ({ deleteItem, setDeleteItem, setShowItemDeletedSuccess }) => {
     const [isClosing, setIsClosing] = useState(false);
     const hideModal = (event) => {
         const modal = document.getElementById('modal');
@@ -12,6 +12,12 @@ const DeleteItem = ({ deleteItem, setDeleteItem }) => {
                 setDeleteItem(null); // Call the function to close the modal
             }, 300); // Duration of the zoom-out animation
         }
+    }
+
+    const handleDelete = async (e) => {
+        e.preventDefault();
+        setDeleteItem(null);
+        setShowItemDeletedSuccess(true)
     }
 
     return (
@@ -31,7 +37,7 @@ const DeleteItem = ({ deleteItem, setDeleteItem }) => {
 
                             <div className='w-full flex gap-[24px] items-center justify-center'>
                                 <button onClick={() => setDeleteItem(null)} type="button" className=' w-[120px] xf:w-[130px] xm:w-[171px] h-[45px] rounded-[30px] border-solid border-[2px] border-[#AAAAAA] flex items-center justify-center text-center text-[18px] text-black hover:opacity-70 transform transition-all ease-in-out duration-300'>Cancel</button>
-                                <button type="button" className=' w-[120px] xf:w-[130px] xm:w-[171px] h-[45px] rounded-[30px] bg-[#EB0728] flex items-center justify-center text-center text-[18px] text-white hover:opacity-70 transform transition-all ease-in-out duration-300'>Delete</button>
+                                <button onClick={(e)=>handleDelete(e)} type="button" className=' w-[120px] xf:w-[130px] xm:w-[171px] h-[45px] rounded-[30px] bg-[#EB0728] flex items-center justify-center text-center text-[18px] text-white hover:opacity-70 transform transition-all ease-in-out duration-300'>Delete</button>
                             </div>
                         </div>
                     </div>

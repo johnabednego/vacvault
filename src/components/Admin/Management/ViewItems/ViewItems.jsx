@@ -7,6 +7,7 @@ import AddItem from './AddItem'
 import ItemAddedSuccessfully from './ItemAddedSuccessfully'
 import ItemEditedSuccessfully from './ItemEditedSuccessfully'
 import DeleteItem from './DeleteItem'
+import ItemDeletedSuccessfully from './ItemDeletedSuccessfully'
 
 const ViewItems = ({ viewItemList, setViewItemList }) => {
   const [editItem, setEditItem] = useState(null)
@@ -15,21 +16,22 @@ const ViewItems = ({ viewItemList, setViewItemList }) => {
   const [deleteItem, setDeleteItem] = useState(null)
   const [showItemDeletedSuccess, setShowItemDeletedSuccess] = useState(false)
 
-  
+
   const [showAddModal, setShowAddModal] = useState(false)
   const [showItemAddedSuccess, setShowItemAddedSuccess] = useState(false)
 
   return (
     <div className='w-full flex flex-col'>
       {editItem ?
-        <EditItem editItem={editItem} setEditItem={setEditItem} setShowItemEditedSuccess={setShowItemEditedSuccess}/> : null}
-          {showItemEditedSuccess ?
+        <EditItem editItem={editItem} setEditItem={setEditItem} setShowItemEditedSuccess={setShowItemEditedSuccess} /> : null}
+      {showItemEditedSuccess ?
         <ItemEditedSuccessfully setShowItemEditedSuccess={setShowItemEditedSuccess} /> : null}
 
-      
+
       {deleteItem ?
-        <DeleteItem deleteItem={deleteItem} setDeleteItem={setDeleteItem} setShowItemDeletedSuccess={setShowItemDeletedSuccess}/> : null}
-      
+        <DeleteItem deleteItem={deleteItem} setDeleteItem={setDeleteItem} setShowItemDeletedSuccess={setShowItemDeletedSuccess} /> : null}
+      {showItemDeletedSuccess ?
+        <ItemDeletedSuccessfully setShowItemDeletedSuccess={setShowItemDeletedSuccess} /> : null}
 
       {showAddModal ?
         <AddItem setShowAddModal={setShowAddModal} setShowItemAddedSuccess={setShowItemAddedSuccess} /> : null}
@@ -51,7 +53,7 @@ const ViewItems = ({ viewItemList, setViewItemList }) => {
               <h1 className=' font-light text-[24px]'>Bucket (<span className=' font-bold'>₵10</span>)</h1>
               <div className='w-auto flex gap-[30px]'>
                 <button type='button' onClick={() => setEditItem(1)}><img src={editIcon} alt="edit" className=' w-[30px] h-[30px]' /></button>
-                <button type='button' onClick={() =>setDeleteItem(1)} ><img src={deleteIcon} alt="delete" className=' w-[30px] h-[30px]' /></button>
+                <button type='button' onClick={() => setDeleteItem(1)} ><img src={deleteIcon} alt="delete" className=' w-[30px] h-[30px]' /></button>
               </div>
             </div>
           </div>
