@@ -108,12 +108,12 @@ const Nav = () => {
                     <button onClick={() => toContact()} className={` ${navSwitch === 3 ? "text-[#989898] cursor-not-allowed" : "text-white cursor-pointer"}`}>CONTACT </button>
                 </div>
 
-                {/* <div className=' hidden xm:flex text-[14px] gap-[18px] xl:gap-[24.17px]'>
+                <div className=' hidden xm:flex text-[14px] gap-[18px] xl:gap-[24.17px]'>
                 <button onClick={()=>dispatch(SignInTrue())} className='hover:opacity-70 flex bg-[#6348A5] text-white text-center items-center justify-center rounded-[6px] w-[64px] lg:w-[92.83px] h-[40px] transition-all duration-300'>Sign In</button>
                 <button onClick={()=>dispatch(SignUpTrue())} className='hover:opacity-70 flex bg-[#100C14] text-white text-center items-center justify-center rounded-[6px] w-[64px] lg:w-[92.83px] h-[40px] transition-all duration-300'>Sign Up</button>
-            </div> */}
+            </div>
 
-                <div className=' hidden xm:flex items-center gap-[18px] xl:gap-[24.17px] text-[14px]'>
+                {/* <div className=' hidden xm:flex items-center gap-[18px] xl:gap-[24.17px] text-[14px]'>
                     <button onClick={() => navigate("/dashboard")} className={` ${window.location.pathname === "/dashboard" ? " opacity-20 cursor-not-allowed" : "hover:opacity-70"} w-[138px] h-[40px] rounded-[6px] border-solid border-[1px] border-white flex items-center justify-center text-center font-semibold text-[20px] text-white shadow-dashboard transform transition-all ease-in-out`}>
                         Dashboard
                     </button>
@@ -122,7 +122,7 @@ const Nav = () => {
 
                 <div className=' text-white md:hidden'>
                     <RxHamburgerMenu onClick={toggleMenu} className=' w-8 h-8' />
-                </div>
+                </div> */}
                 {/* Mobile Menu */}
                 {isOpen && (
                     <div onClick={hideModal} className=" md:hidden fixed inset-0 bg-black bg-opacity-50 z-40 flex items-center justify-center">
@@ -136,22 +136,22 @@ const Nav = () => {
                             </button>
                             {/* Your navigation links here */}
                             <div className=' pl-4 items-start justify-start mt-20 text-[16px] flex flex-col gap-[20px] '>
-                                {/* <div className=' w-full justify-between pr-[50px] xm:hidden flex text-[14px] gap-[18px]'>
+                                <div className=' w-full justify-between pr-[50px] xm:hidden flex text-[14px] gap-[18px]'>
                                     <button onClick={() => { dispatch(SignInTrue()); closeMenu() }} className='hover:opacity-70 flex bg-[#6348A5] text-white text-center items-center justify-center rounded-[6px] w-[64px] lg:w-[92.83px] h-[40px] transition-all duration-300'>Sign In</button>
                                     <button onClick={() => { dispatch(SignUpTrue()); closeMenu() }} className='hover:opacity-70 flex bg-[#100C14] text-white text-center items-center justify-center rounded-[6px] w-[64px] lg:w-[92.83px] h-[40px] transition-all duration-300'>Sign Up</button>
-                                </div> */}
+                                </div>
                                 <button onClick={() => toHome()} className={` ${navSwitch === 0 ? "text-[#989898] cursor-not-allowed" : "text-white cursor-pointer"}`}>HOME</button>
                                 <button onClick={() => toAbout()} className={` ${navSwitch === 1 ? "text-[#989898] cursor-not-allowed" : "text-white cursor-pointer"}`}>ABOUT</button>
                                 <button onClick={() => toServices()} className={` ${navSwitch === 2 ? "text-[#989898] cursor-not-allowed" : "text-white cursor-pointer"}`}>SERVICES</button>
                                 <button onClick={() => toContact()} className={` ${navSwitch === 3 ? "text-[#989898] cursor-not-allowed" : "text-white cursor-pointer"}`}>CONTACT </button>
-                                <div className=' pr-5 w-full justify-between xm:hidden flex flex-col text-[14px] gap-[18px]'>
+                                {/* <div className=' pr-5 w-full justify-between xm:hidden flex flex-col text-[14px] gap-[18px]'>
                                     <button onClick={() => navigate("/dashboard")} className={` ${window.location.pathname === "/dashboard" ? " opacity-20 cursor-not-allowed" : "hover:opacity-70"} w-[138px] h-[40px] rounded-[6px] border-solid border-[1px] border-white flex items-center justify-center text-center font-semibold text-[20px] text-white shadow-dashboard transform transition-all ease-in-out`}>
                                         Dashboard
                                     </button>
                                     <div className='w-full flex items-end justify-end'>
                                         <AiOutlineLogout title="LogOut" className='tooltip w-[24px] h-[24px] cursor-pointer rotate-[270deg] text-white hover:opacity-70 transition-all transform ease-in-out duration-300' />
                                     </div>
-                                </div>
+                                </div> */}
                             </div>
                         </div>
                     </div>
