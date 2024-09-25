@@ -55,13 +55,13 @@ const SignUp = () => {
         else {
             const data = JSON.stringify({
                 email: email,
-                confirmation_code: code
+                otp: code
             })
 
             let config = {
                 method: 'post',
                 maxBodyLength: Infinity,
-                url: `${baseUrl}/confirm/`,
+                url: `${baseUrl}/auth/verify-email`,
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -71,31 +71,18 @@ const SignUp = () => {
                 .then((response) => {
                     const feedback = response.data
 
-                    if (feedback.message) {
+                    if (feedback) {
                         dispatch(SignUpFalse())
                         dispatch(SignInTrue())
                     }
-                    else {
-                        setVerifyError(feedback.message)
-                    }
+                    // else {
+                    //     setVerifyError(feedback.message)
+                    // }
 
                 })
                 .catch((error) => {
                     console.log(error)
-                    if (error?.response?.data?.error?.slice(18, 40) === "(ExpiredCodeException)") {
-                        setVerifyError(error?.response?.data?.error?.slice(83))
-                    }
-                    else if (error?.response?.data?.error?.slice(85) === "User cannot be confirmed. Current status is CONFIRMED") {
-                        dispatch(SignUpFalse())
-                        dispatch(SignInTrue())
-                    }
-                    else if (error?.response?.data?.error === "An error occurred (CodeMismatchException) when calling the ConfirmSignUp operation: Invalid verification code provided, please try again.") {
-                        setVerifyError("You have entered a wrong verification code")
-                    }
-                    else {
-                        console.log(error.message)
-                        setVerifyError(error.message)
-                    }
+                    
                 })
         }
     }
@@ -107,7 +94,7 @@ const SignUp = () => {
         let config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: `${baseUrl}/resend/`,
+            url: `${baseUrl}/auth/`,
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -195,9 +182,9 @@ const SignUp = () => {
                             ))}
                         </div>
                         <h1 className=' mt-[18.83px] text-[#707070] text-[14px]'>Code expires in <span className=' text-[#EB0728] font-bold'>{formattedTime}</span></h1>
-                        <h1 className=' mt-[27px] text-[12px] text-[#707070]'>Didn’t get a code? <span onClick={resendCode} className=' cursor-pointer font-bold text-[#EB0728]'>Click to resend</span></h1>
+                        <h1 className=' mt-[27px] text-[12px] text-[#707070]'>Didn’t get a code? <span onClick={resendCode} className=' cursor-pointer font-bold text-[#6348A5]'>Click to resend</span></h1>
                         {/** Rsesnd button */}
-                        <button onClick={verify} type="button" className=' mt-[10px] bg-[#EB0728] h-[40px] relative border-none rounded-[30px] select-none text-white text-[1rem] w-full '>Verify</button>
+                        <button onClick={verify} type="button" className=' mt-[10px] bg-[#6348A5] h-[40px] relative border-none rounded-[30px] select-none text-white text-[1rem] w-full '>Verify</button>
                     </div>
                 </div>
             }

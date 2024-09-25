@@ -20,7 +20,7 @@ const SignIn = () => {
     const [errorMessage, setErrorMessage] = useState("")
     const [restRequestError, setRestRequestError] = useState("")
     const [email, setEmail] = useState("")
-    const [passowrd, setPassowrd] = useState("")
+    const [password, setPassword] = useState("")
     const [showPassword, setShowPassword] = useState(false)
     const [forgotPassword, setForgotPassword] = useState(0)
     const [forgotPasswordEmail, setForgotPasswordEmail] = useState("")
@@ -33,7 +33,7 @@ const SignIn = () => {
     const inputRefs = useRef([]);
     const [seconds, setSeconds] = useState(9 * 60 + 59);
 
-    const [newPassowrd, setNewPassowrd] = useState("")
+    const [newPassword, setNewPassword] = useState("")
     const [showNewPassword, setShowNewPassword] = useState(false)
     const [confirmPassword, setConfirmPassword] = useState("")
     const [newPassError, setNewPassError] = useState("")
@@ -66,13 +66,13 @@ const SignIn = () => {
         event.preventDefault();
         const data = JSON.stringify({
             email: email,
-            password: passowrd
+            password: password
         })
 
         let config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: `${baseUrl}/signIn/`,
+            url: `${baseUrl}/auth/login`,
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -81,34 +81,23 @@ const SignIn = () => {
         try {
             axios.request(config)
                 .then((response) => {
-                    const access_key = response?.data?.key
-                    const data = response?.data
-                    console.log(data)
-                    if (access_key) {
+
+                    const token = response?.data?.token
+                    if (token) {
                         dispatch(SignInFalse())
-                        navigate("/dashboard", { state: { data: data } })
-                        window.localStorage.setItem("jdgbgiusudgfdyudbudvfudhfgbiyfudvifiudubuydfbduvuydfvuy", encodeData(JSON.stringify(data)))
+                        navigate("/dashboard")
+                        window.localStorage.setItem("jdgbgiusudgfdyudbudvfudhfgbiyfudvifiudubuydfbduvuydfvuy", encodeData(JSON.stringify(token)))
                     }
                 })
                 .catch((error) => {
                     //Catch User is not confirmed Exception 
-                    console.log(error.response.data.non_field_errors[0])
-                    if (error?.response?.data?.error?.slice(87) === "User is not confirmed.") {
-                        // alert(" Account Not Verified!! \n Check your email address and Verify!")
-                        // setErrorMessage("Account Not Verified!! \n Check your email address and Verify!")
-                        setToVerify(true)
+                    if(error?.response?.data?.msg){
+                        setErrorMessage(error?.response?.data?.msg)
                     }
-                    else if (error?.response?.data?.non_field_errors[0] === "Unable to log in with provided credentials.") {
-                        setErrorMessage("Sorry! It seems you entered the wrong email or password")
+                    else{
+                        console.log(error)
                     }
-                    else {
-                        if (error?.response?.data?.error) {
-                            setErrorMessage(error?.response?.data?.error)
-                        } else {
-                            setErrorMessage(error.message + " \n Check Your Internet Connection. \n And Try Again")
-                        }
-
-                    }
+                    
                 });
         } catch (error) {
             console.log(error)
@@ -251,7 +240,7 @@ const SignIn = () => {
         let config = {
             method: 'post',
             maxBodyLength: Infinity,
-            url: `${baseUrl}/reset/request/`,
+            url: `${baseUrl}/auth/request-password-reset`,
             headers: {
                 'Content-Type': 'application/json'
             },
@@ -260,30 +249,15 @@ const SignIn = () => {
         await axios.request(config)
             .then((response) => {
                 const feedback = response.data
-                if (feedback?.message === "Password reset requested successfully") {
+                if (feedback) {
                     // dispatch(SignUpFalse())
                     // dispatch(SignUpTrue())
                     setForgotPassword(2)
                 }
-                else {
-                    if (feedback?.message) {
-                        setRestRequestError(feedback.message)
-                    } else if (feedback?.error === "User not found") {
-                        setRestRequestError("We cannot find an account with this email")
-                    }
-                    else {
-                        setRestRequestError(feedback.error)
-                    }
-                }
-
+                
             })
             .catch((error) => {
-                if (error?.response?.data?.error === "User not found") {
-                    setRestRequestError("We cannot find an account with this email")
-                }
-                else {
-                    setRestRequestError(error.message)
-                }
+                console.log(error);
             })
     }
 
@@ -381,11 +355,11 @@ const SignIn = () => {
     };
 
     const changePassword = async () => {
-        let passwordError = handlePasswordChange(newPassowrd)
-        if (newPassowrd.length < 1) {
+        let passwordError = handlePasswordChange(newPassword)
+        if (newPassword.length < 1) {
             setNewPassError("Password is Required")
         }
-        else if (newPassowrd.length < 8) {
+        else if (newPassword.length < 8) {
             setNewPassError("Password is too short")
         }
         else if (passwordError.length > 0) {
@@ -394,7 +368,7 @@ const SignIn = () => {
         else if (confirmPassword.length < 1) {
             setNewPassError("Confirm Password")
         }
-        else if (confirmPassword !== newPassowrd) {
+        else if (confirmPassword !== newPassword) {
             setNewPassError("Password Mismatch")
         }
         else {
@@ -406,13 +380,13 @@ const SignIn = () => {
 
             const data = JSON.stringify({
                 email: forgotPasswordEmail,
-                confirmation_code: code,
-                new_password: newPassowrd
+                otp: code,
+                newPassword: newPassword
             })
             let config = {
                 method: 'post',
                 maxBodyLength: Infinity,
-                url: `${baseUrl}/reset/confirm/`,
+                url: `${baseUrl}/auth/set-new-password`,
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -459,7 +433,7 @@ const SignIn = () => {
     }
 
     const newPasswordOnChange = (value) => {
-        setNewPassowrd(value)
+        setNewPassword(value)
         setStrength(tester(value));
     }
 
@@ -500,7 +474,7 @@ const SignIn = () => {
                         <div className=''>
                             {/**Sign in */}
                             <div className=' box-border flex flex-wrap '>
-                                {errorMessage.length > 0 ? <h1 className=' mb-2 py-[5px] flex justify-center items-center text-center rounded-[20px] bg-[#FFDFE4] border-solid border-[1px] border-[#51336A] w-full mt-[15px] text-[12px] text-[#51336A]'>
+                                {errorMessage.length > 0 ? <h1 className=' mb-2 py-[5px] flex justify-center items-center text-center rounded-[20px] bg-[#FFDFE4] border-solid border-[1px] border-[#EB0728] w-full mt-[15px] text-[12px] text-[#EB0728]'>
                                     <img src={errorIcon} alt="" className='mr-[5px]' />
                                     {errorMessage}
                                 </h1> : null}
@@ -522,7 +496,7 @@ const SignIn = () => {
                                                 <div className=' mt-[15px] box-border m-0 basis-full flex-grow-0 max-w-full'>
                                                     <div className=' box-border flex flex-wrap w-full'>
                                                         <div className='w-full flex items-start'>
-                                                            <input value={passowrd} onChange={(e) => setPassowrd(e.target.value)} required type={showPassword ? "text" : "password"} name="password" id="password" data-cy="password" placeholder="Password" className=' focus:outline-[#51336A] m-0 text-[15px] text-[#707070] w-full font-normal bg-[#E5E5E5] h-[40px] rounded-[30px] pl-5 ' />
+                                                            <input value={password} onChange={(e) => setPassword(e.target.value)} required type={showPassword ? "text" : "password"} name="password" id="password" data-cy="password" placeholder="Password" className=' focus:outline-[#51336A] m-0 text-[15px] text-[#707070] w-full font-normal bg-[#E5E5E5] h-[40px] rounded-[30px] pl-5 ' />
                                                             <div onClick={togglePasswordVisibility} className='-ml-[39px] mt-[10px] cursor-pointer '>
                                                                 {showPassword ? <img src={visibility_on} alt="" /> : <img src={visibility_off} alt="" />}
                                                             </div>
@@ -554,7 +528,7 @@ const SignIn = () => {
                                 <div className=' w-full flex flex-col items-center justify-center text-center'>
                                     <img src={vacvault} alt="" className=' h-[33px] w-[107px]' />
                                     {verifyError?.length > 0 ?
-                                        <h1 className={` ${verifyError === "Code Sent" ? "bg-[#D6FBC9] border-[1px] border-[#4FBF26] text-[#4FBF26]" : "bg-[#FFDFE4] border-[#51336A] text-[#51336A]"}  py-[5px] flex justify-center items-center text-center rounded-[20px]  border-solid border-[1px]  w-full mt-[15px] text-[12px] `}>
+                                        <h1 className={` ${verifyError === "Code Sent" ? "bg-[#D6FBC9] border-[1px] border-[#4FBF26] text-[#4FBF26]" : "bg-[#FFDFE4] border-[#EB0728] text-[#EB0728]"}  py-[5px] flex justify-center items-center text-center rounded-[20px]  border-solid border-[1px]  w-full mt-[15px] text-[12px] `}>
                                             {verifyError === "Code Sent" ?
                                                 <img src={codeSentIcon} alt="" className='mr-[5px]' />
                                                 :
@@ -665,29 +639,29 @@ const SignIn = () => {
                                         <div className=' mt-[15px] box-border m-0 basis-full flex-grow-0 max-w-full'>
                                             <div className=' box-border flex flex-wrap w-full'>
                                                 <div className='w-full flex items-start'>
-                                                    <input value={newPassowrd} onChange={(e) => newPasswordOnChange(e.target.value)} required type={showNewPassword ? "text" : "password"} name="password" id="password" data-cy="password" placeholder="New Password" className={`
-                                                                ${(newPassowrd.length > 0 && handlePasswordChange(newPassowrd) !== "") ||
-                                                            (newPassowrd.length < 4 && newPassError === "Password is Required") ||
-                                                            (newPassowrd.length < 4 && newPassError === "Password is too short") ||
+                                                    <input value={newPassword} onChange={(e) => newPasswordOnChange(e.target.value)} required type={showNewPassword ? "text" : "password"} name="password" id="password" data-cy="password" placeholder="New Password" className={`
+                                                                ${(newPassword.length > 0 && handlePasswordChange(newPassword) !== "") ||
+                                                            (newPassword.length < 4 && newPassError === "Password is Required") ||
+                                                            (newPassword.length < 4 && newPassError === "Password is too short") ||
                                                             newPassError === "Password Mismatch"
                                                             ? " border-[1px] border-[#51336A]" : ""}  m-0 placeholder-[#707070] text-[15px] text-[#707070] w-full font-normal bg-[#E5E5E5] h-[40px] rounded-[30px] pl-5 `} />
                                                     <div className=' -ml-[100px] flex mt-4 gap-[5px] pr-[50px]'>
-                                                        <div className={` ${newPassowrd.length < 1 ? "bg-[#D9D9D9]" : newPassowrd.length < 6 ? "bg-[#51336A]" : strength <= 2 ? "bg-[#51336A]" : strength === 3 ? " bg-yellow-300" : strength >= 4 ? "bg-[#92D16B]" : "bg-[#92D16B]"} w-2 h-2 rounded-[8px]`} />
-                                                        <div className={` ${newPassowrd.length < 7 ? "bg-[#D9D9D9]" : strength === 1 ? "bg-[#D9D9D9]" : strength === 2 ? "bg-[#51336A]" : strength === 3 ? " bg-yellow-300" : strength >= 4 ? "bg-[#92D16B]" : "bg-[#92D16B]"} w-2 h-2 rounded-[8px]`} />
-                                                        <div className={` ${newPassowrd.length < 8 ? "bg-[#D9D9D9]" : strength === 3 ? " bg-yellow-300" : strength >= 4 ? "bg-[#92D16B]" : ""} w-2 h-2 rounded-[8px]`} />
-                                                        <div className={` ${newPassowrd.length >= 8 && strength >= 4 ? "bg-[#92D16B]" : "bg-[#D9D9D9]"} w-2 h-2 rounded-[8px]`} />
-                                                        <div className={` ${newPassowrd.length >= 8 && strength >= 5 ? "bg-[#92D16B]" : "bg-[#D9D9D9]"} w-2 h-2 rounded-[8px]`} />
+                                                        <div className={` ${newPassword.length < 1 ? "bg-[#D9D9D9]" : newPassword.length < 6 ? "bg-[#51336A]" : strength <= 2 ? "bg-[#51336A]" : strength === 3 ? " bg-yellow-300" : strength >= 4 ? "bg-[#92D16B]" : "bg-[#92D16B]"} w-2 h-2 rounded-[8px]`} />
+                                                        <div className={` ${newPassword.length < 7 ? "bg-[#D9D9D9]" : strength === 1 ? "bg-[#D9D9D9]" : strength === 2 ? "bg-[#51336A]" : strength === 3 ? " bg-yellow-300" : strength >= 4 ? "bg-[#92D16B]" : "bg-[#92D16B]"} w-2 h-2 rounded-[8px]`} />
+                                                        <div className={` ${newPassword.length < 8 ? "bg-[#D9D9D9]" : strength === 3 ? " bg-yellow-300" : strength >= 4 ? "bg-[#92D16B]" : ""} w-2 h-2 rounded-[8px]`} />
+                                                        <div className={` ${newPassword.length >= 8 && strength >= 4 ? "bg-[#92D16B]" : "bg-[#D9D9D9]"} w-2 h-2 rounded-[8px]`} />
+                                                        <div className={` ${newPassword.length >= 8 && strength >= 5 ? "bg-[#92D16B]" : "bg-[#D9D9D9]"} w-2 h-2 rounded-[8px]`} />
                                                     </div>
                                                     <div onClick={toggleNewPasswordVisibility} className='-ml-[39px] mt-[10px] cursor-pointer '>
                                                         {showNewPassword ? <img src={visibility_on} alt="" /> : <img src={visibility_off} alt="" />}
                                                     </div>
                                                 </div>
-                                                {handlePasswordChange(newPassowrd) === "Password Must Contain atleast 1 numeric" || newPassError === "Password is Required" || newPassError === "Password is too short" || newPassError === "Password Mismatch"
-                                                    || handlePasswordChange(newPassowrd) === "Password Must Contain atleast 1  lowercase" ||
-                                                    handlePasswordChange(newPassowrd) === "Password Must Contain atleast 1 uppercase" ||
-                                                    handlePasswordChange(newPassowrd) === "Password Must Contains atleast 1 special character" ? <h1 className={`${newPassError.length < 1 ? "hidden" : "flex"} pl-5 w-full mt-[5px] text-red-600 text-[12px] text-left`}>{newPassowrd.length > 0 && handlePasswordChange(newPassowrd) !== "" ? handlePasswordChange(newPassowrd) :
-                                                        (newPassowrd.length < 4 && newPassError === "Password is Required") ||
-                                                            (newPassowrd.length < 4 && newPassError === "Password is too short") ||
+                                                {handlePasswordChange(newPassword) === "Password Must Contain atleast 1 numeric" || newPassError === "Password is Required" || newPassError === "Password is too short" || newPassError === "Password Mismatch"
+                                                    || handlePasswordChange(newPassword) === "Password Must Contain atleast 1  lowercase" ||
+                                                    handlePasswordChange(newPassword) === "Password Must Contain atleast 1 uppercase" ||
+                                                    handlePasswordChange(newPassword) === "Password Must Contains atleast 1 special character" ? <h1 className={`${newPassError.length < 1 ? "hidden" : "flex"} pl-5 w-full mt-[5px] text-red-600 text-[12px] text-left`}>{newPassword.length > 0 && handlePasswordChange(newPassword) !== "" ? handlePasswordChange(newPassword) :
+                                                        (newPassword.length < 4 && newPassError === "Password is Required") ||
+                                                            (newPassword.length < 4 && newPassError === "Password is too short") ||
                                                             newPassError === "Password Mismatch" ? newPassError : ""}</h1> : null}
                                                 {/* {errorMessage === "Password is Required" || errorMessage === "Password is too short!" || errorMessage === "Password Mismatch!!"
                                                             || errorMessage === "Password Must Contain atleast 1  lowercase" ||

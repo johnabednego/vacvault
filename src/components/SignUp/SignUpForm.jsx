@@ -134,8 +134,7 @@ const SignUpForm = ({email, setEmail, setToVerify}) => {
                 first_name: firstName,
                 last_name: lastName,
                 email: email,
-                password1: passowrd,
-                password2: passowrd,
+                password: passowrd,
                 phone_number: "+" + phoneNumber,
                 country: country,
                 city: city,
@@ -143,7 +142,7 @@ const SignUpForm = ({email, setEmail, setToVerify}) => {
             let config = {
                 method: 'post',
                 maxBodyLength: Infinity,
-                url: `${baseUrl}/signup/`,
+                url: `${baseUrl}/auth/register`,
                 headers: {
                     'Content-Type': 'application/json'
                 },
@@ -180,7 +179,7 @@ const SignUpForm = ({email, setEmail, setToVerify}) => {
                     <div className=' box-border m-0 basis-full flex-grow-0 max-w-full '>
                         {/** Email Form */}
                         <div className='box-border m-0 basis-full flex-grow-0 max-w-full'>
-                            <form method='post' onSubmit={handleSubmit}>
+                            <form onSubmit={handleSubmit}>
                                 <div className=' box-border flex flex-wrap items-center'>
                                     <div className=' box-border flex flex-wrap items-center'>
                                         {/** First and Last names */}
@@ -336,7 +335,7 @@ const SignUpForm = ({email, setEmail, setToVerify}) => {
                                         </div>
 
                                         {/** Submit button */}
-                                        <button onClick={handleSubmit} type="submit" className=' mt-[13px] bg-[#51336A] h-[40px] relative border-none rounded-[30px] select-none text-white text-[1rem] w-full '>Submit</button>
+                                        <button  type="submit" className=' mt-[13px] bg-[#51336A] h-[40px] relative border-none rounded-[30px] select-none text-white text-[1rem] w-full '>Submit</button>
                                         {/**Sign Up */}
                                         <h1 className=' w-full text-center text-[#707070] text-[12px] mt-[10px]'>Already have a  VacVault account? <span onClick={() => {
                                             dispatch(SignUpFalse())

@@ -8,7 +8,7 @@ const ForgotPassword = ({resetRequestPassword, restRequestError, forgotPasswordE
             <div className=' smallDevice w-full sm:w-[528px] rounded-[30px] shadow-input bg-white pt-8 pb-[56px] px-[2.875rem] relative'>
                 <div className=' w-full flex flex-col items-center justify-center text-center'>
                     <img src={vacvault} alt="" className=' h-[33px] w-[107px]' />
-                    {restRequestError.length > 0 ? <h1 className=' py-[5px] flex justify-center items-center text-center rounded-[20px] bg-[#FFDFE4] border-solid border-[1px] border-[#51336A] w-full mt-[15px] text-[12px] text-[#51336A]'>
+                    {restRequestError.length > 0 ? <h1 className=' py-[5px] flex justify-center items-center text-center rounded-[20px] bg-[#FFDFE4] border-solid border-[1px] border-[#EB0728] w-full mt-[15px] text-[12px] text-[#EB0728]'>
                         <img src={errorIcon} alt="" className='mr-[5px]' />
                         {restRequestError}
                     </h1> : null}

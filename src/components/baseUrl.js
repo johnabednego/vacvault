@@ -1,2 +1,2 @@
-const basedUrl = "https://goodifly-va5lvx6xwa-uc.a.run.app/api"
+const basedUrl = "http://localhost:5000/api"
 export default basedUrl

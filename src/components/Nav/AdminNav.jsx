@@ -4,6 +4,8 @@ import { RxHamburgerMenu } from 'react-icons/rx'
 import { IoMdClose } from "react-icons/io";
 import { useNavigate } from 'react-router-dom'
 import { AiOutlineLogout } from "react-icons/ai";
+import { jwtDecode } from 'jwt-decode';
+
 
 const AdminNav = ({ adminSwitch, setAdminSwitch }) => {
     const navigate = useNavigate()
@@ -75,6 +77,37 @@ const AdminNav = ({ adminSwitch, setAdminSwitch }) => {
         }
     }, [setAdminSwitch])
 
+    useEffect(() => {
+
+        const scrollToTop = () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth', // Smooth scrolling behavior
+            });
+        };
+
+        scrollToTop()
+
+        const storedToken = window.localStorage.getItem('jdgbgiusudgfdyudbudvfudhfgbiyfudvifiudubuydfbduvuydfvuy')
+        const decodedToken = storedToken ? decodeData(storedToken) : null;
+        const userInfo = decodedToken ? jwtDecode(decodedToken) : null;
+        if (userInfo) {
+            if(userInfo?.user?.role==='admin'){
+                navigate('/admin')
+            }
+            else{
+                navigate('/dashboard')
+            }
+        }
+        else{
+            navigate('/')
+        }
+    }, [navigate])
+
+    const LogOut = () =>{
+        window.localStorage.clear()
+        navigate('/')
+    }
 
     return (
         <>
@@ -92,7 +125,7 @@ const AdminNav = ({ adminSwitch, setAdminSwitch }) => {
                     <button onClick={() => navigate("/dashboard")} className={` ${window.location.pathname === "/dashboard" ? " opacity-20 cursor-not-allowed" : "hover:opacity-70"} w-[138px] md:w-[120px] lg:w-[138px] h-[40px] md:h-[30px] lg:h-[40px] rounded-[6px] border-solid border-[1px] border-white flex items-center justify-center text-center font-semibold text-[20px] md:text-[18px] lg:text-[20px] text-white shadow-dashboard transform transition-all ease-in-out`}>
                         Dashboard
                     </button>
-                    <AiOutlineLogout title="LogOut" className='tooltip w-[24px] h-[24px] cursor-pointer rotate-[270deg] text-white hover:opacity-70 transition-all transform ease-in-out duration-300' />
+                    <AiOutlineLogout onClick={()=>LogOut()} title="LogOut" className='tooltip w-[24px] h-[24px] cursor-pointer rotate-[270deg] text-white hover:opacity-70 transition-all transform ease-in-out duration-300' />
                 </div>
 
                 <div className=' text-white md:hidden'>
