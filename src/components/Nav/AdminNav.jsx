@@ -77,32 +77,32 @@ const AdminNav = ({ adminSwitch, setAdminSwitch }) => {
         }
     }, [setAdminSwitch])
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        const scrollToTop = () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth', // Smooth scrolling behavior
-            });
-        };
+    //     const scrollToTop = () => {
+    //         window.scrollTo({
+    //             top: 0,
+    //             behavior: 'smooth', // Smooth scrolling behavior
+    //         });
+    //     };
 
-        scrollToTop()
+    //     scrollToTop()
 
-        const storedToken = window.localStorage.getItem('jdgbgiusudgfdyudbudvfudhfgbiyfudvifiudubuydfbduvuydfvuy')
-        const decodedToken = storedToken ? decodeData(storedToken) : null;
-        const userInfo = decodedToken ? jwtDecode(decodedToken) : null;
-        if (userInfo) {
-            if(userInfo?.user?.role==='admin'){
-                navigate('/admin')
-            }
-            else{
-                navigate('/dashboard')
-            }
-        }
-        else{
-            navigate('/')
-        }
-    }, [navigate])
+    //     const storedToken = window.localStorage.getItem('jdgbgiusudgfdyudbudvfudhfgbiyfudvifiudubuydfbduvuydfvuy')
+    //     const decodedToken = storedToken ? decodeData(storedToken) : null;
+    //     const userInfo = decodedToken ? jwtDecode(decodedToken) : null;
+    //     if (userInfo) {
+    //         if(userInfo?.user?.role==='admin'){
+    //             navigate('/admin')
+    //         }
+    //         else{
+    //             navigate('/dashboard')
+    //         }
+    //     }
+    //     else{
+    //         navigate('/')
+    //     }
+    // }, [navigate])
 
     const LogOut = () =>{
         window.localStorage.clear()

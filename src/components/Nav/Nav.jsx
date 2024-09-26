@@ -64,28 +64,28 @@ const Nav = () => {
         return atob(data); // Base64 encoding
     }
 
-    useEffect(() => {
+    // useEffect(() => {
 
-        const scrollToTop = () => {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth', // Smooth scrolling behavior
-            });
-        };
+    //     const scrollToTop = () => {
+    //         window.scrollTo({
+    //             top: 0,
+    //             behavior: 'smooth', // Smooth scrolling behavior
+    //         });
+    //     };
 
-        scrollToTop()
+    //     scrollToTop()
 
-        const storedToken = window.localStorage.getItem('jdgbgiusudgfdyudbudvfudhfgbiyfudvifiudubuydfbduvuydfvuy')
-        const decodedToken = storedToken ? decodeData(storedToken) : null;
-        const userInfo = decodedToken ? jwtDecode(decodedToken) : null;
-        setUser(userInfo)
-        if (userInfo) {
-            navigate('/dashboard');
-        }
-        else{
-            navigate('/')
-        }
-    }, [navigate])
+    //     const storedToken = window.localStorage.getItem('jdgbgiusudgfdyudbudvfudhfgbiyfudvifiudubuydfbduvuydfvuy')
+    //     const decodedToken = storedToken ? decodeData(storedToken) : null;
+    //     const userInfo = decodedToken ? jwtDecode(decodedToken) : null;
+    //     setUser(userInfo)
+    //     if (userInfo) {
+    //         navigate('/dashboard');
+    //     }
+    //     else{
+    //         navigate('/')
+    //     }
+    // }, [navigate])
 
     useEffect(() => {
         if (window.location.pathname === "/") {
